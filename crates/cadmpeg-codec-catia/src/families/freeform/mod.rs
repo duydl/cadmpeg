@@ -779,6 +779,16 @@ pub(super) fn try_decode_freeform_surfaces(
         } else {
             false
         };
+        let surface_roster_census = if !wire_topology_transferred {
+            match scan.brep.as_deref() {
+                Some(brep) => Some(admitted!(
+                    crate::families::standard::records::surface_roster_census(ctx, brep)
+                )),
+                None => None,
+            }
+        } else {
+            None
+        };
         let mut losses = Vec::new();
         if !wire_topology_transferred {
             if topology_transferred {
@@ -830,6 +840,21 @@ pub(super) fn try_decode_freeform_surfaces(
             crate::coverage::EXHAUSTED_OBJECT_STREAM_SELECTION_COUNT,
             usize::from(object_stream_selection_exhausted),
         );
+        if let Some(census) = surface_roster_census {
+            coverage.record(crate::coverage::CLOSED_SURFACE_ROSTER_COUNT, census.roster_count);
+            coverage.record(
+                crate::coverage::CLOSED_SURFACE_ROSTER_RECORD_COUNT,
+                census.record_count,
+            );
+            coverage.record(
+                crate::coverage::SUPPORTED_SURFACE_ROSTER_COUNT,
+                census.supported_roster_count,
+            );
+            coverage.record(
+                crate::coverage::SUPPORTED_SURFACE_ROSTER_RECORD_COUNT,
+                census.supported_record_count,
+            );
+        }
         coverage.record(
             crate::coverage::DECODED_B2_NURBS_CURVE_COUNT,
             b2_nurbs_curve_count,
