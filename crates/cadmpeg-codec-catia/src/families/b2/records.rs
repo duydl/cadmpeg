@@ -161,13 +161,15 @@ pub(crate) enum B2PlaneCarrierLayout {
     ImplicitY,
     /// Point, stored U-Y component, and bounds; U-X is zero.
     DirectionY,
+    /// Origin XYZ and bounds; U is implicit +Y.
+    SpatialImplicitY,
 }
 
 impl B2PlaneCarrierLayout {
     pub(crate) const fn scalar_count(self) -> usize {
         match self {
             Self::ImplicitX | Self::ImplicitY => 6,
-            Self::DirectionX | Self::DirectionY => 7,
+            Self::DirectionX | Self::DirectionY | Self::SpatialImplicitY => 7,
             Self::DirectionXY => 8,
         }
     }
@@ -176,7 +178,7 @@ impl B2PlaneCarrierLayout {
         z == 0.0
             && match self {
                 Self::ImplicitX => x == 1.0 && y == 0.0,
-                Self::ImplicitY => x == 0.0 && y == 1.0,
+                Self::ImplicitY | Self::SpatialImplicitY => x == 0.0 && y == 1.0,
                 Self::DirectionX => y == 0.0,
                 Self::DirectionY => x == 0.0,
                 Self::DirectionXY => true,
@@ -192,6 +194,7 @@ impl From<B2PlaneCarrierLayout> for u8 {
             B2PlaneCarrierLayout::DirectionXY => 0xc4,
             B2PlaneCarrierLayout::ImplicitY => 0xdc,
             B2PlaneCarrierLayout::DirectionY => 0xd4,
+            B2PlaneCarrierLayout::SpatialImplicitY => 0xd8,
         }
     }
 }
@@ -206,6 +209,7 @@ impl TryFrom<u8> for B2PlaneCarrierLayout {
             0xc4 => Ok(Self::DirectionXY),
             0xdc => Ok(Self::ImplicitY),
             0xd4 => Ok(Self::DirectionY),
+            0xd8 => Ok(Self::SpatialImplicitY),
             other => Err(format!("unknown plane selector {other:#04x}")),
         }
     }
@@ -219,7 +223,7 @@ pub(crate) enum B2PlaneCarrierPayload {
     Plane {
         /// Source scalar layout; omitted direction components are implicit.
         layout: B2PlaneCarrierLayout,
-        /// Stored XY point; model-space Z is zero.
+        /// Stored XY point; model-space Z is zero for planar XY layouts.
         point: FiniteVector<2>,
         /// Stored or implicit horizontal U direction.
         direction: ExactHypotUnitVector3,
@@ -227,6 +231,9 @@ pub(crate) enum B2PlaneCarrierPayload {
         u_range: IncreasingParameterInterval,
         /// Stored V bounds; V is global +Z.
         v_range: IncreasingParameterInterval,
+        /// Stored origin Z coordinate when present on the selector.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        origin_z: Option<FiniteReal>,
     },
     /// Complete finite lane for an unassigned selector.
     ScalarLane {
@@ -249,8 +256,17 @@ impl B2PlaneCarrierPayload {
     pub(crate) fn valid_plane(&self) -> bool {
         match self {
             Self::Plane {
-                layout, direction, ..
-            } => layout.admits_direction(direction.get()),
+                layout,
+                direction,
+                origin_z,
+                ..
+            } => {
+                if *layout == B2PlaneCarrierLayout::SpatialImplicitY {
+                    origin_z.is_some() && layout.admits_direction(direction.get())
+                } else {
+                    origin_z.is_none() && layout.admits_direction(direction.get())
+                }
+            }
             Self::ScalarLane { .. } => false,
         }
     }
@@ -1662,6 +1678,7 @@ pub(crate) fn b2_plane_carriers_from_records(
                         };
                         (
                             [values[0], values[1]],
+                            None,
                             direction,
                             [values[2], values[3], values[4], values[5]],
                         )
@@ -1676,6 +1693,7 @@ pub(crate) fn b2_plane_carriers_from_records(
                         };
                         (
                             [values[0], values[1]],
+                            None,
                             direction,
                             [values[3], values[4], values[5], values[6]],
                         )
@@ -1684,12 +1702,23 @@ pub(crate) fn b2_plane_carriers_from_records(
                 B2PlaneCarrierLayout::DirectionXY => read_f64_array::<8>(lane, 0).map(|values| {
                     (
                         [values[0], values[1]],
+                        None,
                         [values[2].get(), values[3].get(), 0.0],
                         [values[4], values[5], values[6], values[7]],
                     )
                 }),
+                B2PlaneCarrierLayout::SpatialImplicitY => {
+                    read_f64_array::<7>(lane, 0).map(|values| {
+                        (
+                            [values[0], values[1]],
+                            Some(values[2]),
+                            [0.0, 1.0, 0.0],
+                            [values[3], values[4], values[5], values[6]],
+                        )
+                    })
+                }
             };
-            let Some((point, direction, bounds)) = parsed else {
+            let Some((point, origin_z, direction, bounds)) = parsed else {
                 continue;
             };
             let (Some(direction), Some(u_range), Some(v_range)) = (
@@ -1705,6 +1734,7 @@ pub(crate) fn b2_plane_carriers_from_records(
                 direction,
                 u_range,
                 v_range,
+                origin_z,
             }
         } else {
             let Some(values) = finite_f64_lane(lane) else {
@@ -1734,7 +1764,10 @@ pub(crate) fn b2_plane_carriers_from_records(
 /// horizontal direction, V is global +Z, and the normal is `unit(U × V)`.
 pub(in crate::families) fn b2_plane_geometry(carrier: &B2PlaneCarrier) -> Option<SurfaceGeometry> {
     let B2PlaneCarrierPayload::Plane {
-        point, direction, ..
+        point,
+        direction,
+        origin_z,
+        ..
     } = &carrier.payload
     else {
         return None;
@@ -1742,7 +1775,8 @@ pub(in crate::families) fn b2_plane_geometry(carrier: &B2PlaneCarrier) -> Option
     if !carrier.payload.valid_plane() {
         return None;
     }
-    let origin = FinitePoint3::new(Point3::new(point[0], point[1], 0.0))?;
+    let z = origin_z.map_or(0.0, |z| z.get());
+    let origin = FinitePoint3::new(Point3::new(point[0], point[1], z))?;
     let frame = OrthonormalFrame3::about_horizontal_normal((*direction).into())?;
     Some(SurfaceGeometry::Solved(SolvedSurfaceGeometry::Plane(
         cadmpeg_ir::geometry::analytic::PlaneSurface::new(origin, frame),

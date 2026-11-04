@@ -87,7 +87,7 @@ fn b2_plane_carrier_parser_preserves_each_selector_layout() {
         (&carriers[2], B2PlaneCarrierLayout::ImplicitX, [-2.0, 5.0]),
     ] {
         assert!(matches!(&carrier.payload, B2PlaneCarrierPayload::Plane {
-            layout: actual, point, direction, u_range, v_range,
+            layout: actual, point, direction, u_range, v_range, ..
         } if *actual == layout && *point == [10.0,20.0]
             && direction.get() == [1.0,0.0,0.0]
             && u_range.endpoints() == u_bounds && v_range.endpoints() == [-2.0,3.0]));

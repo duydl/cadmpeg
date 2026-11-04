@@ -1051,6 +1051,19 @@ Offsets are relative to the payload after the 4+w-byte B-family frame header. He
 | 18 | 8 | `direction_component` | `f64` | little | spec | `+18` direction component (`f64le`) |
 | 26 | 32 | `bounds` | `f64[4]` | little | spec | the 58-byte one-component direction payload has bounds at `+26` |
 
+## `consolidated_plane_spatial_origin_payload`
+
+Spec §6.3 · layout: byte offsets · size: 58 B
+
+Offsets are relative to the payload after the 4+w-byte B-family frame header. Header width and flag do not change the layout.
+
+| Offset | Size | Field | Type | Endian | Src | Meaning |
+| -----: | ---: | ----- | ---- | ------ | --- | ------- |
+| 0 | 1 | `marker` | `u8` | little | spec | `+0` marker `b4` |
+| 1 | 1 | `selector` | `u8` | little | spec | `+1` selector |
+| 2 | 24 | `origin_xyz` | `f64[3]` | little | spec | `+2` origin XYZ (`3×f64le`) |
+| 26 | 32 | `bounds` | `f64[4]` | little | spec | the 58-byte spatial-origin payload has bounds at `+26` |
+
 ## `consolidated_plane_two_component_payload`
 
 Spec §6.3 · layout: byte offsets · size: 66 B
