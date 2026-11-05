@@ -1148,6 +1148,19 @@ fn a5_curve_parser_accepts_compact_array_marker_values() {
 }
 
 #[test]
+fn a5_curve_parser_accepts_owned_array_marker() {
+    let mut bytes = a5_freeform_curve_stream();
+    bytes[11] = 0x08;
+    bytes.insert(12, 0x0f);
+    let payload_len = u32::try_from(bytes.len() - 8).expect("test frame fits u32");
+    bytes[3..7].copy_from_slice(&payload_len.to_le_bytes());
+    assert_eq!(
+        crate::families::a5a8::records::a5_freeform_curves(&bytes).len(),
+        1
+    );
+}
+
+#[test]
 fn a5_curve_parser_rejects_untyped_continuation() {
     let mut bytes = a5_freeform_curve_stream();
     bytes.extend(std::iter::repeat_n(0, 4097));
@@ -1232,6 +1245,14 @@ fn a5_rolling_ball_extended_tail_admits_state_and_terminal() {
         crate::families::a5a8::records::a5_freeform_curves(&bytes).len(),
         1
     );
+    let trimmed_upper = bytes.len() - 18;
+    bytes[trimmed_upper..trimmed_upper + 8].copy_from_slice(&0.75f64.to_le_bytes());
+    assert_eq!(
+        crate::families::a5a8::records::a5_freeform_curves(&bytes).len(),
+        1
+    );
+    bytes[tail_start + 60] = 0;
+    assert!(crate::families::a5a8::records::a5_freeform_curves(&bytes).is_empty());
 }
 
 #[test]

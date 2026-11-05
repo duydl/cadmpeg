@@ -1098,7 +1098,7 @@ fn parse_a5_curve(data: &[u8], frame: ConsolidatedFrame) -> Option<A5FreeformCur
         }
         match data.get(at..at + 2) {
             Some([0x0c, _]) => at += 1,
-            Some([0x08, marker]) if a5_int(*marker).is_some() => at += 2,
+            Some([0x08, marker]) if a5_int(*marker).is_some() || *marker == 0x0f => at += 2,
             _ => return None,
         }
         let knot_bytes = count.checked_mul(8)?;
@@ -1175,6 +1175,7 @@ fn a5_rolling_ball_tail(data: &[u8], count: usize, knot_range: [f64; 2]) -> Opti
     {
         return None;
     }
+    let mut trimmed_u_limit = false;
     let mut at = match data.len() {
         length
             if length == no_map_length
@@ -1192,6 +1193,7 @@ fn a5_rolling_ball_tail(data: &[u8], count: usize, knot_range: [f64; 2]) -> Opti
                 {
                     return None;
                 }
+                trimmed_u_limit = branch[3] == 1;
             } else if branch != suffix::BRANCH_VALUE {
                 return None;
             }
@@ -1217,7 +1219,8 @@ fn a5_rolling_ball_tail(data: &[u8], count: usize, knot_range: [f64; 2]) -> Opti
     at += 16;
     if maximal_u[0] < knot_range[0]
         || maximal_u[0] > current[0]
-        || maximal_u[1] < current[1]
+        || maximal_u[0] >= maximal_u[1]
+        || (!trimmed_u_limit && maximal_u[1] < current[1])
         || maximal_u[1] > knot_range[1]
     {
         return None;
