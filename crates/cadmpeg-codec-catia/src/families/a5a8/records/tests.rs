@@ -1169,6 +1169,27 @@ fn a5_rolling_ball_tails_close_all_three_productions() {
 }
 
 #[test]
+fn a5_rolling_ball_extended_tail_admits_state_and_terminal() {
+    let original = a5_freeform_curve_stream();
+    let tail_start = original.len() - 79;
+    for state in [0, 1] {
+        let mut bytes = original.clone();
+        bytes[tail_start + 60] = state;
+        bytes.extend_from_slice(&original[tail_start + 32..tail_start + 40]);
+        bytes.extend_from_slice(&[0, 0]);
+        let payload_len = u32::try_from(bytes.len() - 8).expect("test length");
+        bytes[3..7].copy_from_slice(&payload_len.to_le_bytes());
+        assert_eq!(
+            crate::families::a5a8::records::a5_freeform_curves(&bytes).len(),
+            1
+        );
+        let terminal = bytes.len() - 1;
+        bytes[terminal] = 1;
+        assert!(crate::families::a5a8::records::a5_freeform_curves(&bytes).is_empty());
+    }
+}
+
+#[test]
 fn a5_rolling_ball_tail_refuses_truncation_and_invalid_lanes() {
     let original = a5_freeform_curve_stream();
     let tail_start = original.len() - 79;

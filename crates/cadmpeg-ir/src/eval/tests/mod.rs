@@ -280,6 +280,38 @@ fn rolling_ball_jet_evaluation_interpolates_spine_and_sweeps_arc() {
 }
 
 #[test]
+fn rolling_ball_jet_evaluates_sextuple_interior_station() {
+    let derivative = RollingBallJetDerivative {
+        first_limit: Vector3::new(0.0, 0.0, 0.0),
+        second_limit: Vector3::new(0.0, 0.0, 0.0),
+        center: Vector3::new(0.0, 0.0, 0.0),
+        angle: 0.0,
+    };
+    let stations = [0.0, 1.0, 2.0]
+        .into_iter()
+        .map(|knot| crate::geometry::RollingBallJetStation {
+            knot,
+            multiplicity: 6,
+            site: RollingBallJetSite {
+                first_limit: Point3::new(1.0, 0.0, 0.0),
+                second_limit: Point3::new(0.0, 1.0, 0.0),
+                center: Point3::new(0.0, 0.0, 0.0),
+                angle: std::f64::consts::FRAC_PI_2,
+                first_derivative: derivative,
+                second_derivative: derivative,
+            },
+        })
+        .collect();
+    let definition = ProceduralSurfaceDefinition::RollingBallJet(
+        crate::geometry::RollingBallJetStations::try_new(5, stations).expect("three stations"),
+    );
+    let point = rolling_ball_jet_point(&definition, 0.5, 0.5).expect("first span");
+    assert!((point.x - std::f64::consts::FRAC_1_SQRT_2).abs() < 1e-12);
+    assert!((point.y - std::f64::consts::FRAC_1_SQRT_2).abs() < 1e-12);
+    assert!(rolling_ball_jet_point(&definition, 1.5, 0.5).is_ok());
+}
+
+#[test]
 fn rolling_ball_jet_evaluation_uses_fixed_radius_frame() {
     const TEST_TOLERANCE: f64 = 1e-12;
     let zero = RollingBallJetDerivative {

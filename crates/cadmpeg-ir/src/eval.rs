@@ -5657,7 +5657,7 @@ const ROLLING_BALL_JET_RADIUS_TOLERANCE: f64 = 1e-8;
 /// The interpolated limiting points then define the circular section whose
 /// fixed radius is taken from the first stored station.
 ///
-/// A definition that is not a quintic jet with triple interior knots, a
+/// A definition that is not a quintic jet with triple or sextuple interior knots, a
 /// parameter that is not finite or lies outside the jet, stations whose
 /// radii disagree, and a section whose first limiting direction vanishes or
 /// whose second is parallel to it have no point. A knot span, interpolated
@@ -5680,7 +5680,7 @@ pub fn rolling_ball_jet_point(
             .iter()
             .skip(1)
             .take(stations.len() - 2)
-            .any(|station| station.multiplicity != 3)
+            .any(|station| !matches!(station.multiplicity, 3 | 6))
         || !t.is_finite()
         || !s.is_finite()
         || !(0.0..=1.0).contains(&s)

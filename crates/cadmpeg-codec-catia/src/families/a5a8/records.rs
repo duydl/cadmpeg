@@ -1157,6 +1157,7 @@ fn a5_rolling_ball_tail(data: &[u8], count: usize, knot_range: [f64; 2]) -> Opti
 
     let no_map_length = prefix::LEN + suffix::LEN;
     let repeated_length = no_map_length + 8;
+    let extended_length = repeated_length + 2;
     let current = read_f64_array::<5>(data, prefix::PARAMETERS)?.map(FiniteReal::get);
     let maximal_v = read_f64_array::<2>(data, prefix::MAXIMAL_V)?.map(FiniteReal::get);
     if !matches!(data.get(prefix::CONTROL), Some(0x03 | 0x05))
@@ -1170,10 +1171,22 @@ fn a5_rolling_ball_tail(data: &[u8], count: usize, knot_range: [f64; 2]) -> Opti
         return None;
     }
     let mut at = match data.len() {
-        length if length == no_map_length || length == repeated_length => {
-            if data.get(prefix::LEN + suffix::BRANCH..prefix::LEN + suffix::MAXIMAL_U)
-                != Some(&suffix::BRANCH_VALUE)
-            {
+        length
+            if length == no_map_length
+                || length == repeated_length
+                || length == extended_length =>
+        {
+            let branch = data.get(prefix::LEN + suffix::BRANCH..prefix::LEN + suffix::MAXIMAL_U)?;
+            if length == extended_length {
+                if branch.len() != suffix::BRANCH_VALUE.len()
+                    || branch[0..3] != suffix::BRANCH_VALUE[0..3]
+                    || branch[3] > 1
+                    || branch[4..6] != suffix::BRANCH_VALUE[4..6]
+                    || data.get(repeated_length..extended_length) != Some(&[0, 0][..])
+                {
+                    return None;
+                }
+            } else if branch != suffix::BRANCH_VALUE {
                 return None;
             }
             prefix::LEN + suffix::MAXIMAL_U
@@ -1208,6 +1221,9 @@ fn a5_rolling_ball_tail(data: &[u8], count: usize, knot_range: [f64; 2]) -> Opti
             return None;
         }
         at += 8;
+    }
+    if data.len() == extended_length {
+        at += 2;
     }
     (at == data.len()).then_some(())
 }

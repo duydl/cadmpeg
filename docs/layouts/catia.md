@@ -772,6 +772,20 @@ Parsed by:
 | 0 | 6 | `branch` | `bytes[6]` | little | spec | \| `+0` \| `bytes[6]` \| absent scalar jet: `05 00 00 00 00 00` \| · value `[5, 0, 0, 0, 0, 0]` |
 | 6 | 16 | `maximal_u` | `f64[2]` | little | spec | \| `+6` \| `f64le[2]` \| maximal U limits \| |
 
+## `rolling_ball_tail_extended_suffix`
+
+Spec §6.2 · layout: byte offsets · size: 32 B
+
+Parsed by:
+- `crates/cadmpeg-codec-catia/src/families/a5a8/records.rs`
+
+| Offset | Size | Field | Type | Endian | Src | Meaning |
+| -----: | ---: | ----- | ---- | ------ | --- | ------- |
+| 0 | 6 | `branch` | `bytes[6]` | little | spec | \| `+0` \| `bytes[6]` \| branch `05 00 00 b 00 00` \| |
+| 6 | 16 | `maximal_u` | `f64[2]` | little | spec | \| `+6` \| `f64le[2]` \| maximal U limits \| |
+| 22 | 8 | `reference` | `f64` | little | spec | \| `+22` \| `f64le` \| reference-scalar copy \| |
+| 30 | 2 | `terminal` | `bytes[2]` | little | spec | \| `+30` \| `bytes[2]` \| zero terminal \| |
+
 ## `consolidated_parameter_point_inline_prefix`
 
 Spec §6.4 · layout: byte offsets · size: 10 B

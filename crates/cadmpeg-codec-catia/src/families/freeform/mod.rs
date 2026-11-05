@@ -27,6 +27,8 @@ use cadmpeg_ir::AnnotationBuilder;
 use cadmpeg_ir::Exactness;
 use std::collections::{HashMap, HashSet, VecDeque};
 
+mod rolling_ball_patch;
+
 use crate::assemble::{
     annotate, insert_unresolved_carrier_loss, link_payload_carriers, neutral_model_is_admissible,
     preserve_raw_payload, quintic_jet_pcurve,
@@ -42,6 +44,7 @@ use crate::math::distance;
 
 const EPS_TORUS_FRAME: f64 = 1.0e-12;
 const EPS_APEX_ALIGNMENT: f64 = 1.0e-12;
+const MAX_PATCH_CARRIERS: usize = 64;
 
 #[derive(Clone)]
 struct FreeformSurfaceCarrier {
@@ -648,6 +651,16 @@ pub(super) fn try_decode_freeform_surfaces(
         if let Err(error) =
             append_a8_rolling_ball_pools(&mut ir, &mut annotations, &scan.data, &mut admission)
         {
+            return Some(Err(error));
+        }
+        if let Err(error) = append_a5_rolling_ball_pools(
+            &mut ir,
+            &mut annotations,
+            &scan.data,
+            &consolidated_records,
+            refusal,
+            &mut admission,
+        ) {
             return Some(Err(error));
         }
         let line_profiles = admitted!(consolidated_line_profiles(
@@ -1427,6 +1440,157 @@ fn append_consolidated_line_profiles(
     Ok(())
 }
 
+fn append_a5_rolling_ball_pools(
+    ir: &mut CadIr,
+    annotations: &mut AnnotationBuilder<impl cadmpeg_ir::annotations::AnnotationStorage>,
+    data: &[u8],
+    records: &[crate::wire::records::ConsolidatedRecord],
+    refusal: &mut crate::nurbs::LaneRefusals,
+    admission: &mut FamilyEntityAdmission<'_, '_>,
+) -> Result<(), cadmpeg_core::CodecError> {
+    let face_construction_positions = records
+        .windows(2)
+        .filter(|pair| {
+            pair[1].family() == crate::wire::records::ConsolidatedFamily::B
+                && pair[1].class() == 0x62
+                && pair[0].source_index() == pair[1].source_index()
+        })
+        .map(|pair| pair[0].byte_offset())
+        .collect::<HashSet<_>>();
+    let rolling_ball_carriers =
+        crate::families::b2::records::b2_rolling_ball_constructions_from_records(data, records)
+            .into_iter()
+            .filter(|construction| face_construction_positions.contains(&construction.pos))
+            .map(|construction| (construction.carrier_pos, construction.source_index))
+            .collect::<HashMap<_, _>>();
+    for jet in crate::families::a5a8::records::a5_freeform_curves_from_records(data, records) {
+        for second_limit in [false, true] {
+            let Some(curve) = crate::families::a5a8::records::rolling_ball_limit_curve(
+                &jet,
+                second_limit,
+                refusal,
+            ) else {
+                continue;
+            };
+            let side = usize::from(second_limit);
+            let id = CurveId::mint(format!("catia:rolling-ball:limit#{}:{side}", jet.pos))
+                .map_err(cadmpeg_core::CodecError::malformed)?;
+            annotate(
+                annotations,
+                &id,
+                "consolidated_a5_03_32",
+                u64_from_index(jet.pos),
+                format_args!("limit_{}", side + 1),
+                Exactness::Derived,
+            )?;
+            admission.charge()?;
+            ir.model.curves.push(Curve {
+                parameter_range: None,
+                id,
+                geometry: CurveGeometry::Solved(SolvedCurveGeometry::Nurbs(curve)),
+                source_object: None,
+            });
+        }
+        let stations = jet
+            .sites
+            .iter()
+            .map(|sample| cadmpeg_ir::geometry::RollingBallJetStation {
+                knot: sample.knot,
+                multiplicity: crate::families::a5a8::records::A5FreeformCurve::DEGREE + 1,
+                site: crate::families::a5a8::records::rolling_ball_jet_site(
+                    &sample.site,
+                    sample.first_derivatives,
+                    sample.second_derivatives,
+                ),
+            })
+            .collect::<Vec<_>>();
+        let surface_index = ir.model.surfaces.len();
+        let surface_id = crate::resource::compose_index_id(
+            &cadmpeg_ir::identity_namespace!("catia", "rolling-ball", "surf"),
+            surface_index,
+            SurfaceId::mint,
+        )?;
+        let procedural_id = crate::resource::compose_index_id(
+            &cadmpeg_ir::identity_namespace!("catia", "rolling-ball", "construction"),
+            ir.model.procedural_surfaces.len(),
+            ProceduralSurfaceId::mint,
+        )?;
+        annotate(
+            annotations,
+            &surface_id,
+            "consolidated_a5_03_32_cache",
+            u64_from_index(jet.pos),
+            format_args!("header_token:{:08x}", jet.header_token),
+            Exactness::Unknown,
+        )?;
+        admission.charge()?;
+        ir.model.surfaces.push(Surface {
+            id: surface_id.clone(),
+            geometry: SurfaceGeometry::Procedural {
+                construction: procedural_id.clone(),
+                cache: None,
+            },
+            source_object: None,
+        });
+
+        annotate(
+            annotations,
+            &procedural_id,
+            "consolidated_a5_03_32",
+            u64_from_index(jet.pos),
+            format_args!("header_token:{:08x}", jet.header_token),
+            Exactness::ByteExact,
+        )?;
+        admission.charge()?;
+        ir.model.procedural_surfaces.push(ProceduralSurface::new(
+            procedural_id,
+            ProceduralSurfaceDefinition::RollingBallJet(
+                cadmpeg_ir::geometry::RollingBallJetStations::from_parts(
+                    crate::families::a5a8::records::A5FreeformCurve::DEGREE,
+                    stations,
+                )
+                .map_err(cadmpeg_core::CodecError::malformed)?,
+            ),
+            None,
+        ));
+        if let Some(&source_index) = rolling_ball_carriers
+            .get(&jet.pos)
+            .filter(|_| rolling_ball_carriers.len() <= MAX_PATCH_CARRIERS)
+        {
+            let carrier = &ir.model.surfaces[surface_index].geometry;
+            if let Some((u_range, v_range)) = rolling_ball_patch::closed_patch_domain(
+                ir,
+                carrier,
+                data,
+                records,
+                source_index,
+                refusal,
+            ) {
+                if let Some(patch) = rolling_ball_patch::fit(ir, carrier, u_range, v_range) {
+                    let id = SurfaceId::mint(format!("catia:rolling-ball:patch#{}", jet.pos))
+                        .map_err(cadmpeg_core::CodecError::malformed)?;
+                    annotate(
+                        annotations,
+                        &id,
+                        "consolidated_a5_03_32_patch",
+                        u64_from_index(jet.pos),
+                        "closed_pcurve_fit",
+                        Exactness::Derived,
+                    )?;
+                    admission.charge()?;
+                    ir.model.surfaces.push(Surface {
+                        id,
+                        geometry: SurfaceGeometry::Solved(SolvedSurfaceGeometry::Nurbs(patch)),
+                        source_object: None,
+                    });
+                }
+            }
+        }
+    }
+
+    Ok(())
+}
+
 /// Append standalone freeform carriers and return the number of consolidated
 /// surface curves bound to existing standard edges.
 pub(super) fn append_freeform_surface_pools(
@@ -1599,97 +1763,7 @@ pub(super) fn append_freeform_surface_pools(
         });
     }
 
-    for jet in crate::families::a5a8::records::a5_freeform_curves_from_records(data, records) {
-        for second_limit in [false, true] {
-            let Some(curve) = crate::families::a5a8::records::rolling_ball_limit_curve(
-                &jet,
-                second_limit,
-                refusal,
-            ) else {
-                continue;
-            };
-            let side = usize::from(second_limit);
-            let id = CurveId::mint(format!("catia:rolling-ball:limit#{}:{side}", jet.pos))
-                .map_err(cadmpeg_core::CodecError::malformed)?;
-            annotate(
-                annotations,
-                &id,
-                "consolidated_a5_03_32",
-                u64_from_index(jet.pos),
-                format_args!("limit_{}", side + 1),
-                Exactness::Derived,
-            )?;
-            admission.charge()?;
-            ir.model.curves.push(Curve {
-                parameter_range: None,
-                id,
-                geometry: CurveGeometry::Solved(SolvedCurveGeometry::Nurbs(curve)),
-                source_object: None,
-            });
-        }
-        let stations = jet
-            .sites
-            .iter()
-            .map(|sample| cadmpeg_ir::geometry::RollingBallJetStation {
-                knot: sample.knot,
-                multiplicity: crate::families::a5a8::records::A5FreeformCurve::DEGREE + 1,
-                site: crate::families::a5a8::records::rolling_ball_jet_site(
-                    &sample.site,
-                    sample.first_derivatives,
-                    sample.second_derivatives,
-                ),
-            })
-            .collect::<Vec<_>>();
-        let surface_index = ir.model.surfaces.len();
-        let surface_id = crate::resource::compose_index_id(
-            &cadmpeg_ir::identity_namespace!("catia", "rolling-ball", "surf"),
-            surface_index,
-            SurfaceId::mint,
-        )?;
-        let procedural_id = crate::resource::compose_index_id(
-            &cadmpeg_ir::identity_namespace!("catia", "rolling-ball", "construction"),
-            ir.model.procedural_surfaces.len(),
-            ProceduralSurfaceId::mint,
-        )?;
-        annotate(
-            annotations,
-            &surface_id,
-            "consolidated_a5_03_32_cache",
-            u64_from_index(jet.pos),
-            format_args!("header_token:{:08x}", jet.header_token),
-            Exactness::Unknown,
-        )?;
-        admission.charge()?;
-        ir.model.surfaces.push(Surface {
-            id: surface_id.clone(),
-            geometry: SurfaceGeometry::Procedural {
-                construction: procedural_id.clone(),
-                cache: None,
-            },
-            source_object: None,
-        });
-
-        annotate(
-            annotations,
-            &procedural_id,
-            "consolidated_a5_03_32",
-            u64_from_index(jet.pos),
-            format_args!("header_token:{:08x}", jet.header_token),
-            Exactness::ByteExact,
-        )?;
-        admission.charge()?;
-        ir.model.procedural_surfaces.push(ProceduralSurface::new(
-            procedural_id,
-            ProceduralSurfaceDefinition::RollingBallJet(
-                cadmpeg_ir::geometry::RollingBallJetStations::from_parts(
-                    crate::families::a5a8::records::A5FreeformCurve::DEGREE,
-                    stations,
-                )
-                .map_err(cadmpeg_core::CodecError::malformed)?,
-            ),
-            None,
-        ));
-    }
+    append_a5_rolling_ball_pools(ir, annotations, data, records, refusal, admission)?;
 
     append_a8_rolling_ball_pools(ir, annotations, data, admission)?;
     let counts = append_resolved_consolidated_surface_curves(

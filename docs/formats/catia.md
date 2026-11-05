@@ -610,6 +610,15 @@ The 79-byte form has this 22-byte suffix after the prefix:
 The 87-byte form adds one `f64le` copy of the reference scalar. The absent-jet
 branch supplies no parameter map.
 
+The 89-byte form has a six-byte branch `05 00 00 b 00 00`, where `b` is zero or one. It then stores maximal U limits, one bit-identical reference-scalar copy, and a two-byte zero terminal. The branch state is retained with the source record.
+
+| Suffix offset | Encoding | Field |
+| --- | --- | --- |
+| `+0` | `bytes[6]` | branch `05 00 00 b 00 00` |
+| `+6` | `f64le[2]` | maximal U limits |
+| `+22` | `f64le` | reference-scalar copy |
+| `+30` | `bytes[2]` | zero terminal |
+
 The explicit scalar-jet form is `87 + 24*K` bytes. After the prefix it stores
 `01 01`, then three finite `f64le[K]` lanes in value, first-derivative, and
 second-derivative order. The derivatives use the rolling-ball U parameter.
