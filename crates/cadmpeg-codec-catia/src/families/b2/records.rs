@@ -783,6 +783,53 @@ pub(crate) fn b2_edge_nodes_from_records<'a>(
     })
 }
 
+pub(crate) fn b2_two_edge_owner_relation(
+    data: &[u8],
+    owner: &ConsolidatedRecord,
+    edges: &[B2EdgeNode],
+) -> Option<bool> {
+    let [first, second] = edges else { return None };
+    if owner.family() != ConsolidatedFamily::B || owner.class() != 0x62 {
+        return None;
+    }
+    let payload = owner.payload()?;
+    let mut view = View::over_retained(data).child(payload.start, payload.end)?;
+    view.skip(4)?;
+    let token = view.u8()?;
+    if token & 3 != 3 {
+        return None;
+    }
+    for edge in edges {
+        for encoding in &edge.reference_encodings[1..3] {
+            if !matches!(
+                encoding,
+                AllocationReferenceEncoding::BackwardDistance
+                    | AllocationReferenceEncoding::OwnedChild
+            ) {
+                return None;
+            }
+        }
+    }
+    let complement = u32::from(token >> 2).checked_sub(1)?;
+    two_edge_complement_relation(
+        complement,
+        [first.start_vertex_ref, first.end_vertex_ref],
+        [second.start_vertex_ref, second.end_vertex_ref],
+    )
+}
+
+fn two_edge_complement_relation(
+    complement: u32,
+    first: [u32; 2],
+    second: [u32; 2],
+) -> Option<bool> {
+    let same = first[0].checked_add(second[0]) == Some(complement)
+        && first[1].checked_add(second[1]) == Some(complement);
+    let opposite = first[0].checked_add(second[1]) == Some(complement)
+        && first[1].checked_add(second[0]) == Some(complement);
+    (same != opposite).then_some(same)
+}
+
 /// Decode `b2/b3/b4 03 37` compact reference lists with their unit tail.
 #[must_use]
 #[cfg(test)]

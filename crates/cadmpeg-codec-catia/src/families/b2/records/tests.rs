@@ -5,6 +5,25 @@
 
 mod parameter_points;
 
+#[test]
+fn two_edge_complement_identifies_endpoint_order() {
+    use super::two_edge_complement_relation;
+
+    assert_eq!(
+        two_edge_complement_relation(50, [7, 32], [43, 18]),
+        Some(true)
+    );
+    assert_eq!(
+        two_edge_complement_relation(26, [5, 18], [8, 21]),
+        Some(false)
+    );
+    assert_eq!(
+        two_edge_complement_relation(32, [8, 24], [8, 24]),
+        Some(false)
+    );
+    assert_eq!(two_edge_complement_relation(10, [1, 2], [3, 4]), None);
+}
+
 use cadmpeg_ir::geometry::{SolvedSurfaceGeometry, SurfaceGeometry};
 use cadmpeg_ir::scalar::FiniteReal;
 

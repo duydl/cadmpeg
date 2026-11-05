@@ -324,6 +324,14 @@ terminal meaning remain unresolved. Exact framing does not supply those roles.
 
 **Note.** Existing native retention passes full model checking for 5,214 copied control frames and 19,277 copied owner frames. Both existing typed boundary cycles match independently reconstructed source endpoints. Unassigned meanings remain open; no cross-source geometry binding follows from these structural results.
 
+### SN-38. Two-edge sheet face orientation
+
+**Question.** Which native relation assigns the absolute face sense of a closed two-edge sheet relative to its surface chart?
+
+**Known.** The class-`62` complement relation determines the endpoint pairing in four isolated faces. The curved face has forward sense in CATIA STEP; two selector-`d8` planar faces have reversed sense. Both planar face boundaries and areas agree with native pcurve lifts independently of their sense. The last singleton class-`61` record before the boundary owner has occurrence bit one on the curved face and bit zero on both selector-`d8` planar faces; the independent tilted planar face has bit one.
+
+**Need.** Resolve the selected face's signed class-`61` member or another source-closed orientation control before assigning its absolute sense. A third tilted planar face uses carrier and pcurve productions outside the currently decoded variants.
+
 ## 4. Object stream
 
 ### OS-02. Class-`0x5f` terminal controls

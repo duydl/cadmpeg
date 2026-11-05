@@ -16,6 +16,8 @@ const HOLDOUT_STEPS: usize = 20;
 const MAX_FIT_ERROR_MM: f64 = 0.001;
 const MIN_PIVOT: f64 = 1.0e-12;
 const LOOP_CLOSURE_MM: f64 = 0.001;
+const LOOP_ORIENTATION_SAMPLES: usize = 40;
+const MIN_LOOP_UV_AREA: f64 = 1.0e-10;
 const MAX_PCURVE_CANDIDATES: usize = 256;
 const MAX_CHART_ENDPOINT_SLACK: f64 = 0.00001;
 const EDGE_DEGREE: usize = 5;
@@ -48,6 +50,37 @@ impl ClosedPatch {
             same_order,
         ))
     }
+
+    pub(super) fn loop_is_forward(&self, same_order: bool) -> Option<bool> {
+        let mut points = Vec::new();
+        for (index, edge) in self.edges.iter().enumerate() {
+            for step in 0..LOOP_ORIENTATION_SAMPLES {
+                let fraction = step as f64 / LOOP_ORIENTATION_SAMPLES as f64;
+                let fraction = if index == 1 && same_order {
+                    1.0 - fraction
+                } else {
+                    fraction
+                };
+                let parameter = edge.range[0] + (edge.range[1] - edge.range[0]) * fraction;
+                let uv = eval::decode::pcurve_uv(
+                    EvaluationAdmission::Standard,
+                    &edge.geometry,
+                    parameter,
+                )
+                .ok()?
+                .get();
+                points.push([uv.u, uv.v]);
+            }
+        }
+        let area_twice = points
+            .iter()
+            .zip(points.iter().cycle().skip(1))
+            .take(points.len())
+            .map(|(first, second)| first[0] * second[1] - second[0] * first[1])
+            .sum::<f64>();
+        (area_twice.is_finite() && area_twice.abs() > 2.0 * MIN_LOOP_UV_AREA)
+            .then_some(area_twice > 0.0)
+    }
 }
 
 fn endpoint_relation(first: [[f64; 3]; 2], second: [[f64; 3]; 2]) -> Option<bool> {
@@ -60,6 +93,19 @@ fn endpoint_relation(first: [[f64; 3]; 2], second: [[f64; 3]; 2]) -> Option<bool
     let same = distance(&first[0], &second[0]).max(distance(&first[1], &second[1]));
     let opposite = distance(&first[0], &second[1]).max(distance(&first[1], &second[0]));
     (same.min(opposite) < LOOP_CLOSURE_MM).then_some(same <= opposite)
+}
+
+fn chart_v(value: f64, bounds: Option<[f64; 2]>) -> Option<f64> {
+    if !value.is_finite() {
+        return None;
+    }
+    let Some([lower, upper]) = bounds else {
+        return Some(value);
+    };
+    if value < lower - MAX_CHART_ENDPOINT_SLACK || value > upper + MAX_CHART_ENDPOINT_SLACK {
+        return None;
+    }
+    Some(value.clamp(lower, upper))
 }
 
 fn bernstein(degree: usize, t: f64) -> Vec<f64> {
@@ -231,23 +277,17 @@ pub(super) fn fit_edge(
     ir: &CadIr,
     carrier: &SurfaceGeometry,
     edge: &ClosedPcurve,
+    v_bounds: Option<[f64; 2]>,
 ) -> Option<NurbsCurve> {
     let evaluate = |parameter: f64| {
         let uv = eval::decode::pcurve_uv(EvaluationAdmission::Standard, &edge.geometry, parameter)
             .ok()?
             .get();
-        if uv.v < -MAX_CHART_ENDPOINT_SLACK || uv.v > 1.0 + MAX_CHART_ENDPOINT_SLACK {
-            return None;
-        }
-        let point = eval::model_surface_point(
-            EvaluationAdmission::Standard,
-            ir,
-            carrier,
-            uv.u,
-            uv.v.clamp(0.0, 1.0),
-        )
-        .ok()?
-        .get();
+        let chart_v = chart_v(uv.v, v_bounds)?;
+        let point =
+            eval::model_surface_point(EvaluationAdmission::Standard, ir, carrier, uv.u, chart_v)
+                .ok()?
+                .get();
         Some([point.x, point.y, point.z])
     };
     let basis = (0..=EDGE_DEGREE)
@@ -328,6 +368,7 @@ pub(super) fn closed_patch(
     data: &[u8],
     records: &[ConsolidatedRecord],
     source_index: usize,
+    v_bounds: Option<[f64; 2]>,
     refusal: &mut crate::nurbs::LaneRefusals,
 ) -> Option<ClosedPatch> {
     let mut candidates = Vec::new();
@@ -376,10 +417,7 @@ pub(super) fn closed_patch(
                     )
                     .ok()?
                     .get();
-                    if uv.v < -MAX_CHART_ENDPOINT_SLACK || uv.v > 1.0 + MAX_CHART_ENDPOINT_SLACK {
-                        return None;
-                    }
-                    let chart_v = uv.v.clamp(0.0, 1.0);
+                    let chart_v = chart_v(uv.v, v_bounds)?;
                     let point = eval::model_surface_point(
                         EvaluationAdmission::Standard,
                         ir,

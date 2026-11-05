@@ -1188,6 +1188,8 @@ A degree-1 cylinder pcurve with both U and V varying is a circular helix. Its an
 
 A constant-U or constant-V pcurve on a tensor-product NURBS surface, including an exact revolution cache in the native chart, is the corresponding exact surface isocurve. Fixing U contracts each V-column in homogeneous coordinates by the U basis values; fixing V contracts each U-row by the V basis values. The varying direction retains its degree, knot vector, and periodic flag. Each resulting control point is the contracted homogeneous numerator divided by its contracted weight. Positive pcurve weights and monotone poles in the varying surface coordinate prove that an endpoint-incidence span has no turnback. Evaluating the two incidences yields the isocurve's trim coordinates; decreasing traversal reverses the isocurve poles, weights, and reflected knot vector, and both resulting interval endpoints agree with the ordered edge vertices.
 
+For a class-`62` owner with exactly two subsequent class-`5e` edges, let its fifth payload byte be `4n+3`, and let `(a,b)` and `(c,d)` be the second and third allocation-reference values of those edges. The endpoint orders agree when `a+c=b+d=n−1` and oppose when `a+d=b+c=n−1`; exactly one relation must hold for a two-edge boundary.
+
 Coincident `05 08 01` rows share an endpoint locus. For topology subsets whose
 allocation identity is otherwise unresolved, the locus binds to the lowest
 serialized matching row. A one-edge loop is closed when the edge's ordered

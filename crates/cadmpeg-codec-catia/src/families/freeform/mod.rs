@@ -523,12 +523,35 @@ pub(super) fn try_decode_freeform_surfaces(
         } else {
             false
         };
+        let planar_two_edge_candidate =
+            crate::families::b2::records::b2_plane_carriers_from_records(
+                &scan.data,
+                &consolidated_records,
+            )
+            .len()
+                == 1
+                && [
+                    crate::wire::records::ConsolidatedFamily::A,
+                    crate::wire::records::ConsolidatedFamily::B,
+                ]
+                .into_iter()
+                .map(|family| {
+                    crate::wire::records::family_pcurves_from_records(
+                        &scan.data,
+                        &consolidated_records,
+                        family,
+                    )
+                    .len()
+                })
+                .sum::<usize>()
+                    == 2;
         if no_a8_jets
             && b2_nurbs_curves.is_empty()
             && a5_nurbs_curves.is_empty()
             && b2_spatial_circles.is_empty()
             && b2_line_profile_count == 0
             && resolved_consolidated_revolution_count == 0
+            && !planar_two_edge_candidate
         {
             return None;
         }
@@ -665,6 +688,18 @@ pub(super) fn try_decode_freeform_surfaces(
             &mut admission,
         ) {
             return Some(Err(error));
+        }
+        if planar_two_edge_candidate {
+            if let Err(error) = append_planar_two_edge_pool(
+                &mut ir,
+                &mut annotations,
+                &scan.data,
+                &consolidated_records,
+                refusal,
+                &mut admission,
+            ) {
+                return Some(Err(error));
+            }
         }
         let line_profiles = admitted!(consolidated_line_profiles(
             &scan.data,
@@ -1443,6 +1478,111 @@ fn append_consolidated_line_profiles(
     Ok(())
 }
 
+fn append_planar_two_edge_pool(
+    ir: &mut CadIr,
+    annotations: &mut AnnotationBuilder<impl cadmpeg_ir::annotations::AnnotationStorage>,
+    data: &[u8],
+    records: &[crate::wire::records::ConsolidatedRecord],
+    refusal: &mut crate::nurbs::LaneRefusals,
+    admission: &mut FamilyEntityAdmission<'_, '_>,
+) -> Result<(), cadmpeg_core::CodecError> {
+    let planes = crate::families::b2::records::b2_plane_carriers_from_records(data, records);
+    let [plane] = planes.as_slice() else {
+        return Ok(());
+    };
+    let Some(geometry) = crate::families::b2::records::b2_plane_geometry(plane) else {
+        return Ok(());
+    };
+    let Some(source_index) = records
+        .iter()
+        .find(|record| record.byte_offset() == plane.pos)
+        .map(|record| record.source_index())
+    else {
+        return Ok(());
+    };
+    let Some(closed) =
+        rolling_ball_patch::closed_patch(ir, &geometry, data, records, source_index, None, refusal)
+    else {
+        return Ok(());
+    };
+    let boundary_curves = closed
+        .edges
+        .iter()
+        .map(|edge| rolling_ball_patch::fit_edge(ir, &geometry, edge, None))
+        .collect::<Option<Vec<_>>>();
+    let Some(boundary_curves) = boundary_curves else {
+        return Ok(());
+    };
+    let owners = records
+        .windows(2)
+        .filter(|pair| {
+            pair[0].source_index() == source_index
+                && pair[1].source_index() == source_index
+                && pair[0].family() == crate::wire::records::ConsolidatedFamily::B
+                && pair[0].class() == 0x62
+                && pair[1].family() == crate::wire::records::ConsolidatedFamily::B
+                && pair[1].class() == 0x5e
+        })
+        .map(|pair| pair[0].byte_offset())
+        .collect::<Vec<_>>();
+    let [owner_pos] = owners.as_slice() else {
+        return Ok(());
+    };
+    let surface_id = SurfaceId::mint(format!("catia:planar:surface#{}", plane.pos))
+        .map_err(cadmpeg_core::CodecError::malformed)?;
+    annotate(
+        annotations,
+        &surface_id,
+        "consolidated_b2_03_27_face",
+        u64_from_index(plane.pos),
+        "plane_carrier",
+        Exactness::Derived,
+    )?;
+    admission.charge()?;
+    ir.model.surfaces.push(Surface {
+        id: surface_id.clone(),
+        geometry: geometry.clone(),
+        source_object: None,
+    });
+    let mut curve_ids = Vec::new();
+    for (edge, curve) in closed.edges.iter().zip(boundary_curves) {
+        let id = CurveId::mint(format!("catia:planar:boundary#{}:{}", plane.pos, edge.pos))
+            .map_err(cadmpeg_core::CodecError::malformed)?;
+        annotate(
+            annotations,
+            &id,
+            "consolidated_b2_03_27_boundary",
+            u64_from_index(edge.pos),
+            "closed_pcurve_lift",
+            Exactness::Derived,
+        )?;
+        admission.charge()?;
+        ir.model.curves.push(Curve {
+            id: id.clone(),
+            parameter_range: None,
+            geometry: CurveGeometry::Solved(SolvedCurveGeometry::Nurbs(curve)),
+            source_object: None,
+        });
+        curve_ids.push(id);
+    }
+    attach_closed_two_edge_face(
+        ir,
+        annotations,
+        &closed,
+        &surface_id,
+        &curve_ids,
+        "planar",
+        "consolidated_b2_03_27_face",
+        plane.pos,
+        source_index,
+        *owner_pos,
+        data,
+        records,
+        admission,
+    )?;
+    Ok(())
+}
+
 fn append_a5_rolling_ball_pools(
     ir: &mut CadIr,
     annotations: &mut AnnotationBuilder<impl cadmpeg_ir::annotations::AnnotationStorage>,
@@ -1573,16 +1713,24 @@ fn append_a5_rolling_ball_pools(
             .filter(|_| rolling_ball_carriers.len() <= MAX_PATCH_CARRIERS)
         {
             let carrier = &ir.model.surfaces[surface_index].geometry;
-            if let Some(closed) =
-                rolling_ball_patch::closed_patch(ir, carrier, data, records, source_index, refusal)
-            {
+            if let Some(closed) = rolling_ball_patch::closed_patch(
+                ir,
+                carrier,
+                data,
+                records,
+                source_index,
+                Some([0.0, 1.0]),
+                refusal,
+            ) {
                 if let Some(patch) =
                     rolling_ball_patch::fit(ir, carrier, closed.u_range, closed.v_range)
                 {
                     let boundary_curves = closed
                         .edges
                         .iter()
-                        .map(|edge| rolling_ball_patch::fit_edge(ir, carrier, edge))
+                        .map(|edge| {
+                            rolling_ball_patch::fit_edge(ir, carrier, edge, Some([0.0, 1.0]))
+                        })
                         .collect::<Option<Vec<_>>>();
                     let id = SurfaceId::mint(format!("catia:rolling-ball:patch#{}", jet.pos))
                         .map_err(cadmpeg_core::CodecError::malformed)?;
@@ -1625,12 +1773,14 @@ fn append_a5_rolling_ball_pools(
                             });
                             curve_ids.push(id);
                         }
-                        attach_rolling_ball_face(
+                        attach_closed_two_edge_face(
                             ir,
                             annotations,
                             &closed,
                             &id,
                             &curve_ids,
+                            "rolling-ball",
+                            "consolidated_a5_03_32_face",
                             jet.pos,
                             source_index,
                             owner_pos,
@@ -1647,12 +1797,14 @@ fn append_a5_rolling_ball_pools(
     Ok(())
 }
 
-fn attach_rolling_ball_face(
+fn attach_closed_two_edge_face(
     ir: &mut CadIr,
     annotations: &mut AnnotationBuilder<impl cadmpeg_ir::annotations::AnnotationStorage>,
     closed: &rolling_ball_patch::ClosedPatch,
     surface_id: &SurfaceId,
     curves: &[CurveId],
+    source_kind: &str,
+    annotation_source: &str,
     carrier_pos: usize,
     source_index: usize,
     owner_pos: usize,
@@ -1684,8 +1836,22 @@ fn attach_rolling_ball_face(
     let Some((positions, same_order)) = closed.shared_vertices() else {
         return Ok(());
     };
+    let Some(owner) = source_records
+        .iter()
+        .find(|record| record.byte_offset() == owner_pos)
+    else {
+        return Ok(());
+    };
+    if crate::families::b2::records::b2_two_edge_owner_relation(data, owner, &boundary_nodes)
+        != Some(same_order)
+    {
+        return Ok(());
+    }
+    let Some(loop_is_forward) = closed.loop_is_forward(same_order) else {
+        return Ok(());
+    };
     let mint =
-        |kind: &str, suffix: &str| format!("catia:rolling-ball:{kind}#{carrier_pos}:{suffix}");
+        |kind: &str, suffix: &str| format!("catia:{source_kind}:{kind}#{carrier_pos}:{suffix}");
     let body_id = BodyId::mint(mint("body", "0")).map_err(cadmpeg_core::CodecError::malformed)?;
     let region_id =
         RegionId::mint(mint("region", "0")).map_err(cadmpeg_core::CodecError::malformed)?;
@@ -1728,7 +1894,7 @@ fn attach_rolling_ball_face(
         annotate(
             annotations,
             id,
-            "consolidated_a5_03_32_face",
+            annotation_source,
             u64_from_index(carrier_pos),
             "closed_two_edge_patch",
             Exactness::Inferred,
@@ -1742,7 +1908,7 @@ fn attach_rolling_ball_face(
             annotate(
                 annotations,
                 id,
-                "consolidated_a5_03_32_face",
+                annotation_source,
                 u64_from_index(carrier_pos),
                 "shared_boundary_endpoint",
                 Exactness::Derived,
@@ -1779,7 +1945,7 @@ fn attach_rolling_ball_face(
             annotate(
                 annotations,
                 id,
-                "consolidated_a5_03_32_face",
+                annotation_source,
                 u64_from_index(closed.edges[index].pos),
                 "closed_boundary",
                 Exactness::Derived,
@@ -1832,7 +1998,11 @@ fn attach_rolling_ball_face(
         id: face_id.clone(),
         shell: shell_id.clone(),
         surface: surface_id.clone(),
-        sense: Sense::Forward,
+        sense: if loop_is_forward {
+            Sense::Forward
+        } else {
+            Sense::Reversed
+        },
         loops: FaceLoops::classified(loop_id, Vec::new()),
         name: None,
         color: None,
