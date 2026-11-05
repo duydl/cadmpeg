@@ -745,6 +745,17 @@ impl CatiaNative {
                 ));
             }
         }
+        let mut consolidated_a_class25_maps: Vec<
+            crate::native::a_class25_map::CatiaConsolidatedAClass25Map,
+        > = namespace.arena_as("consolidated_a_class25_maps")?;
+        consolidated_a_class25_maps.sort_by_key(|map| (map.source_index, map.source_offset));
+        for (index, map) in consolidated_a_class25_maps.iter().enumerate() {
+            if map.id != format!("catia:consolidated:a-class25-map#{index:00}") {
+                return Err(cadmpeg_ir::NativeConvertError::InvalidOwner(
+                    "invalid A-family class-25 map identity".to_owned(),
+                ));
+            }
+        }
         let mut sampled_parameter_maps: Vec<
             crate::native::parameter_map::CatiaSampledParameterMap,
         > = namespace.arena_as("sampled_parameter_maps")?;
@@ -770,6 +781,7 @@ impl CatiaNative {
             consolidated_cones,
             consolidated_cylinders,
             consolidated_domain_relations,
+            consolidated_a_class25_maps,
             consolidated_four_reference_edges,
             consolidated_edge_nodes,
             consolidated_edge_runs,

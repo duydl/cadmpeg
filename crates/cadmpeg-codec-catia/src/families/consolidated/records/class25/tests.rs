@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 //! Complete map productions and contradictory counts, bounds, and accuracy.
 
-use super::{parse, Class25Accuracy, Class25SamplePairs, Class25SourceRelation};
+use super::{parse, parse_a, Class25Accuracy, Class25SamplePairs, Class25SourceRelation};
 use crate::wire::bytes::AllocationReferenceEncoding;
 
 fn payload(selector: u16, lead: u8, n: usize, decreasing: bool) -> Vec<u8> {
@@ -130,6 +130,24 @@ fn class25_samples_keep_pairing_and_do_not_require_endpoint_samples() {
     ] {
         assert!(serde_json::from_value::<Class25SamplePairs>(wire).is_err());
     }
+}
+
+#[test]
+fn a_family_class25_admits_seventeen_sample_pairs() {
+    let bytes = payload(0x1587, 0x0a, 17, false);
+    assert!(bytes.len() > usize::from(u8::MAX));
+    assert!(parse(&bytes).is_none());
+    let map = parse_a(&bytes).expect("A-family sampled map");
+    let Class25SourceRelation::Sampled { samples, .. } = map.source else {
+        panic!("sampled map");
+    };
+    assert_eq!(
+        serde_json::to_value(samples).expect("sample pairs")["target"]
+            .as_array()
+            .expect("target array")
+            .len(),
+        17
+    );
 }
 
 #[test]

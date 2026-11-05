@@ -49,6 +49,9 @@ use parameter_map::CatiaSampledParameterMap;
 mod domain_relation;
 use domain_relation::CatiaConsolidatedDomainRelation;
 
+mod a_class25_map;
+use a_class25_map::CatiaConsolidatedAClass25Map;
+
 mod edge_node;
 use edge_node::{
     consolidated_vertex_identities, edge_node_wires, load_edge_nodes, CatiaConsolidatedEdgeNode,
@@ -7463,6 +7466,10 @@ define_catia_arenas! {
         /// Complete source-local class-24 and class-25 scalar parameter relations.
         pub(crate) stored;
     },
+    consolidated_a_class25_maps: CatiaConsolidatedAClass25Map {
+        /// Complete source-local A-family class-25 sampled parameter maps.
+        pub(crate) stored;
+    },
     consolidated_edge_nodes: CatiaConsolidatedEdgeNode {
         /// Structurally complete consolidated edge nodes.
         pub(crate) stored;
@@ -8839,6 +8846,7 @@ impl CatiaNative {
         let consolidated_spheres = consolidated_spheres(bytes, consolidated_records);
         let consolidated_tori = consolidated_tori(bytes, consolidated_records);
         let consolidated_domain_relations = domain_relation::derive(bytes, consolidated_records)?;
+        let consolidated_a_class25_maps = a_class25_map::derive(bytes, consolidated_records)?;
         let zero_entity_range = container::outer_preamble_range(bytes).unwrap_or_else(|| {
             if bytes.starts_with(container::OUTER_MAGIC) {
                 0..0
@@ -8904,6 +8912,7 @@ impl CatiaNative {
             consolidated_cones,
             consolidated_cylinders,
             consolidated_domain_relations,
+            consolidated_a_class25_maps,
             consolidated_four_reference_edges,
             consolidated_edge_nodes,
             consolidated_edge_runs,

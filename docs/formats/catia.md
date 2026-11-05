@@ -748,7 +748,7 @@ Every scalar is finite, and target and stored source intervals are strictly incr
 
 Lead `0a` appends one absolute-accuracy word, bit-identical to the magnitude of the signed accuracy. Lead `0b` omits this word and requires signed accuracy to be zero, retaining its sign. The complete frame is consumed. Selectors `0001` and `0003` retain their distinct encoded values. The two operands refer to source-local parameter representations. Geometric data belongs to the referenced carriers.
 
-A B-family scalar class-`25` parameter map uses the complete key `b2/b3/b4 03 25`. The A8 key `a8 03 25` identifies a separate extrusion directrix. A B-family map begins with marker `82`, a source allocation operand, a target allocation operand, and `0a <selector:u16le>` or `0b <selector:u16le>`. Allocation operands use the compact grammar, `06 <u8>`, `0a <u16le>`, or a nonzero single-byte `4n+2` or `4n+3` form. Their addressing forms remain distinct. The selector is a layout code, not a third operand.
+A B-family scalar class-`25` parameter map uses the complete key `b2/b3/b4 03 25`. The `a5 03 25` map uses the same scalar-map payload grammar with a 32-bit payload length and a one-byte header token. The A8 key `a8 03 25` identifies a separate extrusion directrix. A scalar map begins with marker `82`, a source allocation operand, a target allocation operand, and `0a <selector:u16le>` or `0b <selector:u16le>`. Allocation operands use the compact grammar, `06 <u8>`, `0a <u16le>`, or a nonzero single-byte `4n+2` or `4n+3` form. Their addressing forms remain distinct. The selector is a layout code, not a third operand.
 
 | Offset | Type | Meaning |
 | --- | --- | --- |
