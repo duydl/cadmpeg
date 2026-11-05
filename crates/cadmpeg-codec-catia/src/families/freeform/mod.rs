@@ -1528,6 +1528,11 @@ fn append_planar_two_edge_pool(
     let [owner_pos] = owners.as_slice() else {
         return Ok(());
     };
+    let Some(face_orientation) =
+        selected_singleton_face_orientation(data, records, source_index, *owner_pos)
+    else {
+        return Ok(());
+    };
     let surface_id = SurfaceId::mint(format!("catia:planar:surface#{}", plane.pos))
         .map_err(cadmpeg_core::CodecError::malformed)?;
     annotate(
@@ -1576,11 +1581,44 @@ fn append_planar_two_edge_pool(
         plane.pos,
         source_index,
         *owner_pos,
+        Some(face_orientation),
         data,
         records,
         admission,
     )?;
     Ok(())
+}
+
+fn selected_singleton_face_orientation(
+    data: &[u8],
+    records: &[crate::wire::records::ConsolidatedRecord],
+    source_index: usize,
+    owner_pos: usize,
+) -> Option<bool> {
+    let pair = records
+        .windows(2)
+        .filter(|pair| {
+            pair[0].source_index() == source_index
+                && pair[1].source_index() == source_index
+                && pair[0].family() == crate::wire::records::ConsolidatedFamily::B
+                && pair[0].class() == 0x61
+                && pair[1].family() == crate::wire::records::ConsolidatedFamily::B
+                && pair[1].class() == 0x5f
+                && pair[1].byte_offset() < owner_pos
+                && crate::wire::records::records_are_contiguous(pair)
+        })
+        .last()?;
+    let face_pos = pair[1].byte_offset();
+    if records.iter().any(|record| {
+        record.source_index() == source_index
+            && record.byte_offset() > face_pos
+            && record.byte_offset() < owner_pos
+            && record.family() == crate::wire::records::ConsolidatedFamily::B
+            && matches!(record.class(), 0x5f | 0x61 | 0x62)
+    }) {
+        return None;
+    }
+    crate::native::class61::singleton_face_orientation_bit(data, &pair[0])
 }
 
 fn append_a5_rolling_ball_pools(
@@ -1784,6 +1822,7 @@ fn append_a5_rolling_ball_pools(
                             jet.pos,
                             source_index,
                             owner_pos,
+                            None,
                             data,
                             records,
                             admission,
@@ -1808,6 +1847,7 @@ fn attach_closed_two_edge_face(
     carrier_pos: usize,
     source_index: usize,
     owner_pos: usize,
+    desired_forward: Option<bool>,
     data: &[u8],
     records: &[crate::wire::records::ConsolidatedRecord],
     admission: &mut FamilyEntityAdmission<'_, '_>,
@@ -1850,6 +1890,8 @@ fn attach_closed_two_edge_face(
     let Some(loop_is_forward) = closed.loop_is_forward(same_order) else {
         return Ok(());
     };
+    let face_is_forward = desired_forward.unwrap_or(loop_is_forward);
+    let reverse_loop = loop_is_forward != face_is_forward;
     let mint =
         |kind: &str, suffix: &str| format!("catia:{source_kind}:{kind}#{carrier_pos}:{suffix}");
     let body_id = BodyId::mint(mint("body", "0")).map_err(cadmpeg_core::CodecError::malformed)?;
@@ -1971,7 +2013,7 @@ fn attach_closed_two_edge_face(
             owner_loop: loop_id.clone(),
             edge: edge_ids[index].clone(),
             radial_next: coedge_ids[index].clone(),
-            sense: if index == 0 || !same_order {
+            sense: if (index == 0 || !same_order) != reverse_loop {
                 Sense::Forward
             } else {
                 Sense::Reversed
@@ -1984,7 +2026,12 @@ fn attach_closed_two_edge_face(
             use_curve: None,
         });
     }
-    let Ok(ring) = LoopRing::new(coedge_ids, Vec::new()) else {
+    let ring_coedges = if reverse_loop {
+        coedge_ids.into_iter().rev().collect()
+    } else {
+        coedge_ids.to_vec()
+    };
+    let Ok(ring) = LoopRing::new(ring_coedges, Vec::new()) else {
         return Ok(());
     };
     admission.charge()?;
@@ -1998,7 +2045,7 @@ fn attach_closed_two_edge_face(
         id: face_id.clone(),
         shell: shell_id.clone(),
         surface: surface_id.clone(),
-        sense: if loop_is_forward {
+        sense: if face_is_forward {
             Sense::Forward
         } else {
             Sense::Reversed

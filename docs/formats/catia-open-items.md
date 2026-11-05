@@ -330,7 +330,7 @@ terminal meaning remain unresolved. Exact framing does not supply those roles.
 
 **Known.** The class-`62` complement relation determines the endpoint pairing in four isolated faces. The curved face has forward sense in CATIA STEP; two selector-`d8` planar faces have reversed sense. Both planar face boundaries and areas agree with native pcurve lifts independently of their sense. The last singleton class-`61` record before the boundary owner has occurrence bit one on the curved face and bit zero on both selector-`d8` planar faces; the independent tilted planar face has bit one.
 
-**Need.** Resolve the selected face's signed class-`61` member or another source-closed orientation control before assigning its absolute sense. A third tilted planar face uses carrier and pcurve productions outside the currently decoded variants.
+**Need.** Prove the last singleton class-`61` to selected-face identity beyond an isolated one-face source and establish its chart-parity rule for additional surface carriers. A third tilted planar face uses carrier and pcurve productions outside the currently decoded variants.
 
 ## 4. Object stream
 
