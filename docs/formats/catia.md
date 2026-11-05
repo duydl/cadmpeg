@@ -571,7 +571,7 @@ Object-stream `05 08 01` coordinate rows are unframed allocations outside the co
 
 ### 6.1 `a5 03 34` freeform surface (consolidated class)
 
-Payload: `degU` and `K_U` (`4n+1` codes), array marker (`0x0c`, `0x08 0x09`, or `0x08 0x0d`), `K_U` distinct finite U knots (f64le), then `degV`/`K_V`/marker/V-knots, a mode byte (`0x01` non-rational / `0x05` rational), the pole grid (nu×nv×3 f64le, 24-byte stride), an optional weight payload, and a limit/parameterization tail. **Only strictly increasing distinct knots are stored.** Degree-1 and degree-3 directions use clamped multiplicities `[degree+1,1,…,1,degree+1]`. Degree 5 uses the clamped C2 policy `[6,3,…,3,6]`, so `n_control = Σmult − degree − 1 = 3·K`. Poles and `05 08 01` vertex coordinates share the identity world frame. Rational weights (mode `0x05`) are either `00` followed by a complete `nu×nv` f64le grid or a row program. A row begins `01 03 00` or `01 07 00`, followed by `ceil(nv/2)` f64le values reflected around the row center; `02` copies the preceding expanded row. The tail carries current-limits + original parameterization (`param_after = coef·param_before + shift`) and extrapolation flags/data.
+Payload: `degU` and `K_U` (`4n+1` codes), array marker (`0x0c`, `0x08 0x05`, `0x08 0x09`, `0x08 0x0d`, or `0x08 0x15`), `K_U` distinct finite U knots (f64le), then `degV`/`K_V`/marker/V-knots, a mode byte (`0x01` non-rational / `0x05` rational), the pole grid (nu×nv×3 f64le, 24-byte stride), an optional weight payload, and a limit/parameterization tail. **Only strictly increasing distinct knots are stored.** Degree-1 and degree-3 directions use clamped multiplicities `[degree+1,1,…,1,degree+1]`. Degree 5 uses the clamped C2 policy `[6,3,…,3,6]`, so `n_control = Σmult − degree − 1 = 3·K`. Poles and `05 08 01` vertex coordinates share the identity world frame. Rational weights (mode `0x05`) are either `00` followed by a complete `nu×nv` f64le grid or a row program. A row begins `01 03 00` or `01 07 00`, followed by `ceil(nv/2)` f64le values reflected around the row center; `02` copies the preceding expanded row. The tail carries current-limits + original parameterization (`param_after = coef·param_before + shift`) and extrapolation flags/data.
 
 The frame carries no inline persistent object id. Its byte offset in the object stream identifies the consolidated surface carrier.
 
@@ -610,11 +610,11 @@ The 79-byte form has this 22-byte suffix after the prefix:
 The 87-byte form adds one `f64le` copy of the reference scalar. The absent-jet
 branch supplies no parameter map.
 
-The 89-byte form has a six-byte branch `05 00 00 b 00 00`, where `b` is zero or one. It then stores maximal U limits, one bit-identical reference-scalar copy, and a two-byte zero terminal. The branch state is retained with the source record.
+The 89-byte form has a six-byte branch `05 00 a b 00 00`, where `a` and `b` are each zero or one. It then stores maximal U limits, one bit-identical reference-scalar copy, and a two-byte zero terminal. The branch state is retained with the source record.
 
 | Suffix offset | Encoding | Field |
 | --- | --- | --- |
-| `+0` | `bytes[6]` | branch `05 00 00 b 00 00` |
+| `+0` | `bytes[6]` | branch `05 00 a b 00 00` |
 | `+6` | `f64le[2]` | maximal U limits |
 | `+22` | `f64le` | reference-scalar copy |
 | `+30` | `bytes[2]` | zero terminal |
@@ -634,7 +634,7 @@ transferred geometric jet.
 
 ### 6.3 Consolidated class-`0x20` pcurve-on-surface (`CATPSpline`)
 
-A 2D spline in a support surface's parameter space. Its payload stores `degU`, `K` definition points, one global curve parameter, one `(U,V)` pair per point, and 2D tangent and second derivative values. The leading operand `op1` is the underlying support's persistent CGM tag within its geometry factory. Explicit and implicit factories have separate tag namespaces. A tag remains stable through object creation, removal of other objects, and factory streaming. The `mode/offset` byte encodes the leading-extrapolation count `q = (mode−1)/4`.
+A 2D spline in a support surface's parameter space. Its payload stores `degU`, `K` definition points, one global curve parameter, one `(U,V)` pair per point, and 2D tangent and second derivative values. The leading operand `op1` is the underlying support's persistent CGM tag within its geometry factory. Explicit and implicit factories have separate tag namespaces. A tag remains stable through object creation, removal of other objects, and factory streaming. The array marker is `0x0c` or `0x08` followed by a one-byte `4q+1` or `4q+3` value. Both compact forms encode the leading-extrapolation count `q`.
 
 The compact tag is separate from a physical file offset, record ordinal, allocation reference, and framed header token. Numeric equality supplies a candidate for an admitted typed identity relation; uniqueness and that relation's chart and endpoint invariants must also hold. Tags in separate factories or documents do not define a common identity.
 

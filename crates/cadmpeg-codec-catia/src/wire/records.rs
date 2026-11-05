@@ -214,7 +214,7 @@ fn pcurve_layout(
         }
         0x08 => {
             let encoded = *data.get(at + 1)?;
-            if encoded % 4 != 1 {
+            if !matches!(encoded % 4, 1 | 3) {
                 return None;
             }
             at += 2;
@@ -1320,6 +1320,16 @@ mod tests {
         assert_eq!(pcurves.len(), 1);
         assert_eq!(pcurves[0].sites.len(), 2);
         assert_eq!(pcurves[0].tail, [0x07]);
+    }
+
+    #[test]
+    fn a5_pcurve_accepts_owned_array_marker_with_same_extrapolation_count() {
+        let mut bytes = crate::test_support::test_a5a8::a5_pcurve_stream();
+        bytes[14] = 0x0b;
+        let records = consolidated_records(&bytes);
+        let pcurves = super::family_pcurves_from_records(&bytes, &records, ConsolidatedFamily::A);
+        assert_eq!(pcurves.len(), 1);
+        assert_eq!(pcurves[0].extrapolation_sites, 2);
     }
 
     #[test]

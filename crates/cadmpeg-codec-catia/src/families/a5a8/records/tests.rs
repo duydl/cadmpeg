@@ -973,6 +973,22 @@ fn a5_surface_parser_reads_extended_array_marker_and_terminal() {
 }
 
 #[test]
+fn a5_surface_parser_accepts_additional_bounded_array_markers() {
+    for marker in [0x05, 0x15] {
+        let mut bytes = a5_surface_stream();
+        bytes.splice(10..11, [0x08, marker]);
+        let payload_len = u32::try_from(bytes.len() - 8).expect("test length");
+        bytes[3..7].copy_from_slice(&payload_len.to_le_bytes());
+        let surfaces = crate::families::a5a8::records::a5_surfaces(
+            &bytes,
+            &mut crate::nurbs::LaneRefusals::new(),
+        )
+        .expect("decode the A5 surfaces");
+        assert_eq!(surfaces.len(), 1);
+    }
+}
+
+#[test]
 fn a5_surface_parser_rejects_unclosed_or_nonfinite_tail_data() {
     let mut trailing = a5_surface_stream();
     trailing.push(0);
@@ -1187,6 +1203,17 @@ fn a5_rolling_ball_extended_tail_admits_state_and_terminal() {
         bytes[terminal] = 1;
         assert!(crate::families::a5a8::records::a5_freeform_curves(&bytes).is_empty());
     }
+    let mut bytes = original.clone();
+    bytes[tail_start + 59] = 1;
+    bytes[tail_start + 60] = 1;
+    bytes.extend_from_slice(&original[tail_start + 32..tail_start + 40]);
+    bytes.extend_from_slice(&[0, 0]);
+    let payload_len = u32::try_from(bytes.len() - 8).expect("test length");
+    bytes[3..7].copy_from_slice(&payload_len.to_le_bytes());
+    assert_eq!(
+        crate::families::a5a8::records::a5_freeform_curves(&bytes).len(),
+        1
+    );
 }
 
 #[test]

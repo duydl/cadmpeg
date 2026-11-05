@@ -1179,7 +1179,8 @@ fn a5_rolling_ball_tail(data: &[u8], count: usize, knot_range: [f64; 2]) -> Opti
             let branch = data.get(prefix::LEN + suffix::BRANCH..prefix::LEN + suffix::MAXIMAL_U)?;
             if length == extended_length {
                 if branch.len() != suffix::BRANCH_VALUE.len()
-                    || branch[0..3] != suffix::BRANCH_VALUE[0..3]
+                    || branch[0..2] != suffix::BRANCH_VALUE[0..2]
+                    || branch[2] > 1
                     || branch[3] > 1
                     || branch[4..6] != suffix::BRANCH_VALUE[4..6]
                     || data.get(repeated_length..extended_length) != Some(&[0, 0][..])
@@ -1998,7 +1999,7 @@ fn a5_int(byte: u8) -> Option<u32> {
 fn a5_array_marker(bytes: &[u8], at: usize) -> Option<usize> {
     match bytes.get(at..at + 2) {
         Some([0x0c, ..]) => Some(at + 1),
-        Some([0x08, 0x09] | [0x08, 0x0d]) => Some(at + 2),
+        Some([0x08, 0x05] | [0x08, 0x09] | [0x08, 0x0d] | [0x08, 0x15]) => Some(at + 2),
         _ => None,
     }
 }
