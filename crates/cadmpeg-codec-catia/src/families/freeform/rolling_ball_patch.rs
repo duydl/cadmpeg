@@ -3,7 +3,8 @@
 
 use cadmpeg_ir::document::CadIr;
 use cadmpeg_ir::eval::{self, admission::EvaluationAdmission};
-use cadmpeg_ir::geometry::nurbs::{NurbsPoleGrid, NurbsSurface, NurbsSurfaceAxis};
+use cadmpeg_ir::geometry::nurbs::{NurbsCurve, NurbsPoleGrid, NurbsSurface, NurbsSurfaceAxis};
+use cadmpeg_ir::geometry::pcurve::PcurveGeometry;
 use cadmpeg_ir::geometry::SurfaceGeometry;
 use cadmpeg_ir::math::Point3;
 
@@ -17,6 +18,49 @@ const MIN_PIVOT: f64 = 1.0e-12;
 const LOOP_CLOSURE_MM: f64 = 0.001;
 const MAX_PCURVE_CANDIDATES: usize = 256;
 const MAX_CHART_ENDPOINT_SLACK: f64 = 0.00001;
+const EDGE_DEGREE: usize = 5;
+const EDGE_HOLDOUT_STEPS: usize = 20;
+const MAX_EDGE_ERROR_MM: f64 = 0.001;
+const MAX_EDGE_SPLIT_DEPTH: usize = 6;
+const MAX_EDGE_SPANS: usize = 64;
+
+#[derive(Clone)]
+pub(super) struct ClosedPcurve {
+    pub(super) pos: usize,
+    pub(super) geometry: PcurveGeometry,
+    pub(super) range: [f64; 2],
+    endpoints: [([f64; 2], [f64; 3]); 2],
+}
+
+pub(super) struct ClosedPatch {
+    pub(super) u_range: [f64; 2],
+    pub(super) v_range: [f64; 2],
+    pub(super) edges: [ClosedPcurve; 2],
+}
+
+impl ClosedPatch {
+    pub(super) fn shared_vertices(&self) -> Option<([Point3; 2], bool)> {
+        let first = &self.edges[0].endpoints;
+        let second = &self.edges[1].endpoints;
+        let same_order = endpoint_relation([first[0].1, first[1].1], [second[0].1, second[1].1])?;
+        Some((
+            first.map(|(_, position)| Point3::new(position[0], position[1], position[2])),
+            same_order,
+        ))
+    }
+}
+
+fn endpoint_relation(first: [[f64; 3]; 2], second: [[f64; 3]; 2]) -> Option<bool> {
+    let distance = |left: &[f64; 3], right: &[f64; 3]| {
+        (0..3)
+            .map(|axis| (left[axis] - right[axis]).powi(2))
+            .sum::<f64>()
+            .sqrt()
+    };
+    let same = distance(&first[0], &second[0]).max(distance(&first[1], &second[1]));
+    let opposite = distance(&first[0], &second[1]).max(distance(&first[1], &second[0]));
+    (same.min(opposite) < LOOP_CLOSURE_MM).then_some(same <= opposite)
+}
 
 fn bernstein(degree: usize, t: f64) -> Vec<f64> {
     let mut row = Vec::with_capacity(degree + 1);
@@ -183,14 +227,109 @@ pub(super) fn fit(
     .ok()
 }
 
-pub(super) fn closed_patch_domain(
+pub(super) fn fit_edge(
+    ir: &CadIr,
+    carrier: &SurfaceGeometry,
+    edge: &ClosedPcurve,
+) -> Option<NurbsCurve> {
+    let evaluate = |parameter: f64| {
+        let uv = eval::decode::pcurve_uv(EvaluationAdmission::Standard, &edge.geometry, parameter)
+            .ok()?
+            .get();
+        if uv.v < -MAX_CHART_ENDPOINT_SLACK || uv.v > 1.0 + MAX_CHART_ENDPOINT_SLACK {
+            return None;
+        }
+        let point = eval::model_surface_point(
+            EvaluationAdmission::Standard,
+            ir,
+            carrier,
+            uv.u,
+            uv.v.clamp(0.0, 1.0),
+        )
+        .ok()?
+        .get();
+        Some([point.x, point.y, point.z])
+    };
+    let basis = (0..=EDGE_DEGREE)
+        .map(|index| bernstein(EDGE_DEGREE, index as f64 / EDGE_DEGREE as f64))
+        .collect::<Vec<_>>();
+    let mut spans = vec![edge.range];
+    for depth in 0..=MAX_EDGE_SPLIT_DEPTH {
+        let mut next = Vec::new();
+        let mut controls = Vec::new();
+        let mut split = false;
+        for &[lower, upper] in &spans {
+            let samples = (0..=EDGE_DEGREE)
+                .map(|index| evaluate(lower + (upper - lower) * index as f64 / EDGE_DEGREE as f64))
+                .collect::<Option<Vec<_>>>()?;
+            let mut poles = [[0.0; 3]; EDGE_DEGREE + 1];
+            for axis in 0..3 {
+                let values = samples.iter().map(|point| point[axis]).collect::<Vec<_>>();
+                for (index, value) in solve(&basis, &values)?.into_iter().enumerate() {
+                    poles[index][axis] = value;
+                }
+            }
+            let mut maximum_error = 0.0_f64;
+            for index in 0..=EDGE_HOLDOUT_STEPS {
+                let fraction = index as f64 / EDGE_HOLDOUT_STEPS as f64;
+                let actual = evaluate(lower + (upper - lower) * fraction)?;
+                let coefficients = bernstein(EDGE_DEGREE, fraction);
+                let mut predicted = [0.0; 3];
+                for (pole, coefficient) in poles.iter().zip(coefficients) {
+                    for axis in 0..3 {
+                        predicted[axis] += coefficient * pole[axis];
+                    }
+                }
+                let error = (0..3)
+                    .map(|axis| (actual[axis] - predicted[axis]).powi(2))
+                    .sum::<f64>()
+                    .sqrt();
+                maximum_error = maximum_error.max(error);
+            }
+            if !maximum_error.is_finite() {
+                return None;
+            }
+            if maximum_error > MAX_EDGE_ERROR_MM {
+                if depth == MAX_EDGE_SPLIT_DEPTH || spans.len() >= MAX_EDGE_SPANS {
+                    return None;
+                }
+                let midpoint = lower + (upper - lower) * 0.5;
+                next.push([lower, midpoint]);
+                next.push([midpoint, upper]);
+                split = true;
+            } else {
+                next.push([lower, upper]);
+            }
+            controls.extend(poles);
+        }
+        if !split {
+            let mut knots = Vec::new();
+            for span in &spans {
+                knots.extend([span[0]; EDGE_DEGREE + 1]);
+            }
+            knots.extend([spans.last()?[1]; EDGE_DEGREE + 1]);
+            let points = controls
+                .into_iter()
+                .map(|point| Point3::new(point[0], point[1], point[2]))
+                .collect();
+            return NurbsCurve::from_lanes(EDGE_DEGREE as u32, knots, points, None, false).ok();
+        }
+        if next.len() > MAX_EDGE_SPANS {
+            return None;
+        }
+        spans = next;
+    }
+    None
+}
+
+pub(super) fn closed_patch(
     ir: &CadIr,
     carrier: &SurfaceGeometry,
     data: &[u8],
     records: &[ConsolidatedRecord],
     source_index: usize,
     refusal: &mut crate::nurbs::LaneRefusals,
-) -> Option<([f64; 2], [f64; 2])> {
+) -> Option<ClosedPatch> {
     let mut candidates = Vec::new();
     let source_records = records
         .iter()
@@ -252,10 +391,15 @@ pub(super) fn closed_patch_domain(
                     .get();
                     lifted.push(([uv.u, chart_v], [point.x, point.y, point.z]));
                 }
-                Some(lifted)
+                Some(ClosedPcurve {
+                    pos: pcurve.pos,
+                    geometry,
+                    range: endpoints,
+                    endpoints: lifted.try_into().ok()?,
+                })
             })();
-            if let Some(lifted) = candidate {
-                candidates.push(lifted);
+            if let Some(pcurve) = candidate {
+                candidates.push(pcurve);
                 if candidates.len() > MAX_PCURVE_CANDIDATES {
                     return None;
                 }
@@ -271,39 +415,43 @@ pub(super) fn closed_patch_domain(
                     .sum::<f64>()
                     .sqrt()
             };
-            let same = distance(&first[0].1, &second[0].1).max(distance(&first[1].1, &second[1].1));
-            let opposite =
-                distance(&first[0].1, &second[1].1).max(distance(&first[1].1, &second[0].1));
+            let same = distance(&first.endpoints[0].1, &second.endpoints[0].1)
+                .max(distance(&first.endpoints[1].1, &second.endpoints[1].1));
+            let opposite = distance(&first.endpoints[0].1, &second.endpoints[1].1)
+                .max(distance(&first.endpoints[1].1, &second.endpoints[0].1));
             if same.min(opposite) < LOOP_CLOSURE_MM {
                 let u = first
+                    .endpoints
                     .iter()
-                    .chain(second)
+                    .chain(&second.endpoints)
                     .map(|row| row.0[0])
                     .collect::<Vec<_>>();
                 let v = first
+                    .endpoints
                     .iter()
-                    .chain(second)
+                    .chain(&second.endpoints)
                     .map(|row| row.0[1])
                     .collect::<Vec<_>>();
-                closed.push((
-                    [
+                closed.push(ClosedPatch {
+                    u_range: [
                         u.iter().copied().fold(f64::INFINITY, f64::min),
                         u.iter().copied().fold(f64::NEG_INFINITY, f64::max),
                     ],
-                    [
+                    v_range: [
                         v.iter().copied().fold(f64::INFINITY, f64::min),
                         v.iter().copied().fold(f64::NEG_INFINITY, f64::max),
                     ],
-                ));
+                    edges: [first.clone(), second.clone()],
+                });
             }
         }
     }
-    (closed.len() == 1).then(|| closed[0])
+    (closed.len() == 1).then(|| closed.remove(0))
 }
 
 #[cfg(test)]
 mod tests {
-    use super::fit;
+    use super::{endpoint_relation, fit};
     use cadmpeg_ir::document::CadIr;
     use cadmpeg_ir::geometry::nurbs::{NurbsPoleGrid, NurbsSurface, NurbsSurfaceAxis};
     use cadmpeg_ir::geometry::{SolvedSurfaceGeometry, SurfaceGeometry};
@@ -344,5 +492,16 @@ mod tests {
         let quartic = surface(4, &[0.0, 0.0, 0.0, 0.0, 1.0]);
         assert!(fit(&ir, &cubic, [0.0, 1.0], [0.0, 1.0]).is_some());
         assert!(fit(&ir, &quartic, [0.0, 1.0], [0.0, 1.0]).is_none());
+    }
+
+    #[test]
+    fn closed_edge_pair_has_two_endpoint_orders() {
+        let first = [[0.0, 0.0, 0.0], [1.0, 0.0, 0.0]];
+        assert_eq!(endpoint_relation(first, first), Some(true));
+        assert_eq!(endpoint_relation(first, [first[1], first[0]]), Some(false));
+        assert_eq!(
+            endpoint_relation(first, [[0.0, 0.0, 0.0], [2.0, 0.0, 0.0]]),
+            None
+        );
     }
 }
