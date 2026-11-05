@@ -246,7 +246,7 @@ fn parse_surface_tail(data: &[u8], at: usize, end: usize) -> Option<usize> {
         (142, [0x01, 0x01, 0x01] | [0x05, 0x05, 0x01]) => {
             suffix.len() == 7
                 && suffix[0] % 4 == 1
-                && suffix[1..4] == [0x00, 0x09, 0x01]
+                && matches!(suffix[1..4], [0x00, 0x09, 0x01] | [0x00, 0x01, 0x01])
                 && suffix[4] % 4 == 1
                 && suffix[5..] == [0x07, 0x07]
         }
@@ -1982,7 +1982,7 @@ fn a5_int(byte: u8) -> Option<u32> {
 fn a5_array_marker(bytes: &[u8], at: usize) -> Option<usize> {
     match bytes.get(at..at + 2) {
         Some([0x0c, ..]) => Some(at + 1),
-        Some([0x08, 0x09]) => Some(at + 2),
+        Some([0x08, 0x09] | [0x08, 0x0d]) => Some(at + 2),
         _ => None,
     }
 }

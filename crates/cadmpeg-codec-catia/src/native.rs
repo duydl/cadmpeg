@@ -1148,6 +1148,18 @@ pub(crate) struct CatiaConsolidatedPcurve {
     tail: NativeBytes<Vec<u8>>,
 }
 
+/// One source-closed five-reference rolling-ball construction.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub(crate) struct CatiaConsolidatedRollingBallConstruction {
+    id: String,
+    byte_offset: u64,
+    source_index: u64,
+    carrier_byte_offset: u64,
+    support_surface_byte_offsets: [u64; 2],
+    support_pcurve_byte_offsets: [u64; 2],
+    construction_radius: cadmpeg_ir::scalar::PositiveLength,
+}
+
 /// One structurally complete consolidated `B:2a` sphere chart.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub(crate) struct CatiaConsolidatedSphere {
@@ -7495,6 +7507,11 @@ define_catia_arenas! {
         /// Consolidated revolution carriers retained before profile resolution.
         pub(crate) stored;
     },
+    consolidated_rolling_ball_constructions: CatiaConsolidatedRollingBallConstruction {
+        /// Source-closed rolling-ball constructions and their support records.
+        #[serde(skip_serializing_if = "Vec::is_empty")]
+        pub(crate) stored;
+    },
     consolidated_rolling_ball_continuations: CatiaRollingBallContinuation {
         /// Exact numeric continuation limits and optional scalar jets.
         pub(crate) stored;
@@ -8083,6 +8100,31 @@ fn consolidated_pcurves(
         native.push(value);
     }
     native
+}
+
+fn consolidated_rolling_ball_constructions(
+    bytes: &[u8],
+    records: &[ConsolidatedRecord],
+) -> Vec<CatiaConsolidatedRollingBallConstruction> {
+    crate::families::b2::records::b2_rolling_ball_constructions_from_records(bytes, records)
+        .into_iter()
+        .enumerate()
+        .map(
+            |(index, construction)| CatiaConsolidatedRollingBallConstruction {
+                id: format!("catia:consolidated:rolling-ball-construction#{index:00}"),
+                byte_offset: u64_from_index(construction.pos),
+                source_index: u64_from_index(construction.source_index),
+                carrier_byte_offset: u64_from_index(construction.carrier_pos),
+                support_surface_byte_offsets: construction
+                    .support_surface_positions
+                    .map(u64_from_index),
+                support_pcurve_byte_offsets: construction
+                    .support_pcurve_positions
+                    .map(u64_from_index),
+                construction_radius: construction.construction_radius,
+            },
+        )
+        .collect()
 }
 
 fn consolidated_revolutions(
@@ -8792,6 +8834,8 @@ impl CatiaNative {
             consolidated_reference_lists(bytes, consolidated_records);
         let consolidated_revolutions =
             consolidated_revolutions(bytes, consolidated_records, &consolidated_circles);
+        let consolidated_rolling_ball_constructions =
+            consolidated_rolling_ball_constructions(bytes, consolidated_records);
         let consolidated_spheres = consolidated_spheres(bytes, consolidated_records);
         let consolidated_tori = consolidated_tori(bytes, consolidated_records);
         let consolidated_domain_relations = domain_relation::derive(bytes, consolidated_records)?;
@@ -8871,6 +8915,7 @@ impl CatiaNative {
             consolidated_pcurves,
             consolidated_reference_lists,
             consolidated_revolutions,
+            consolidated_rolling_ball_constructions,
             consolidated_rolling_ball_continuations,
             consolidated_spheres,
             consolidated_tori,

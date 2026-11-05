@@ -1384,6 +1384,7 @@ fn b2_spatial_circle_stream() -> Vec<u8> {
 mod carrier_records;
 mod indexed_wrappers;
 mod owner_incidence;
+mod rolling_ball_constructions;
 mod spatial_and_consolidated;
 
 mod plane_carriers;

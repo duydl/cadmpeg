@@ -42,10 +42,11 @@ use crate::native::{
     CatiaCatalogWire, CatiaConsolidatedCircle, CatiaConsolidatedCone, CatiaConsolidatedCylinder,
     CatiaConsolidatedEdgeRun, CatiaConsolidatedLineProfile, CatiaConsolidatedOwnerPacket,
     CatiaConsolidatedParameterPoint, CatiaConsolidatedPcurve, CatiaConsolidatedPlaneCarrier,
-    CatiaConsolidatedReferenceList, CatiaConsolidatedRevolution, CatiaConsolidatedSphere,
-    CatiaConsolidatedTorus, CatiaConsolidatedVertexIdentity, CatiaDesignObject,
-    CatiaEntityReferenceIndex, CatiaExternalReference, CatiaFinjplSegment, CatiaLegacyEntityRun,
-    CatiaNative, CatiaObjectGraph, CatiaObjectOwner, CatiaObjectRecord, CatiaPreviewImage,
+    CatiaConsolidatedReferenceList, CatiaConsolidatedRevolution,
+    CatiaConsolidatedRollingBallConstruction, CatiaConsolidatedSphere, CatiaConsolidatedTorus,
+    CatiaConsolidatedVertexIdentity, CatiaDesignObject, CatiaEntityReferenceIndex,
+    CatiaExternalReference, CatiaFinjplSegment, CatiaLegacyEntityRun, CatiaNative,
+    CatiaObjectGraph, CatiaObjectOwner, CatiaObjectRecord, CatiaPreviewImage,
     CatiaReferenceSignatureCohort, CatiaValueBlock, CatiaValueSchemaSelection,
     CatiaZeroEntityEdgeStride, CatiaZeroEntityOrientedUsePair, CatiaZeroEntityOwnershipRoot,
     CatiaZeroEntityRecord, CatiaZeroEntitySupportRun, CatiaZeroEntityVertexIncidence,
@@ -635,6 +636,11 @@ impl CatiaNative {
             namespace.arena_as("consolidated_revolutions")?;
         consolidated_revolutions.sort_by_key(|revolution| revolution.byte_offset);
         validate_consolidated_revolutions(&consolidated_revolutions, &consolidated_circles)?;
+        let mut consolidated_rolling_ball_constructions: Vec<
+            CatiaConsolidatedRollingBallConstruction,
+        > = namespace.arena_as("consolidated_rolling_ball_constructions")?;
+        consolidated_rolling_ball_constructions
+            .sort_by_key(|construction| construction.byte_offset);
         let mut consolidated_rolling_ball_continuations: Vec<
             crate::native::rolling_ball_continuation::CatiaRollingBallContinuation,
         > = namespace.arena_as("consolidated_rolling_ball_continuations")?;
@@ -775,6 +781,7 @@ impl CatiaNative {
             consolidated_pcurves,
             consolidated_reference_lists,
             consolidated_revolutions,
+            consolidated_rolling_ball_constructions,
             consolidated_rolling_ball_continuations,
             consolidated_spheres,
             consolidated_tori,

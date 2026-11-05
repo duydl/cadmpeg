@@ -942,6 +942,37 @@ fn a5_surface_parser_accepts_each_structured_tail_variant() {
 }
 
 #[test]
+fn a5_surface_parser_reads_extended_array_marker_and_terminal() {
+    let mut tail = a5_surface_extrapolated_tail();
+    let terminal_index = tail.len() - 5;
+    tail[terminal_index] = 0x01;
+    let mut bytes = a5_surface_stream_with_tail(&tail);
+    bytes.splice(10..11, [0x08, 0x0d]);
+    let payload_len = u32::try_from(bytes.len() - 8).unwrap();
+    bytes[3..7].copy_from_slice(&payload_len.to_le_bytes());
+
+    let surfaces =
+        crate::families::a5a8::records::a5_surfaces(&bytes, &mut crate::nurbs::LaneRefusals::new())
+            .expect("decode the A5 surfaces");
+    assert_eq!(surfaces.len(), 1);
+    assert_eq!(
+        (
+            surfaces[0].geometry.u_count(),
+            surfaces[0].geometry.v_count()
+        ),
+        (2, 2)
+    );
+
+    bytes[11] = 0x11;
+    assert!(crate::families::a5a8::records::a5_surfaces(
+        &bytes,
+        &mut crate::nurbs::LaneRefusals::new(),
+    )
+    .expect("decode the A5 surfaces")
+    .is_empty());
+}
+
+#[test]
 fn a5_surface_parser_rejects_unclosed_or_nonfinite_tail_data() {
     let mut trailing = a5_surface_stream();
     trailing.push(0);

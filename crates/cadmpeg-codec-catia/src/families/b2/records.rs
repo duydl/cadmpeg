@@ -395,6 +395,20 @@ pub(crate) enum B2OwnerChartBridge {
     },
 }
 
+/// A rolling-ball construction whose five source-local references resolve to
+/// its carrier, support surfaces, and support pcurves.
+#[derive(Debug, Clone, PartialEq)]
+pub(crate) struct B2RollingBallConstruction {
+    pub(crate) pos: usize,
+    pub(crate) source_index: usize,
+    pub(crate) carrier_pos: usize,
+    pub(crate) support_surface_positions: [usize; 2],
+    pub(crate) support_pcurve_positions: [usize; 2],
+    pub(crate) middle_controls: [CatiaOwnerChartMiddleControl; 2],
+    pub(crate) terminal_control: CatiaOwnerChartTerminalControl,
+    pub(crate) construction_radius: PositiveLength,
+}
+
 /// One source-closed carrier chart terminated by a fixed-nine owner packet.
 ///
 /// The relation is admitted only when the four ordered class-`0x18` records
@@ -1219,6 +1233,84 @@ fn owner_chart_bridge(
             references: [first, second, third, fourth, fifth, sixth, seventh, eighth],
         })
     }
+}
+
+pub(crate) fn b2_rolling_ball_constructions_from_records(
+    data: &[u8],
+    records: &[ConsolidatedRecord],
+) -> Vec<B2RollingBallConstruction> {
+    let mut constructions = Vec::new();
+    for (index, record) in records.iter().enumerate() {
+        let candidate = (|| {
+            if record.family() != ConsolidatedFamily::B
+                || record.class() != 0x37
+                || record.header_token() != 5
+            {
+                return None;
+            }
+            let payload = record.payload()?;
+            if payload.len() != 28 || data.get(payload.start) != Some(&0x85) {
+                return None;
+            }
+            let mut at = payload.start + 1;
+            let references = [
+                allocation_reference(data, &mut at)?,
+                allocation_reference(data, &mut at)?,
+                allocation_reference(data, &mut at)?,
+                allocation_reference(data, &mut at)?,
+                allocation_reference(data, &mut at)?,
+            ];
+            if references.iter().any(|reference| {
+                reference.encoding != AllocationReferenceEncoding::BackwardDistance
+                    || reference.value == 0
+            }) {
+                return None;
+            }
+            if data.get(at..at + 2) != Some(&[0x11, 0x05][..])
+                || data.get(at + 12..at + 20) != Some(&[0; 8][..])
+                || data.get(at + 20..at + 22) != Some(&[0x01, 0x05][..])
+                || at + 22 != payload.end
+            {
+                return None;
+            }
+            let construction_radius = PositiveLength::new(f64_le(data, at + 2)?.get())?;
+            let middle_controls = [
+                CatiaOwnerChartMiddleControl::from_byte(*data.get(at + 10)?)?,
+                CatiaOwnerChartMiddleControl::from_byte(*data.get(at + 11)?)?,
+            ];
+            let terminal_control = CatiaOwnerChartTerminalControl::from_byte(*data.get(at + 20)?)?;
+            let target = |slot: usize, family: ConsolidatedFamily, class: u8| {
+                let distance = usize::try_from(references[slot].value).ok()?;
+                let target_index = index.checked_sub(distance)?;
+                let target = records.get(target_index)?;
+                (target.family() == family
+                    && target.class() == class
+                    && target.source_index() == record.source_index()
+                    && records_are_contiguous(records.get(target_index..=index)?))
+                .then_some(target.byte_offset())
+            };
+            Some(B2RollingBallConstruction {
+                pos: record.byte_offset(),
+                source_index: record.source_index(),
+                carrier_pos: target(0, ConsolidatedFamily::A, 0x32)?,
+                support_surface_positions: [
+                    target(1, ConsolidatedFamily::B, 0x30)?,
+                    target(2, ConsolidatedFamily::B, 0x30)?,
+                ],
+                support_pcurve_positions: [
+                    target(3, ConsolidatedFamily::B, 0x20)?,
+                    target(4, ConsolidatedFamily::B, 0x20)?,
+                ],
+                middle_controls,
+                terminal_control,
+                construction_radius,
+            })
+        })();
+        if let Some(construction) = candidate {
+            constructions.push(construction);
+        }
+    }
+    constructions
 }
 
 fn owner_chart_bounds_match(
