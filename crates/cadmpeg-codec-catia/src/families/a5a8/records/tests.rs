@@ -942,6 +942,24 @@ fn a5_surface_parser_accepts_each_structured_tail_variant() {
 }
 
 #[test]
+fn a5_surface_parser_accepts_additional_terminal_spans() {
+    let mut short = a5_surface_tail();
+    let short_suffix = short.len() - 6;
+    short[short_suffix + 2] = 0x09;
+    let mut extended = a5_surface_extrapolated_tail();
+    let extended_suffix = extended.len() - 7;
+    extended[extended_suffix..extended_suffix + 5].copy_from_slice(&[0x19, 0x00, 0x19, 0x01, 0x0d]);
+    for tail in [short, extended] {
+        let surfaces = crate::families::a5a8::records::a5_surfaces(
+            &a5_surface_stream_with_tail(&tail),
+            &mut crate::nurbs::LaneRefusals::new(),
+        )
+        .expect("decode the A5 surfaces");
+        assert_eq!(surfaces.len(), 1);
+    }
+}
+
+#[test]
 fn a5_surface_parser_reads_extended_array_marker_and_terminal() {
     let mut tail = a5_surface_extrapolated_tail();
     let terminal_index = tail.len() - 5;
