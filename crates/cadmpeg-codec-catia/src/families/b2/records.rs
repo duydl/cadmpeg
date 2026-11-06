@@ -494,6 +494,8 @@ pub(crate) struct B2Class5b5cRecord {
 pub(crate) enum B2FaceNode5fTargetEncoding {
     /// Width-coded compact target.
     Compact,
+    /// Zero-based ordinal in the face node's owned allocation.
+    OwnedChild,
     /// Strong persistent target encoded as `0x0a <u16le>`.
     TaggedU16Strong,
 }
@@ -1341,12 +1343,16 @@ pub(crate) fn b2_rolling_ball_constructions_from_records(
                 source_index: record.source_index(),
                 carrier_pos: target(0, ConsolidatedFamily::A, 0x32)?,
                 support_surface_positions: [
-                    target(1, ConsolidatedFamily::B, 0x30)?,
-                    target(2, ConsolidatedFamily::B, 0x30)?,
+                    target(1, ConsolidatedFamily::B, 0x30)
+                        .or_else(|| target(1, ConsolidatedFamily::B, 0x2e))?,
+                    target(2, ConsolidatedFamily::B, 0x30)
+                        .or_else(|| target(2, ConsolidatedFamily::B, 0x2e))?,
                 ],
                 support_pcurve_positions: [
-                    target(3, ConsolidatedFamily::B, 0x20)?,
-                    target(4, ConsolidatedFamily::B, 0x20)?,
+                    target(3, ConsolidatedFamily::B, 0x20)
+                        .or_else(|| target(3, ConsolidatedFamily::A, 0x20))?,
+                    target(4, ConsolidatedFamily::B, 0x20)
+                        .or_else(|| target(4, ConsolidatedFamily::A, 0x20))?,
                 ],
                 middle_controls,
                 terminal_control,
@@ -1596,6 +1602,9 @@ pub(in crate::families) fn b2_face_nodes_5f_from_records<'a>(
                 B2FaceNode5fTargetEncoding::TaggedU16Strong,
                 persistent_ref(data, &mut at)?,
             )
+        } else if data.get(at).is_some_and(|byte| byte % 4 == 3) {
+            let reference = allocation_reference(data, &mut at)?;
+            (B2FaceNode5fTargetEncoding::OwnedChild, reference.value)
         } else {
             (
                 B2FaceNode5fTargetEncoding::Compact,
@@ -1680,43 +1689,92 @@ pub(crate) fn b2_adjacent_face_counted_owners_from_records(
     records: &[ConsolidatedRecord],
 ) -> Vec<B2AdjacentFaceCountedOwner> {
     let mut nodes = BTreeMap::new();
-    for record in records {
-        for value in b2_face_nodes_5f_from_records(data, std::slice::from_ref(record))
-            .filter(|value| value.terminal == [0x03, 0x05])
-        {
-            nodes.insert((record.source_index(), value.pos), value);
+    for (record_index, record) in records.iter().enumerate() {
+        for value in b2_face_nodes_5f_from_records(data, std::slice::from_ref(record)) {
+            nodes.insert(
+                (record.source_index(), record.byte_offset()),
+                (record_index, value),
+            );
         }
     }
     let mut owners = BTreeMap::new();
-    for value in b2_counted_owners_from_records(data, records) {
-        owners.insert((value.source_index, value.pos), value);
+    for (record_index, record) in records.iter().enumerate() {
+        for value in b2_counted_owners_from_records(data, std::slice::from_ref(record)) {
+            owners.insert((value.source_index, value.pos), (record_index, value));
+        }
     }
     let mut adjacent = Vec::new();
-    for window in records.windows(2) {
-        if !records_are_contiguous(window) {
-            continue;
+    for (&(source_index, _), &(face_index, face_node)) in &nodes {
+        if let Some(next_record) = records.get(face_index + 1) {
+            if next_record.source_index() == source_index
+                && records_are_contiguous(&records[face_index..=face_index + 1])
+            {
+                let owner_pos = (source_index, next_record.byte_offset());
+                if let Some((_, owner)) = owners.get(&owner_pos) {
+                    if (face_node.terminal == [0x03, 0x05]
+                        || face_node.terminal == [0x03, 0x03]
+                            && face_node.target_encoding == B2FaceNode5fTargetEncoding::Compact
+                            && owner.reference_encodings.last()
+                                == Some(&AllocationReferenceEncoding::WidthCoded))
+                        && face_node.target.checked_add(1) == owner.references.last().copied()
+                    {
+                        if let Some((_, owner)) = owners.remove(&owner_pos) {
+                            adjacent.push(B2AdjacentFaceCountedOwner { face_node, owner });
+                            continue;
+                        }
+                    }
+                }
+            }
         }
-        let [link_record, owner_record] = window else {
-            continue;
-        };
-        let Some(face_node) = nodes.get(&(link_record.source_index(), link_record.byte_offset()))
-        else {
-            continue;
-        };
-        let owner_pos = (owner_record.source_index(), owner_record.byte_offset());
-        let Some(owner) = owners.get(&owner_pos) else {
-            continue;
-        };
-        if face_node.target.checked_add(1) != owner.references.last().copied() {
-            continue;
+        if face_node.target_encoding == B2FaceNode5fTargetEncoding::OwnedChild
+            && face_node.terminal[0] % 4 == 3
+            && face_node.terminal[1] == 0x03
+        {
+            let loop_ordinal = usize::from(face_node.terminal[0] >> 2);
+            if let Some(target_loop_idx) = face_index.checked_add(1 + loop_ordinal) {
+                if let Some(target_record) = records.get(target_loop_idx) {
+                    let owner_pos = (source_index, target_record.byte_offset());
+                    if target_record.source_index() != source_index
+                        || target_record.family() != ConsolidatedFamily::B
+                        || target_record.class() != 0x62
+                        || !records_are_contiguous(&records[face_index..=target_loop_idx])
+                    {
+                        continue;
+                    }
+                    if let Some((_, owner)) = owners.get(&owner_pos) {
+                        if owner.reference_encodings.last()
+                            != Some(&AllocationReferenceEncoding::BackwardDistance)
+                        {
+                            continue;
+                        }
+                        let surf_ordinal = usize::try_from(face_node.target).ok();
+                        let target_surf_idx =
+                            surf_ordinal.and_then(|ordinal| face_index.checked_add(1 + ordinal));
+                        let owner_surf_dist = owner
+                            .references
+                            .last()
+                            .copied()
+                            .and_then(|dist| usize::try_from(dist).ok());
+                        let owner_surf_idx =
+                            owner_surf_dist.and_then(|dist| target_loop_idx.checked_sub(dist));
+                        if target_surf_idx.is_some()
+                            && target_surf_idx == owner_surf_idx
+                            && target_surf_idx.is_some_and(|index| {
+                                records.get(index).is_some_and(|record| {
+                                    record.source_index() == source_index
+                                        && record.family() == ConsolidatedFamily::B
+                                        && record.class() == 0x37
+                                })
+                            })
+                        {
+                            if let Some((_, owner)) = owners.remove(&owner_pos) {
+                                adjacent.push(B2AdjacentFaceCountedOwner { face_node, owner });
+                            }
+                        }
+                    }
+                }
+            }
         }
-        let Some(owner) = owners.remove(&owner_pos) else {
-            continue;
-        };
-        adjacent.push(B2AdjacentFaceCountedOwner {
-            face_node: *face_node,
-            owner,
-        });
     }
     adjacent
 }

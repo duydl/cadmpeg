@@ -177,6 +177,8 @@ impl From<crate::families::b2::records::B2OwnerReferenceEncoding> for CatiaOwner
 enum CatiaFaceNodeTargetEncoding {
     /// Width-coded compact target.
     Compact,
+    /// Zero-based ordinal in the face node's owned allocation.
+    OwnedChild,
     /// Strong persistent target encoded as `0x0a <u16le>`.
     TaggedU16Strong,
 }
