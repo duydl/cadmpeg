@@ -190,6 +190,7 @@ report a loss; a caller may report a general failure for the same item.
 | `cadmpeg-ir`             | `src/eval.rs`                                      | `MAX_PATCHES`                             | `1_000_000`                                             | 4    | Patch-queue cap in NURBS surface start search, checked with the caller's `WorkBudget`. Exhaustion returns `None`; the caller owns the loss.                                                                                                                                  |
 | `cadmpeg-ir`             | `src/eval.rs`                                      | `MAX_ITERATIONS`                          | `24`                                                    | 4    | Newton iterations in `nurbs_surface_parameter_near_point`. Exhaustion returns the current candidate or `None`; the caller owns the residual check and any loss.                                                                                                              |
 | `cadmpeg-ir`             | `src/eval.rs`                                      | `MAX_LINE_SEARCH_STEPS`                   | `12`                                                    | 4    | Line-search steps inside the same Newton loop. Exhaustion ends the iteration.                                                                                                                                                                                                |
+| `cadmpeg-ir` | `src/eval.rs` | `MAX_TRANSVERSE_EXTENSION` | `0.01` | N | Maximum extension beyond either end of the normalized rolling-ball section. Excess rejects the evaluation. |
 | `cadmpeg-ir`             | `src/eval/admission.rs`                            | `MAX_MODEL_EVALUATION_WORK`               | `1 << 24`                                               | 4    | One model evaluation under `Decode` or `Standard` admission, and each evaluation of a validation pass. Exhaustion is `EvaluationFailure::WorkExhausted`; the session continues. Codec callers own the skip; validation reports a warning naming this constant.               |
 | `cadmpeg-ir`             | `src/eval/admission.rs`                            | `MAX_MODEL_PASS_EVALUATION_WORK`          | `1 << 30`                                               | 4    | All model evaluations of one validation pass (`ModelEvaluationPass`), drawn as slices of `MAX_MODEL_EVALUATION_WORK`. An evaluation that finds it empty skips its check, and validation reports a warning naming this constant.                                              |
 | `cadmpeg-ir`             | `src/eval/helix_nurbs.rs`                          | `MAX_REFINEMENTS`                         | `16`                                                    | 4    | Segment-count doublings in the helix and helix-surface B-spline fit. Exhaustion returns `ToleranceNotMet`; the STEP writer reports `geometry.helix-fit-failed`.                                                                                                              |
@@ -442,7 +443,10 @@ report a loss; a caller may report a general failure for the same item.
 | `cadmpeg-codec-catia` | `src/families/freeform/mod.rs` | `MAX_PATCH_RECORD_VISITS_PER_RECORD` | `64` | 4 | Rolling-ball search visits per input record. Excess candidates skip the search and charge a loss. |
 | `cadmpeg-codec-catia` | `src/families/freeform/owned_patch.rs` | `MAX_FIT_CANDIDATES_FLOOR` | `512` | 4 | Floor for the owned face fit allowance, which also admits one candidate per eight input records, rounded up. Transfer retains the patches collected before the cap and reports the skipped candidates. |
 | `cadmpeg-codec-catia` | `src/families/freeform/owned_patch/sheet_group.rs` | `MAX_VERTEX_RETRIES` | `3` | 4 | Recovery passes for pending faces using shared vertex witnesses. Pending faces stay untransferred after the last pass. |
-| `cadmpeg-codec-catia` | `src/families/freeform/owned_patch/sheet_group/endpoint_sites.rs` | `MAX_ENDPOINT_GAP_MM` | `0.005` | N | Maximum distance in mm between a corroborated vertex and each incident fitted endpoint. A larger gap keeps the fitted endpoint positions. |
+| `cadmpeg-codec-catia` | `src/families/freeform/owned_patch.rs` | `MAX_CORROBORATED_VERTEX_GAP_MM` | `0.005` | N | Maximum distance in mm from an incident fitted endpoint to a corroborated vertex. A larger gap rejects the vertex repair. |
+| `cadmpeg-codec-catia` | `src/families/freeform/owned_patch/edge_alignment.rs` | `MAX_ENDPOINT_SEED_GAP_MM` | `0.005` | N | Maximum endpoint distance in mm for a shared-trim alignment seed. The resulting fit must meet the ordinary edge gap. |
+| `cadmpeg-codec-catia` | `src/families/freeform/owned_patch/sheet_carrier.rs` | `MAX_ROLLING_EXTENSION_MM` | `0.005` | N | Maximum distance in mm from a point on the extended rolling section to its chart boundary. Excess rejects the extended point. |
+| `cadmpeg-codec-catia` | `src/families/freeform/owned_patch/transfer.rs` | `MAX_SHARED_EDGE_SEED_GAP_MM` | `0.005` | N | Maximum sampled edge separation in mm before reprojection can retry a shared boundary. Excess rejects that retry. |
 | `cadmpeg-codec-catia` | `src/families/freeform/owned_patch/surface_fit.rs` | `MAX_SPANS` | `48` | 4 | Knot spans per axis of a fitted tensor surface. A larger grid rejects the fit. |
 | `cadmpeg-codec-catia` | `src/families/freeform/owned_patch/surface_fit.rs` | `MAX_REFINEMENTS` | `9` | 4 | Refinements of a tensor surface grid after the initial fit. A remaining residual rejects the fit. |
 | `cadmpeg-codec-catia` | `src/families/freeform/owned_patch/trimmed_face.rs` | `MAX_ALTERNATE_LINES` | `4` | 4 | Ambiguous line stations admitted to the alternate boundary search. Excess skips the search. |
@@ -542,7 +546,7 @@ are the slice mechanisms themselves.
 
 ## Totals
 
-Production `MAX_*` constants: 327.
+Production `MAX_*` constants: 331.
 
 | Kind | Meaning                    | Count |
 | ---- | -------------------------- | ----- |
@@ -550,18 +554,18 @@ Production `MAX_*` constants: 327.
 | 2    | Per-input bound            | 76    |
 | 3    | Session ceiling            | 0     |
 | 4    | Local work cap             | 165   |
-| N    | Not a decode bound         | 46    |
-|      | Total                      | 327   |
+| N    | Not a decode bound         | 50    |
+|      | Total                      | 331   |
 
 The six `ResourceLimits` fields are the session ceilings and are not
 `MAX_*` constants. No `MAX_*` constant is kind 3.
 
-By crate: `cadmpeg-core` 3, `cadmpeg-ir` 17, `cadmpeg-parasolid` 1, `cadmpeg-measure` 21, `cadmpeg-asm` 4,
+By crate: `cadmpeg-core` 3, `cadmpeg-ir` 18, `cadmpeg-parasolid` 1, `cadmpeg-measure` 21, `cadmpeg-asm` 4,
 `cadmpeg-protein` 3, `cadmpeg` 3, `cadmpeg-codec-step` 8,
 `cadmpeg-codec-iges` 16, `cadmpeg-codec-inventor` 5,
 `cadmpeg-codec-freecad` 16, `cadmpeg-codec-rhino` 32, `cadmpeg-codec-f3d` 24,
 `cadmpeg-codec-nx` 26, `cadmpeg-codec-creo` 22, `cadmpeg-codec-sldprt` 34,
-`cadmpeg-codec-catia` 74, `cadmpeg-codec-pvz` 3, `cadmpeg-codec-usd` 11, and
+`cadmpeg-codec-catia` 77, `cadmpeg-codec-pvz` 3, `cadmpeg-codec-usd` 11, and
 `cadmpeg-tessellate` 4.
 
 ## Routing

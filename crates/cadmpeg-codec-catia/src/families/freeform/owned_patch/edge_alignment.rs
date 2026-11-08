@@ -350,15 +350,15 @@ mod tests {
                 Vector3::new(0.0, 0.0, 1.0),
                 Vector3::new(1.0, 0.0, 0.0),
             )
-            .unwrap(),
+            .expect("fixture plane"),
         );
         let native = edge(vec![Point2::new(0.0, 0.0), Point2::new(1.0, 0.0)], true);
         let mut long = edge(vec![Point2::new(0.0, 0.0), Point2::new(1.003, 0.0)], false);
         long.vertices = native.vertices;
 
         assert!(align(&native, &mut long, &plane).is_none());
-        align_seed(&native, &mut long, &plane).unwrap();
-        let end = evaluate_uv(&long.pcurve, 1.0).unwrap();
+        align_seed(&native, &mut long, &plane).expect("align the corroborated trim");
+        let end = evaluate_uv(&long.pcurve, 1.0).expect("aligned trim endpoint");
         assert!((end.u - 1.0).abs() < UV_FIT_TOLERANCE);
     }
 

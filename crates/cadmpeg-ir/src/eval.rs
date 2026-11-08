@@ -5731,10 +5731,11 @@ pub fn rolling_ball_jet_extended_point(
     }
     let outside = rolling_ball_jet_transverse_point(definition, t, s)?;
     let boundary = rolling_ball_jet_point(definition, t, s.clamp(0.0, 1.0))?;
-    if !(outside.distance(boundary.get()) <= max_gap_mm) {
-        return Err(EvaluationFailure::NoValue);
+    if outside.distance(boundary.get()) <= max_gap_mm {
+        Ok(outside)
+    } else {
+        Err(EvaluationFailure::NoValue)
     }
-    Ok(outside)
 }
 
 fn rolling_ball_jet_transverse_point(
