@@ -106,8 +106,9 @@ pub(super) fn mapped_range(
     map: usize,
     curve: usize,
     resolve: &impl Fn(usize, AllocationReference) -> Option<usize>,
-) -> Option<[f64; 2]> {
+) -> Option<([f64; 2], bool)> {
     let mapping = map_record(bytes, records.get(map)?)?;
+    let affine = matches!(mapping.source, Class25SourceRelation::Affine { .. });
     let source = match mapping.source {
         Class25SourceRelation::Sampled { range, .. }
         | Class25SourceRelation::Affine { range, .. } => range,
@@ -115,8 +116,8 @@ pub(super) fn mapped_range(
     };
     let [first, second] = operands(&mapping, map, resolve)?;
     match (first == curve, second == curve) {
-        (true, false) => Some(mapping.target_range.endpoints()),
-        (false, true) => Some(source.endpoints()),
+        (true, false) => Some((mapping.target_range.endpoints(), affine)),
+        (false, true) => Some((source.endpoints(), affine)),
         _ => None,
     }
 }

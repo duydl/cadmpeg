@@ -430,7 +430,7 @@ pub(super) fn patches(
             let Some(decoded) = trim_source.decode(ir, face, member, carriers, refusal) else {
                 continue;
             };
-            for site @ (vertex, _, point, explicit) in decoded.endpoint_sites() {
+            for site @ (vertex, _, point, explicit, _) in decoded.endpoint_sites() {
                 if explicit {
                     primary.record(member.body, face_pos, std::iter::once((vertex, point)));
                 }

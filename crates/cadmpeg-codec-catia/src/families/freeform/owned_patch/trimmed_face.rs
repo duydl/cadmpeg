@@ -64,6 +64,7 @@ struct Trim {
     pcurve: PcurveGeometry,
     range: [f64; 2],
     mapped_range: Option<[f64; 2]>,
+    affine_map: bool,
     spline_range: Option<[f64; 2]>,
     stations: [Option<f64>; 2],
     primary_stations: [Option<f64>; 2],
@@ -572,24 +573,27 @@ where
         let spline_range = knots
             .as_ref()
             .and_then(|knots| Some([*knots.first()?, *knots.last()?]));
-        let mut mapped_range = (|| {
+        let mapped = (|| {
             let map = resolve_edge(0, node.curve_ref)?;
-            let range = stations::mapped_range(self.bytes, self.records, map, p, &self.resolve)?;
+            let (range, affine) =
+                stations::mapped_range(self.bytes, self.records, map, p, &self.resolve)?;
             if matches!(pcurve, PcurveGeometry::Line(_)) {
                 let mut range =
                     range.map(|t| (t - source_range[0]) / (source_range[1] - source_range[0]));
                 if range[0] > range[1] {
                     range.reverse();
                 }
-                return Some(range);
+                return Some((range, affine));
             }
             let [lo, hi] = spline_range.unwrap_or(source_range);
             if range[0] < lo - CHART_SLACK || range[1] > hi + CHART_SLACK {
                 return None;
             }
             let range = [range[0].max(lo), range[1].min(hi)];
-            (range[0] < range[1]).then_some(range)
+            (range[0] < range[1]).then_some((range, affine))
         })();
+        let affine_map = mapped.is_some_and(|(_, affine)| affine);
+        let mut mapped_range = mapped.map(|(range, _)| range);
         let domain = stations::Domain {
             range: source_range,
             knots: knots.as_deref().and_then(|knots| {
@@ -713,6 +717,7 @@ where
             pcurve,
             range,
             mapped_range,
+            affine_map,
             spline_range,
             stations,
             primary_stations,
@@ -999,7 +1004,9 @@ fn clip_line_range(trim: &Trim, chart: [[f64; 2]; 2]) -> Option<[f64; 2]> {
 }
 
 impl DecodedFace<'_> {
-    pub(super) fn endpoint_sites(&self) -> impl Iterator<Item = (usize, usize, Point3, bool)> + '_ {
+    pub(super) fn endpoint_sites(
+        &self,
+    ) -> impl Iterator<Item = (usize, usize, Point3, bool, bool)> + '_ {
         std::iter::once(&self.outer)
             .chain(&self.inner)
             .flat_map(|ring| &ring.trims)
@@ -1013,6 +1020,7 @@ impl DecodedFace<'_> {
                         trim.edge,
                         self.carrier.evaluate(uv)?,
                         primary.is_some(),
+                        trim.affine_map,
                     ))
                 })
             })
