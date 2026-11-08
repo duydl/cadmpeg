@@ -5,12 +5,9 @@ use std::collections::{BTreeMap, BTreeSet};
 
 use cadmpeg_ir::math::Point3;
 
-use super::super::{Patch, GAP_MM};
+use super::super::{Patch, GAP_MM, MAX_CORROBORATED_VERTEX_GAP_MM};
 use super::ANCHOR_AGREEMENT_MM;
 
-// A bounded endpoint discrepancy may be retained when separate native
-// occurrences agree on the topological vertex. Keep the edge fits intact.
-const MAX_ENDPOINT_GAP_MM: f64 = 0.005;
 const SAME_STATION_MM: f64 = 1.0e-6;
 
 #[derive(Clone, Copy)]
@@ -56,7 +53,7 @@ impl EndpointSites {
                 let key = (patch.body, vertex);
                 if let Some(anchor) = anchors.get(&key) {
                     let distance = anchor.distance(point);
-                    if distance > MAX_ENDPOINT_GAP_MM {
+                    if distance > MAX_CORROBORATED_VERTEX_GAP_MM {
                         anchors.remove(&key);
                     } else if distance > GAP_MM {
                         disputed.insert(key);

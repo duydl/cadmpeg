@@ -30,7 +30,10 @@ use crate::families::FamilyEntityAdmission;
 use crate::loss::CatiaLossCode;
 use crate::nurbs::LaneRefusals;
 
-use super::{curve_point, edge_alignment, interval_parameter, Patch, SheetSurfaceFit, Use, GAP_MM};
+use super::{
+    curve_point, edge_alignment, interval_parameter, Patch, SheetSurfaceFit, Use, GAP_MM,
+    MAX_CORROBORATED_VERTEX_GAP_MM,
+};
 
 const EDGE_SAMPLES: u32 = 40;
 
@@ -125,6 +128,52 @@ pub(super) fn append(
     }))
 }
 
+// Use the admitted vertex when a geometrically matching occurrence of the
+// same edge corroborates it. Retain the independently fitted curve endpoints.
+fn repair_corroborated_vertices(
+    patch: &mut Patch,
+    prior: &[Patch],
+    vertices: &BTreeMap<usize, Point3>,
+    edges: &BTreeMap<usize, (usize, usize, usize)>,
+) -> bool {
+    let mut repairs = BTreeMap::new();
+    for side in &patch.sides {
+        for &(vertex, point) in &side.vertices {
+            let Some(&anchor) = vertices.get(&vertex) else {
+                continue;
+            };
+            let gap = anchor.distance(point);
+            if gap <= GAP_MM || gap > MAX_CORROBORATED_VERTEX_GAP_MM {
+                continue;
+            }
+            let witnessed = patch.sides.iter().any(|witness| {
+                witness
+                    .vertices
+                    .iter()
+                    .any(|&(id, point)| id == vertex && point.distance(anchor) <= GAP_MM)
+                    && edges
+                        .get(&witness.edge)
+                        .is_some_and(|&(count, face, edge)| {
+                            count == 1 && matches_edge(&prior[face].sides[edge], witness).is_some()
+                        })
+            });
+            if witnessed {
+                repairs.insert(vertex, anchor);
+            }
+        }
+    }
+    for side in &mut patch.sides {
+        for (vertex, point) in &mut side.vertices {
+            if let Some(&anchor) = repairs.get(vertex) {
+                if point.distance(anchor) <= MAX_CORROBORATED_VERTEX_GAP_MM {
+                    *point = anchor;
+                }
+            }
+        }
+    }
+    !repairs.is_empty()
+}
+
 fn compatible_patches(patches: &mut [Patch]) -> BTreeSet<usize> {
     let mut admitted = BTreeSet::<usize>::new();
     let mut vertices = BTreeMap::<usize, Point3>::new();
@@ -137,6 +186,7 @@ fn compatible_patches(patches: &mut [Patch]) -> BTreeSet<usize> {
         if rolling_boundary_retry && admitted.iter().any(|&i| prior[i].face == patch.face) {
             continue;
         }
+        let repaired_vertices = repair_corroborated_vertices(patch, prior, &vertices, &edges);
         let mut local = BTreeMap::<usize, Point3>::new();
         let mut replacements = Vec::new();
         if !patch.sides.iter_mut().all(|side| {
@@ -152,7 +202,7 @@ fn compatible_patches(patches: &mut [Patch]) -> BTreeSet<usize> {
                         || edge_alignment::align(first, side, &patch.surface).is_some()
                     {
                         true
-                    } else if rolling_boundary_retry {
+                    } else if rolling_boundary_retry || repaired_vertices {
                         false
                     } else {
                         let mut aligned = first.clone();
