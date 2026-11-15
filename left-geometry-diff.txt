@@ -1,0 +1,24 @@
+geometry diff curved-left-visible.stp (1 body) vs curved-pr.step (1 body)
+  placement     trivial / trivial
+  pair step:data:body#22 = step:data:body#128
+    area                     477.715698848 = 477.715698848  agree
+    volume.face_sense        493.027992978 = 493.027992977  agree
+    volume.loop_winding      493.027992978 = 493.027992977  agree
+    centroid.face_sense.x    13.9214679183 = 13.9214679183  agree
+    centroid.face_sense.y    17.1818304452 = 17.1818304452  agree
+    centroid.face_sense.z    1.26635656056 = 1.26635656054  agree
+    centroid.loop_winding.x  13.9214679183 = 13.9214679183  agree
+    centroid.loop_winding.y  17.1818304452 = 17.1818304452  agree
+    centroid.loop_winding.z  1.26635656056 = 1.26635656054  agree
+    area_centroid.x          10.0589397458 = 10.0589397458  agree
+    area_centroid.y          10.618403275 = 10.618403275  agree
+    area_centroid.z          6.45987114189 = 6.45987114189  agree
+    bbox                     conservative = conservative  agree
+    closed                   false = false  agree
+    orientation.consistent   true = true  agree
+  document
+    body_count               1 = 1  agree
+    area                     477.715698848 = 477.715698848  agree
+    bbox                     conservative = conservative  agree
+    occurrences              trivial = trivial  agree
+verdict: agree

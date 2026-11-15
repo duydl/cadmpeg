@@ -1,0 +1,26 @@
+[
+  {
+    "file": "two-upstream.step",
+    "faces": 8,
+    "shells": 3,
+    "solids": 0,
+    "valid": true,
+    "area": 4201.268289152438
+  },
+  {
+    "file": "two-pr.step",
+    "faces": 2,
+    "shells": 2,
+    "solids": 0,
+    "valid": true,
+    "area": 1050.3176560321601
+  },
+  {
+    "file": "curved-two-visible.stp",
+    "faces": 2,
+    "shells": 2,
+    "solids": 0,
+    "valid": true,
+    "area": 1050.3165541840194
+  }
+]

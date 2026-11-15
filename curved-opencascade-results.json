@@ -1,0 +1,26 @@
+[
+  {
+    "file": "curved-upstream.step",
+    "faces": 8,
+    "shells": 3,
+    "solids": 0,
+    "valid": true,
+    "area": 4201.268289152438
+  },
+  {
+    "file": "curved-pr.step",
+    "faces": 1,
+    "shells": 1,
+    "solids": 0,
+    "valid": true,
+    "area": 477.71573859202016
+  },
+  {
+    "file": "curved-left-visible.stp",
+    "faces": 1,
+    "shells": 1,
+    "solids": 0,
+    "valid": true,
+    "area": 477.7151987593239
+  }
+]

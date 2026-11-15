@@ -1,0 +1,11 @@
+{
+  "left": {
+    "geometry_agrees": true
+  },
+  "two": {
+    "geometry_agrees": true
+  },
+  "combined": {
+    "geometry_agrees": true
+  }
+}

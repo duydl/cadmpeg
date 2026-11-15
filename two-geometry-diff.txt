@@ -1,0 +1,40 @@
+geometry diff curved-two-visible.stp (2 bodies) vs two-pr.step (2 bodies)
+  placement     trivial / trivial
+  pair step:data:body#142 = step:data:body#249
+    area                     572.601892471 = 572.601892471  agree
+    volume.face_sense        493.12019771 = 493.120197712  agree
+    volume.loop_winding      493.12019771 = 493.120197712  agree
+    centroid.face_sense.x    40.4099978643 = 40.4099978643  agree
+    centroid.face_sense.y    18.5350549167 = 18.5350549166  agree
+    centroid.face_sense.z    3.42329697279 = 3.42329697286  agree
+    centroid.loop_winding.x  40.4099978643 = 40.4099978643  agree
+    centroid.loop_winding.y  18.5350549167 = 18.5350549166  agree
+    centroid.loop_winding.z  3.42329697279 = 3.42329697286  agree
+    area_centroid.x          30.049207312 = 30.049207312  agree
+    area_centroid.y          10.548716449 = 10.548716449  agree
+    area_centroid.z          17.093643853 = 17.093643853  agree
+    bbox                     conservative = conservative  agree
+    closed                   false = false  agree
+    orientation.consistent   true = true  agree
+  pair step:data:body#22 = step:data:body#128
+    area                     477.715698848 = 477.715698848  agree
+    volume.face_sense        493.027992978 = 493.027992977  agree
+    volume.loop_winding      493.027992978 = 493.027992977  agree
+    centroid.face_sense.x    13.9214679183 = 13.9214679183  agree
+    centroid.face_sense.y    17.1818304452 = 17.1818304452  agree
+    centroid.face_sense.z    1.26635656056 = 1.26635656054  agree
+    centroid.loop_winding.x  13.9214679183 = 13.9214679183  agree
+    centroid.loop_winding.y  17.1818304452 = 17.1818304452  agree
+    centroid.loop_winding.z  1.26635656056 = 1.26635656054  agree
+    area_centroid.x          10.0589397458 = 10.0589397458  agree
+    area_centroid.y          10.618403275 = 10.618403275  agree
+    area_centroid.z          6.45987114189 = 6.45987114189  agree
+    bbox                     conservative = conservative  agree
+    closed                   false = false  agree
+    orientation.consistent   true = true  agree
+  document
+    body_count               2 = 2  agree
+    area                     1050.31759132 = 1050.31759132  agree
+    bbox                     conservative = conservative  agree
+    occurrences              trivial = trivial  agree
+verdict: agree
