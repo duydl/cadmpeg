@@ -1,0 +1,47 @@
+{
+  "strict_tolerance_mm": 0.001,
+  "strict_matches": 282,
+  "reference_faces": 304,
+  "carrier_surfaces_and_normals_verified": 304,
+  "circle_only_faces": [
+    1392,
+    1432,
+    2288,
+    2323,
+    3297,
+    3337,
+    4661,
+    4757,
+    4853,
+    4889,
+    7278,
+    7340,
+    7868,
+    7887,
+    8033,
+    8056
+  ],
+  "spline_only_faces": [
+    952,
+    1022,
+    6931,
+    7995
+  ],
+  "both_faces": [
+    1223,
+    1283
+  ],
+  "circle_occurrences": 22,
+  "native_circle_occurrences_confirmed": 22,
+  "native_circle_max_bound_mm": 1.1617108871712908e-05,
+  "spline_occurrences": 6,
+  "native_spline_count": 3,
+  "native_spline_max_sample_gap_mm": 9.095615622749536e-10,
+  "native_spline_max_length_gap_mm": 3.554052607768199e-09,
+  "decoder_spline_to_original_max_mm": 1.0528344604508852e-09,
+  "catia_polynomial_to_original_max_mm": 1.2414639145703183e-09,
+  "max_mismatch_mm": 0.0029861255922043516,
+  "classification": "STEP representation differences corroborated by archived native CATIA measurements",
+  "test_commit": "e815396ace50b7dd8b7aa3fd7941a62bd4cfc180",
+  "catia_tests_passed": 2707
+}

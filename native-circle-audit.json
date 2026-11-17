@@ -1,0 +1,318 @@
+[
+  {
+    "reference_face": 7278,
+    "raw_curve_gap_mm": 0.0029861255922043516,
+    "native_circle_matches": [
+      {
+        "native_edge": 403,
+        "center_gap_mm": 3.791521981990701e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 6.2803235088426885e-06,
+        "circle_gap_bound_mm": 1.0120482880948792e-05
+      }
+    ]
+  },
+  {
+    "reference_face": 952,
+    "raw_curve_gap_mm": 0.002944906814103276,
+    "native_circle_matches": []
+  },
+  {
+    "reference_face": 1022,
+    "raw_curve_gap_mm": 0.0029424688004379964,
+    "native_circle_matches": []
+  },
+  {
+    "reference_face": 1223,
+    "raw_curve_gap_mm": 0.002944906814103276,
+    "native_circle_matches": []
+  },
+  {
+    "reference_face": 1223,
+    "raw_curve_gap_mm": 0.0029842366767818063,
+    "native_circle_matches": [
+      {
+        "native_edge": 621,
+        "center_gap_mm": 5.4129461071924535e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 6.1482968752781324e-06,
+        "circle_gap_bound_mm": 1.160988037258599e-05
+      }
+    ]
+  },
+  {
+    "reference_face": 1283,
+    "raw_curve_gap_mm": 0.0029861255922043516,
+    "native_circle_matches": [
+      {
+        "native_edge": 618,
+        "center_gap_mm": 3.79152201789734e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 6.2803235189226355e-06,
+        "circle_gap_bound_mm": 1.0120482926935378e-05
+      }
+    ]
+  },
+  {
+    "reference_face": 1283,
+    "raw_curve_gap_mm": 0.0029424688004379964,
+    "native_circle_matches": []
+  },
+  {
+    "reference_face": 1392,
+    "raw_curve_gap_mm": 0.0029842366767818063,
+    "native_circle_matches": [
+      {
+        "native_edge": 621,
+        "center_gap_mm": 5.4129461071924535e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 6.1482968752781324e-06,
+        "circle_gap_bound_mm": 1.160988037258599e-05
+      }
+    ]
+  },
+  {
+    "reference_face": 1432,
+    "raw_curve_gap_mm": 0.0029861255922043516,
+    "native_circle_matches": [
+      {
+        "native_edge": 618,
+        "center_gap_mm": 3.79152201789734e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 6.2803235189226355e-06,
+        "circle_gap_bound_mm": 1.0120482926935378e-05
+      }
+    ]
+  },
+  {
+    "reference_face": 2288,
+    "raw_curve_gap_mm": 0.002857944100014184,
+    "native_circle_matches": [
+      {
+        "native_edge": 560,
+        "center_gap_mm": 4.406728616314823e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 1.2718862257529702e-09,
+        "circle_gap_bound_mm": 4.456637892655978e-06
+      }
+    ]
+  },
+  {
+    "reference_face": 2323,
+    "raw_curve_gap_mm": 0.002857944100014184,
+    "native_circle_matches": [
+      {
+        "native_edge": 560,
+        "center_gap_mm": 4.406728616314823e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 1.2718862257529702e-09,
+        "circle_gap_bound_mm": 4.456637892655978e-06
+      }
+    ]
+  },
+  {
+    "reference_face": 3297,
+    "raw_curve_gap_mm": 0.0029842366767818063,
+    "native_circle_matches": [
+      {
+        "native_edge": 493,
+        "center_gap_mm": 5.414585928329683e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 6.150522592807e-06,
+        "circle_gap_bound_mm": 1.1613745911252085e-05
+      }
+    ]
+  },
+  {
+    "reference_face": 3297,
+    "raw_curve_gap_mm": 0.002856661769078382,
+    "native_circle_matches": [
+      {
+        "native_edge": 491,
+        "center_gap_mm": 4.944596431397539e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 9.89935217019288e-07,
+        "circle_gap_bound_mm": 5.983169038532229e-06
+      }
+    ]
+  },
+  {
+    "reference_face": 3337,
+    "raw_curve_gap_mm": 0.0029842366767818063,
+    "native_circle_matches": [
+      {
+        "native_edge": 493,
+        "center_gap_mm": 5.414585928329683e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 6.150522592807e-06,
+        "circle_gap_bound_mm": 1.1613745911252085e-05
+      }
+    ]
+  },
+  {
+    "reference_face": 4661,
+    "raw_curve_gap_mm": 0.0029861255922043516,
+    "native_circle_matches": [
+      {
+        "native_edge": 403,
+        "center_gap_mm": 3.791521981990701e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 6.2803235088426885e-06,
+        "circle_gap_bound_mm": 1.0120482880948792e-05
+      }
+    ]
+  },
+  {
+    "reference_face": 4661,
+    "raw_curve_gap_mm": 0.002857944100014184,
+    "native_circle_matches": [
+      {
+        "native_edge": 401,
+        "center_gap_mm": 3.811130773353522e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 9.893602683173677e-07,
+        "circle_gap_bound_mm": 4.849128431786292e-06
+      }
+    ]
+  },
+  {
+    "reference_face": 4757,
+    "raw_curve_gap_mm": 0.002857944100014184,
+    "native_circle_matches": [
+      {
+        "native_edge": 397,
+        "center_gap_mm": 4.406728786214367e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 1.2719455334774572e-09,
+        "circle_gap_bound_mm": 4.456638121863246e-06
+      }
+    ]
+  },
+  {
+    "reference_face": 4757,
+    "raw_curve_gap_mm": 0.0029861255922043516,
+    "native_circle_matches": [
+      {
+        "native_edge": 399,
+        "center_gap_mm": 3.7911850869791384e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 6.2802761942987516e-06,
+        "circle_gap_bound_mm": 1.0120098671393292e-05
+      }
+    ]
+  },
+  {
+    "reference_face": 4853,
+    "raw_curve_gap_mm": 0.0029842366767818063,
+    "native_circle_matches": [
+      {
+        "native_edge": 395,
+        "center_gap_mm": 5.415893480155668e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 6.152578001441839e-06,
+        "circle_gap_bound_mm": 1.1617108871712908e-05
+      }
+    ]
+  },
+  {
+    "reference_face": 4853,
+    "raw_curve_gap_mm": 0.002856661769078382,
+    "native_circle_matches": [
+      {
+        "native_edge": 393,
+        "center_gap_mm": 4.385224601462905e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 3.6129469962548396e-09,
+        "circle_gap_bound_mm": 4.4374749385745626e-06
+      }
+    ]
+  },
+  {
+    "reference_face": 4889,
+    "raw_curve_gap_mm": 0.0029842366767818063,
+    "native_circle_matches": [
+      {
+        "native_edge": 395,
+        "center_gap_mm": 5.415893480155668e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 6.152578001441839e-06,
+        "circle_gap_bound_mm": 1.1617108871712908e-05
+      }
+    ]
+  },
+  {
+    "reference_face": 6931,
+    "raw_curve_gap_mm": 0.002943744697889623,
+    "native_circle_matches": []
+  },
+  {
+    "reference_face": 7340,
+    "raw_curve_gap_mm": 0.0029861255922043516,
+    "native_circle_matches": [
+      {
+        "native_edge": 399,
+        "center_gap_mm": 3.7911850869791384e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 6.2802761942987516e-06,
+        "circle_gap_bound_mm": 1.0120098671393292e-05
+      }
+    ]
+  },
+  {
+    "reference_face": 7868,
+    "raw_curve_gap_mm": 0.002856661769078382,
+    "native_circle_matches": [
+      {
+        "native_edge": 491,
+        "center_gap_mm": 4.944596431397539e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 9.89935217019288e-07,
+        "circle_gap_bound_mm": 5.983169038532229e-06
+      }
+    ]
+  },
+  {
+    "reference_face": 7887,
+    "raw_curve_gap_mm": 0.002856661769078382,
+    "native_circle_matches": [
+      {
+        "native_edge": 393,
+        "center_gap_mm": 4.385224601462905e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 3.6129469962548396e-09,
+        "circle_gap_bound_mm": 4.4374749385745626e-06
+      }
+    ]
+  },
+  {
+    "reference_face": 7995,
+    "raw_curve_gap_mm": 0.002943744697889623,
+    "native_circle_matches": []
+  },
+  {
+    "reference_face": 8033,
+    "raw_curve_gap_mm": 0.002857944100014184,
+    "native_circle_matches": [
+      {
+        "native_edge": 397,
+        "center_gap_mm": 4.406728786214367e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 1.2719455334774572e-09,
+        "circle_gap_bound_mm": 4.456638121863246e-06
+      }
+    ]
+  },
+  {
+    "reference_face": 8056,
+    "raw_curve_gap_mm": 0.002857944100014184,
+    "native_circle_matches": [
+      {
+        "native_edge": 401,
+        "center_gap_mm": 3.811130773353522e-06,
+        "radius_gap_mm": 4.863739011540247e-08,
+        "plane_gap_bound_mm": 9.893602683173677e-07,
+        "circle_gap_bound_mm": 4.849128431786292e-06
+      }
+    ]
+  }
+]

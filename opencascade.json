@@ -1,4 +1,17 @@
 {
+  "original-nist": {
+    "solid_volumes_mm3": [
+      1726244.1335990478
+    ],
+    "solid_areas_mm2": [
+      391371.2380878673
+    ],
+    "shell_faces": 306,
+    "shells": 3,
+    "closed_shells": 1,
+    "solids": 1,
+    "invalid_faces": 0
+  },
   "catia-reference": {
     "solid_volumes_mm3": [
       1726248.3789912506

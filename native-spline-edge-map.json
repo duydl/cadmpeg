@@ -1,0 +1,32 @@
+[
+  {
+    "reference_face": 952,
+    "decoder_edge": 544,
+    "native_edge": 635
+  },
+  {
+    "reference_face": 1022,
+    "decoder_edge": 551,
+    "native_edge": 632
+  },
+  {
+    "reference_face": 1223,
+    "decoder_edge": 544,
+    "native_edge": 635
+  },
+  {
+    "reference_face": 1283,
+    "decoder_edge": 551,
+    "native_edge": 632
+  },
+  {
+    "reference_face": 6931,
+    "decoder_edge": 554,
+    "native_edge": 235
+  },
+  {
+    "reference_face": 7995,
+    "decoder_edge": 554,
+    "native_edge": 235
+  }
+]

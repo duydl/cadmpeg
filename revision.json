@@ -8,13 +8,29 @@
   "strict_after": 282,
   "reference_faces": 304,
   "sha256": {
+    "mismatch-summary.json": "aee2b2df257cda5b02930b4cf744af26213cb30296ac0dd3be6671ff8f424952",
+    "decoder-vs-original-verified-surfaces.json": "2a566dc490de146b4db96319c2ec1169daec1f79250599de6d64b9070100c566",
+    "decoder-vs-original-verified-faces.json": "8414605282e4dcb79c524f851bf37d99d1df988e6797704f57e9ddcf23f46a48",
+    "decoder-vs-original-face-match.json": "fe5d26d597b21e54bf80b525111286b357603e1b53b050946e8d11dcc488eba4",
+    "catia-vs-original-verified-surfaces.json": "2f399127e002b46b90fff524d1ac011964ea4ca6a7e6a36b5a67f0b86ef755ab",
+    "catia-vs-original-verified-faces.json": "61581f0b49a1932364d5dee967972e9476a35e09f2fc8dd2865dc37bed34dd32",
+    "catia-vs-original-face-match.json": "73f532cce0ebfbfa499ed79ff9a2ce7f0ca591ed94ed44003b80fa58a714fea4",
+    "native-spline-audit.json": "da537a320ce8adf023c64364b8c4e06c3a907a0ae7778c72de854d7dd10da640",
+    "native-circle-audit.json": "03104cb0ed9f97ea30bccfc3e2e41d74513d5542c252bd0cb6f3295cb31d4538",
+    "ftc07-native-edges.tsv": "0f401782a2ca27b54c778472294aa777cba107b32cf08281ff2fddac49ab1c88",
+    "native-spline-edge-map.json": "77a8d957c93bb7f0fb822ad7154280d86fb56676cbec6918aa55771d3553e914",
+    "mismatch-edges.json": "ea95d284f1f05809c52cb662a970c2932bb8ae38c58f04fe9cc2472e40d815d6",
+    "after-verified-carriers.json": "8fd0b37336da4bda1b86a42a836a8221744b64bf1b1793bf742c1ad6cfb77557",
+    "original-nist.step": "aa8115c12e12a99cc439477cbfd222916f9ec629fbb3c9002b18e0c264c9a892",
+    "NIST-NOTICE.md": "24d9d8782dfa3b8d7e7786b2fdf73757c585b2b7bbf50e7c8301ded7de885a21",
+    "README.md": "6d4394aab7f6a16c96f3a43133f67db4f6a371f13da0e77ef2dbe0e9b75ff505",
     "after-verified-surfaces.json": "2f0ba420c33d6085bdb897b71588bab09dc810b7c68d3a52a0fef89fedc50247",
     "after-verified-faces.json": "0c30be48cdfd49bbb5dbd49ae3cb69ce0850059f2c2c120dafe5482a7cfb7073",
     "after-face-match.json": "c09d4ff20b71465144ce4b08a62fc52eec78de3597753d4fd728594a91cf7ac6",
     "before-verified-surfaces.json": "690249284cceb90616f967dae0b7c3aa8b498232c8b88333563517a7710ccb5d",
     "before-verified-faces.json": "f72e896f39433fdd1aff7afd943d22178e9906a40987b269b0444301dc4f07cd",
     "before-face-match.json": "c5340d32502de2042e7c6837f52a942a11f42c1f015f8f74b8b513b550c59e3d",
-    "opencascade.json": "e93926428060feffee454b63d0350ef1d80e118b3710ce656d79328184cde0e0",
+    "opencascade.json": "d4038ee079588d3da5d471838152b13b924be607918bdf8b69ab1e34d2b11bfc",
     "catia-reference.step": "3f9c8ef5fe40b3737abf5e175be2e6f40b00dac91c489432cb03684120c2e81c",
     "complete.step": "aba5bb4d970b0cc7c4cee6e3d07db76f0229b088ab3dca0be609fd591f8e4d91",
     "upstream.step": "b95a973e78a272349693484eeaa3f9af920092b82429055b7e5ee88d16842482",
@@ -24,7 +40,7 @@
     "render.py": "9b4d70a79d8e9f297ffa8607562ed881f6e0ce546a762c937fcc6c46c3c89378",
     "manifest.json": "1465b60c2cfd0cd757fb3660261231d96c5705959a3ba2758e70957da2fc1735",
     "ftc07-isometric.png": "80b378ee4481373b54d160efb5d7534407e4382426784442772dd423c997d94a",
-    "ftc07-back.png": "2c6dbf1280caa255f4b0a0bbafc83c72baec78f5f946bb0e4542c15aac6e3ebc",
-    "NIST-NOTICE.md": "24d9d8782dfa3b8d7e7786b2fdf73757c585b2b7bbf50e7c8301ded7de885a21"
-  }
+    "ftc07-back.png": "2c6dbf1280caa255f4b0a0bbafc83c72baec78f5f946bb0e4542c15aac6e3ebc"
+  },
+  "native_regression_commit": "e815396ace50b7dd8b7aa3fd7941a62bd4cfc180"
 }

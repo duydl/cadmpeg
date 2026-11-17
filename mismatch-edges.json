@@ -1,0 +1,1016 @@
+[
+  {
+    "reference_face": 7278,
+    "output_face": 1700,
+    "endpoints": [
+      [
+        93.7000961303711,
+        -105.63740539550781,
+        -96.58736419677734
+      ],
+      [
+        94.77739715576172,
+        -105.6484146118164,
+        -96.14089965820312
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.0029861255922043516,
+    "decoder_length_mm": 1.1967146348688147,
+    "catia_length_mm": 1.19531760760329,
+    "decoder_off_reference_surface_mm": 1.1889482546336972e-06,
+    "catia_off_own_surface_mm": 0.00299673349709458,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.0029861253254276437,
+    "catia_to_original_mm": 1.2414639145703183e-09,
+    "decoder_circle": {
+      "center": [
+        93.7000961303711,
+        -105.61080169677734,
+        -95.0635986328125
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        -0.01744952724665924,
+        -0.9996953919438046,
+        0.0174538627584607
+      ]
+    }
+  },
+  {
+    "reference_face": 952,
+    "output_face": 6800,
+    "endpoints": [
+      [
+        -139.5658721923828,
+        -104.13999938964844,
+        71.3476333618164
+      ],
+      [
+        -139.55059814453125,
+        -104.57758331298828,
+        70.27999877929688
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.002944906814103276,
+    "decoder_length_mm": 1.1823991970871215,
+    "catia_length_mm": 1.1837734515005802,
+    "decoder_off_reference_surface_mm": 0.0029618394175887574,
+    "catia_off_own_surface_mm": 5.761802484068791e-06,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 1.0268799791298688e-09,
+    "catia_to_original_mm": 0.0029449037392057058
+  },
+  {
+    "reference_face": 1022,
+    "output_face": 6971,
+    "endpoints": [
+      [
+        -95.68000030517578,
+        -104.57757568359375,
+        95.10060119628906
+      ],
+      [
+        -96.74762725830078,
+        -104.13999938964844,
+        95.11587524414062
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.0029424688004379964,
+    "decoder_length_mm": 1.1823909970540927,
+    "catia_length_mm": 1.1837732290285867,
+    "decoder_off_reference_surface_mm": 0.002959180293051008,
+    "catia_off_own_surface_mm": 5.761598343319058e-06,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 1.0528344604508852e-09,
+    "catia_to_original_mm": 0.002942468326711097
+  },
+  {
+    "reference_face": 1223,
+    "output_face": 7029,
+    "endpoints": [
+      [
+        -139.5658721923828,
+        -104.13999938964844,
+        71.3476333618164
+      ],
+      [
+        -139.55059814453125,
+        -104.57758331298828,
+        70.27999877929688
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.002944906814103276,
+    "decoder_length_mm": 1.1823991970871215,
+    "catia_length_mm": 1.1837734515005802,
+    "decoder_off_reference_surface_mm": 3.2599700871543217e-10,
+    "catia_off_own_surface_mm": 0.002960130616469972,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 1.0268799791298688e-09,
+    "catia_to_original_mm": 0.0029449037392057058
+  },
+  {
+    "reference_face": 1223,
+    "output_face": 7029,
+    "endpoints": [
+      [
+        -140.5908966064453,
+        -105.6484146118164,
+        69.37740325927734
+      ],
+      [
+        -141.03736877441406,
+        -105.63740539550781,
+        68.30009460449219
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.0029842366767818063,
+    "decoder_length_mm": 1.1967200319781568,
+    "catia_length_mm": 1.1953165861139656,
+    "decoder_off_reference_surface_mm": 0.002994489067861376,
+    "catia_off_own_surface_mm": 3.3325182749417875e-10,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.0029842364515743716,
+    "catia_to_original_mm": 8.135328848679469e-10,
+    "decoder_circle": {
+      "center": [
+        -139.5135955810547,
+        -105.61080169677734,
+        68.30009460449219
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        0.017453775406191828,
+        -0.9996953940998728,
+        -0.01744949109774061
+      ]
+    }
+  },
+  {
+    "reference_face": 1283,
+    "output_face": 7086,
+    "endpoints": [
+      [
+        -93.7000961303711,
+        -105.63740539550781,
+        96.58736419677734
+      ],
+      [
+        -94.77739715576172,
+        -105.6484146118164,
+        96.14089965820312
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.0029861255922043516,
+    "decoder_length_mm": 1.1967146348688154,
+    "catia_length_mm": 1.19531760760329,
+    "decoder_off_reference_surface_mm": 0.0029962470579057614,
+    "catia_off_own_surface_mm": 4.743304442836631e-11,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.0029861253254276437,
+    "catia_to_original_mm": 1.2414639145703183e-09,
+    "decoder_circle": {
+      "center": [
+        -93.7000961303711,
+        -105.61080169677734,
+        95.0635986328125
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        0.01744952724665924,
+        -0.9996953919438046,
+        -0.0174538627584607
+      ]
+    }
+  },
+  {
+    "reference_face": 1283,
+    "output_face": 7086,
+    "endpoints": [
+      [
+        -95.68000030517578,
+        -104.57757568359375,
+        95.10060119628906
+      ],
+      [
+        -96.74762725830078,
+        -104.13999938964844,
+        95.11587524414062
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.0029424688004379964,
+    "decoder_length_mm": 1.1823909970540927,
+    "catia_length_mm": 1.1837732290285867,
+    "decoder_off_reference_surface_mm": 2.5977450193378644e-11,
+    "catia_off_own_surface_mm": 0.002957471781412383,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 1.0528344604508852e-09,
+    "catia_to_original_mm": 0.002942468326711097
+  },
+  {
+    "reference_face": 1392,
+    "output_face": 7174,
+    "endpoints": [
+      [
+        -140.5908966064453,
+        -105.6484146118164,
+        69.37740325927734
+      ],
+      [
+        -141.03736877441406,
+        -105.63740539550781,
+        68.30009460449219
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.0029842366767818063,
+    "decoder_length_mm": 1.1967200319781568,
+    "catia_length_mm": 1.1953165861139656,
+    "decoder_off_reference_surface_mm": 4.250899272984416e-06,
+    "catia_off_own_surface_mm": 0.0029983873493791527,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.0029842364515743716,
+    "catia_to_original_mm": 8.135328848679469e-10,
+    "decoder_circle": {
+      "center": [
+        -139.5135955810547,
+        -105.61080169677734,
+        68.30009460449219
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        0.017453775406191828,
+        -0.9996953940998728,
+        -0.01744949109774061
+      ]
+    }
+  },
+  {
+    "reference_face": 1432,
+    "output_face": 7262,
+    "endpoints": [
+      [
+        -93.7000961303711,
+        -105.63740539550781,
+        96.58736419677734
+      ],
+      [
+        -94.77739715576172,
+        -105.6484146118164,
+        96.14089965820312
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.0029861255922043516,
+    "decoder_length_mm": 1.1967146348688154,
+    "catia_length_mm": 1.19531760760329,
+    "decoder_off_reference_surface_mm": 1.1889482546336972e-06,
+    "catia_off_own_surface_mm": 0.00299673349709458,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.0029861253254276437,
+    "catia_to_original_mm": 1.2414639145703183e-09,
+    "decoder_circle": {
+      "center": [
+        -93.7000961303711,
+        -105.61080169677734,
+        95.0635986328125
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        0.01744952724665924,
+        -0.9996953919438046,
+        -0.0174538627584607
+      ]
+    }
+  },
+  {
+    "reference_face": 2288,
+    "output_face": 7805,
+    "endpoints": [
+      [
+        96.74762725830078,
+        -102.6426010131836,
+        96.63964080810547
+      ],
+      [
+        96.74762725830078,
+        -103.70299530029297,
+        96.1840591430664
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.002857944100014184,
+    "decoder_length_mm": 1.1836454718200464,
+    "catia_length_mm": 1.1823242059847645,
+    "decoder_off_reference_surface_mm": 0.002867588634324302,
+    "catia_off_own_surface_mm": 1.7363291482500253e-10,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.002857944382480551,
+    "catia_to_original_mm": 7.298941700241644e-10,
+    "decoder_circle": {
+      "center": [
+        96.74762725830078,
+        -102.61599731445312,
+        95.11587524414062
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        1.0,
+        -1.508956637704626e-16,
+        0.0
+      ]
+    }
+  },
+  {
+    "reference_face": 2323,
+    "output_face": 7884,
+    "endpoints": [
+      [
+        96.74762725830078,
+        -102.6426010131836,
+        96.63964080810547
+      ],
+      [
+        96.74762725830078,
+        -103.70299530029297,
+        96.1840591430664
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.002857944100014184,
+    "decoder_length_mm": 1.1836454718200464,
+    "catia_length_mm": 1.1823242059847645,
+    "decoder_off_reference_surface_mm": 1.2251943717549894e-06,
+    "catia_off_own_surface_mm": 0.002867943952826312,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.002857944382480551,
+    "catia_to_original_mm": 7.298941700241644e-10,
+    "decoder_circle": {
+      "center": [
+        96.74762725830078,
+        -102.61599731445312,
+        95.11587524414062
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        1.0,
+        -1.508956637704626e-16,
+        0.0
+      ]
+    }
+  },
+  {
+    "reference_face": 3297,
+    "output_face": 8811,
+    "endpoints": [
+      [
+        -141.03736877441406,
+        -105.63740539550781,
+        -68.30009460449219
+      ],
+      [
+        -140.5908966064453,
+        -105.6484146118164,
+        -69.37740325927734
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.0029842366767818063,
+    "decoder_length_mm": 1.196720031978157,
+    "catia_length_mm": 1.1953165861139656,
+    "decoder_off_reference_surface_mm": 0.002994489067861376,
+    "catia_off_own_surface_mm": 3.3324982801311814e-10,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.0029842364515743716,
+    "catia_to_original_mm": 8.135328848679469e-10,
+    "decoder_circle": {
+      "center": [
+        -139.5135955810547,
+        -105.61080169677734,
+        -68.30009460449219
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        0.017453775406191828,
+        -0.9996953940998728,
+        0.01744949109774061
+      ]
+    }
+  },
+  {
+    "reference_face": 3297,
+    "output_face": 8811,
+    "endpoints": [
+      [
+        -140.63406372070312,
+        -103.70299530029297,
+        -71.3476333618164
+      ],
+      [
+        -141.0896453857422,
+        -102.6426010131836,
+        -71.3476333618164
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.002856661769078382,
+    "decoder_length_mm": 1.1836401633433715,
+    "catia_length_mm": 1.1823232358454812,
+    "decoder_off_reference_surface_mm": 0.002866468382152385,
+    "catia_off_own_surface_mm": 4.1339041367103363e-10,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.002856661608215963,
+    "catia_to_original_mm": 8.974519303738969e-10,
+    "decoder_circle": {
+      "center": [
+        -139.5658721923828,
+        -102.61599731445312,
+        -71.3476333618164
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        0.0,
+        0.0,
+        -1.0
+      ]
+    }
+  },
+  {
+    "reference_face": 3337,
+    "output_face": 8899,
+    "endpoints": [
+      [
+        -141.03736877441406,
+        -105.63740539550781,
+        -68.30009460449219
+      ],
+      [
+        -140.5908966064453,
+        -105.6484146118164,
+        -69.37740325927734
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.0029842366767818063,
+    "decoder_length_mm": 1.196720031978157,
+    "catia_length_mm": 1.1953165861139656,
+    "decoder_off_reference_surface_mm": 4.251636355471284e-06,
+    "catia_off_own_surface_mm": 0.00299838798774464,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.0029842364515743716,
+    "catia_to_original_mm": 8.135328848679469e-10,
+    "decoder_circle": {
+      "center": [
+        -139.5135955810547,
+        -105.61080169677734,
+        -68.30009460449219
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        0.017453775406191828,
+        -0.9996953940998728,
+        0.01744949109774061
+      ]
+    }
+  },
+  {
+    "reference_face": 4661,
+    "output_face": 9360,
+    "endpoints": [
+      [
+        93.7000961303711,
+        -105.63740539550781,
+        -96.58736419677734
+      ],
+      [
+        94.77739715576172,
+        -105.6484146118164,
+        -96.14089965820312
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.0029861255922043516,
+    "decoder_length_mm": 1.1967146348688147,
+    "catia_length_mm": 1.19531760760329,
+    "decoder_off_reference_surface_mm": 0.0029962470579057614,
+    "catia_off_own_surface_mm": 4.743304442836631e-11,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.0029861253254276437,
+    "catia_to_original_mm": 1.2414639145703183e-09,
+    "decoder_circle": {
+      "center": [
+        93.7000961303711,
+        -105.61080169677734,
+        -95.0635986328125
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        -0.01744952724665924,
+        -0.9996953919438046,
+        0.0174538627584607
+      ]
+    }
+  },
+  {
+    "reference_face": 4661,
+    "output_face": 9360,
+    "endpoints": [
+      [
+        96.74762725830078,
+        -103.70299530029297,
+        -96.1840591430664
+      ],
+      [
+        96.74762725830078,
+        -102.6426010131836,
+        -96.63964080810547
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.002857944100014184,
+    "decoder_length_mm": 1.1836454718200466,
+    "catia_length_mm": 1.182324205984762,
+    "decoder_off_reference_surface_mm": 0.0028675886343308447,
+    "catia_off_own_surface_mm": 1.736137567323108e-10,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.002857944382480551,
+    "catia_to_original_mm": 7.298941700241644e-10,
+    "decoder_circle": {
+      "center": [
+        96.74762725830078,
+        -102.61599731445312,
+        -95.11587524414062
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "reference_face": 4757,
+    "output_face": 9486,
+    "endpoints": [
+      [
+        -96.74762725830078,
+        -102.6426010131836,
+        -96.63964080810547
+      ],
+      [
+        -96.74762725830078,
+        -103.70299530029297,
+        -96.1840591430664
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.002857944100014184,
+    "decoder_length_mm": 1.1836454718200462,
+    "catia_length_mm": 1.1823242059847643,
+    "decoder_off_reference_surface_mm": 0.0028675886345723755,
+    "catia_off_own_surface_mm": 1.7383616737763737e-10,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.002857944382480551,
+    "catia_to_original_mm": 7.298941700241644e-10,
+    "decoder_circle": {
+      "center": [
+        -96.74762725830078,
+        -102.61599731445312,
+        -95.11587524414062
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        -1.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "reference_face": 4757,
+    "output_face": 9486,
+    "endpoints": [
+      [
+        -94.77739715576172,
+        -105.6484146118164,
+        -96.14089965820312
+      ],
+      [
+        -93.7000961303711,
+        -105.63740539550781,
+        -96.58736419677734
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.0029861255922043516,
+    "decoder_length_mm": 1.1967146348688154,
+    "catia_length_mm": 1.1953176076032896,
+    "decoder_off_reference_surface_mm": 0.0029962470581041613,
+    "catia_off_own_surface_mm": 4.762627341829059e-11,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.0029861253254276437,
+    "catia_to_original_mm": 1.2414582080276185e-09,
+    "decoder_circle": {
+      "center": [
+        -93.7000961303711,
+        -105.61080169677734,
+        -95.0635986328125
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        0.01744952724665924,
+        -0.9996953919438046,
+        0.0174538627584607
+      ]
+    }
+  },
+  {
+    "reference_face": 4853,
+    "output_face": 9611,
+    "endpoints": [
+      [
+        141.03736877441406,
+        -105.63740539550781,
+        68.30009460449219
+      ],
+      [
+        140.5908966064453,
+        -105.6484146118164,
+        69.37740325927734
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.0029842366767818063,
+    "decoder_length_mm": 1.196720031978157,
+    "catia_length_mm": 1.1953165861139656,
+    "decoder_off_reference_surface_mm": 0.002994489067861376,
+    "catia_off_own_surface_mm": 3.3324982801311814e-10,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.0029842364515743716,
+    "catia_to_original_mm": 8.135328848679469e-10,
+    "decoder_circle": {
+      "center": [
+        139.5135955810547,
+        -105.61080169677734,
+        68.30009460449219
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        -0.017453775406191828,
+        -0.9996953940998728,
+        -0.01744949109774061
+      ]
+    }
+  },
+  {
+    "reference_face": 4853,
+    "output_face": 9611,
+    "endpoints": [
+      [
+        140.63406372070312,
+        -103.70299530029297,
+        71.3476333618164
+      ],
+      [
+        141.0896453857422,
+        -102.6426010131836,
+        71.3476333618164
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.002856661769078382,
+    "decoder_length_mm": 1.1836401633433709,
+    "catia_length_mm": 1.1823232358454812,
+    "decoder_off_reference_surface_mm": 0.002866468382152385,
+    "catia_off_own_surface_mm": 4.134003849227818e-10,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.002856661608215963,
+    "catia_to_original_mm": 8.974519303738969e-10,
+    "decoder_circle": {
+      "center": [
+        139.5658721923828,
+        -102.61599731445312,
+        71.3476333618164
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        1.2336422101361105e-16,
+        1.2122968475164041e-16,
+        1.0
+      ]
+    }
+  },
+  {
+    "reference_face": 4889,
+    "output_face": 9652,
+    "endpoints": [
+      [
+        141.03736877441406,
+        -105.63740539550781,
+        68.30009460449219
+      ],
+      [
+        140.5908966064453,
+        -105.6484146118164,
+        69.37740325927734
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.0029842366767818063,
+    "decoder_length_mm": 1.196720031978157,
+    "catia_length_mm": 1.1953165861139656,
+    "decoder_off_reference_surface_mm": 4.251636355471284e-06,
+    "catia_off_own_surface_mm": 0.00299838798774464,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.0029842364515743716,
+    "catia_to_original_mm": 8.135328848679469e-10,
+    "decoder_circle": {
+      "center": [
+        139.5135955810547,
+        -105.61080169677734,
+        68.30009460449219
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        -0.017453775406191828,
+        -0.9996953940998728,
+        -0.01744949109774061
+      ]
+    }
+  },
+  {
+    "reference_face": 6931,
+    "output_face": 12193,
+    "endpoints": [
+      [
+        139.55059814453125,
+        -104.57757568359375,
+        -70.2800064086914
+      ],
+      [
+        139.5135955810547,
+        -105.63740539550781,
+        -69.82386016845703
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.002943744697889623,
+    "decoder_length_mm": 1.1828477237296797,
+    "catia_length_mm": 1.1842295188498189,
+    "decoder_off_reference_surface_mm": 0.0029618393861547076,
+    "catia_off_own_surface_mm": 5.704704461242941e-06,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 9.213796117736925e-10,
+    "catia_to_original_mm": 0.0029437465142484894
+  },
+  {
+    "reference_face": 7340,
+    "output_face": 12630,
+    "endpoints": [
+      [
+        -94.77739715576172,
+        -105.6484146118164,
+        -96.14089965820312
+      ],
+      [
+        -93.7000961303711,
+        -105.63740539550781,
+        -96.58736419677734
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.0029861255922043516,
+    "decoder_length_mm": 1.1967146348688154,
+    "catia_length_mm": 1.1953176076032896,
+    "decoder_off_reference_surface_mm": 1.1889760270950849e-06,
+    "catia_off_own_surface_mm": 0.0029967334894222507,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.0029861253254276437,
+    "catia_to_original_mm": 1.2414582080276185e-09,
+    "decoder_circle": {
+      "center": [
+        -93.7000961303711,
+        -105.61080169677734,
+        -95.0635986328125
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        0.01744952724665924,
+        -0.9996953919438046,
+        0.0174538627584607
+      ]
+    }
+  },
+  {
+    "reference_face": 7868,
+    "output_face": 13204,
+    "endpoints": [
+      [
+        -140.63406372070312,
+        -103.70299530029297,
+        -71.3476333618164
+      ],
+      [
+        -141.0896453857422,
+        -102.6426010131836,
+        -71.3476333618164
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.002856661769078382,
+    "decoder_length_mm": 1.1836401633433715,
+    "catia_length_mm": 1.1823232358454812,
+    "decoder_off_reference_surface_mm": 3.3644045893587057e-06,
+    "catia_off_own_surface_mm": 0.002869531907461037,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.002856661608215963,
+    "catia_to_original_mm": 8.974519303738969e-10,
+    "decoder_circle": {
+      "center": [
+        -139.5658721923828,
+        -102.61599731445312,
+        -71.3476333618164
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        0.0,
+        0.0,
+        -1.0
+      ]
+    }
+  },
+  {
+    "reference_face": 7887,
+    "output_face": 13239,
+    "endpoints": [
+      [
+        140.63406372070312,
+        -103.70299530029297,
+        71.3476333618164
+      ],
+      [
+        141.0896453857422,
+        -102.6426010131836,
+        71.3476333618164
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.002856661769078382,
+    "decoder_length_mm": 1.1836401633433709,
+    "catia_length_mm": 1.1823232358454812,
+    "decoder_off_reference_surface_mm": 3.364404609279765e-06,
+    "catia_off_own_surface_mm": 0.0028695319074862643,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.002856661608215963,
+    "catia_to_original_mm": 8.974519303738969e-10,
+    "decoder_circle": {
+      "center": [
+        139.5658721923828,
+        -102.61599731445312,
+        71.3476333618164
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        1.2336422101361105e-16,
+        1.2122968475164041e-16,
+        1.0
+      ]
+    }
+  },
+  {
+    "reference_face": 7995,
+    "output_face": 13385,
+    "endpoints": [
+      [
+        139.55059814453125,
+        -104.57757568359375,
+        -70.2800064086914
+      ],
+      [
+        139.5135955810547,
+        -105.63740539550781,
+        -69.82386016845703
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.002943744697889623,
+    "decoder_length_mm": 1.1828477237296797,
+    "catia_length_mm": 1.1842295188498189,
+    "decoder_off_reference_surface_mm": 2.0376007405248785e-10,
+    "catia_off_own_surface_mm": 0.00296000209133444,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 9.213796117736925e-10,
+    "catia_to_original_mm": 0.0029437465142484894
+  },
+  {
+    "reference_face": 8033,
+    "output_face": 13481,
+    "endpoints": [
+      [
+        -96.74762725830078,
+        -102.6426010131836,
+        -96.63964080810547
+      ],
+      [
+        -96.74762725830078,
+        -103.70299530029297,
+        -96.1840591430664
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.002857944100014184,
+    "decoder_length_mm": 1.1836454718200462,
+    "catia_length_mm": 1.1823242059847643,
+    "decoder_off_reference_surface_mm": 1.2251943817154972e-06,
+    "catia_off_own_surface_mm": 0.002867943952838926,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.002857944382480551,
+    "catia_to_original_mm": 7.298941700241644e-10,
+    "decoder_circle": {
+      "center": [
+        -96.74762725830078,
+        -102.61599731445312,
+        -95.11587524414062
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        -1.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "reference_face": 8056,
+    "output_face": 13511,
+    "endpoints": [
+      [
+        96.74762725830078,
+        -103.70299530029297,
+        -96.1840591430664
+      ],
+      [
+        96.74762725830078,
+        -102.6426010131836,
+        -96.63964080810547
+      ]
+    ],
+    "decoder_curve_type": "GeomAbs_CurveType.GeomAbs_Circle",
+    "catia_curve_type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+    "gap_mm": 0.002857944100014184,
+    "decoder_length_mm": 1.1836454718200466,
+    "catia_length_mm": 1.182324205984762,
+    "decoder_off_reference_surface_mm": 1.2251943817154972e-06,
+    "catia_off_own_surface_mm": 0.002867943952838926,
+    "original_edge_candidates": 1,
+    "decoder_to_original_mm": 0.002857944382480551,
+    "catia_to_original_mm": 7.298941700241644e-10,
+    "decoder_circle": {
+      "center": [
+        96.74762725830078,
+        -102.61599731445312,
+        -95.11587524414062
+      ],
+      "radius": 1.5240000486373901,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+]
