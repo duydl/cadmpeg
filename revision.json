@@ -1,0 +1,29 @@
+{
+  "upstream": "9c4e34b5d25e2822b8120c54e680523779d451ea",
+  "combined": "e49508144a022130645a874a0f0e167754b53ddc",
+  "fixture": "nist_ftc_07_asme1_rd_ct5290_ra.CATPart",
+  "fixture_sha256": "ee49a27b5f3ad414eb088d94375b1f324ec91124a31ffc361af6f50cbc2492a4",
+  "tolerance_mm": 0.001,
+  "strict_before": 180,
+  "strict_after": 282,
+  "reference_faces": 304,
+  "sha256": {
+    "after-verified-surfaces.json": "2f0ba420c33d6085bdb897b71588bab09dc810b7c68d3a52a0fef89fedc50247",
+    "after-verified-faces.json": "0c30be48cdfd49bbb5dbd49ae3cb69ce0850059f2c2c120dafe5482a7cfb7073",
+    "after-face-match.json": "c09d4ff20b71465144ce4b08a62fc52eec78de3597753d4fd728594a91cf7ac6",
+    "before-verified-surfaces.json": "690249284cceb90616f967dae0b7c3aa8b498232c8b88333563517a7710ccb5d",
+    "before-verified-faces.json": "f72e896f39433fdd1aff7afd943d22178e9906a40987b269b0444301dc4f07cd",
+    "before-face-match.json": "c5340d32502de2042e7c6837f52a942a11f42c1f015f8f74b8b513b550c59e3d",
+    "opencascade.json": "e93926428060feffee454b63d0350ef1d80e118b3710ce656d79328184cde0e0",
+    "catia-reference.step": "3f9c8ef5fe40b3737abf5e175be2e6f40b00dac91c489432cb03684120c2e81c",
+    "complete.step": "aba5bb4d970b0cc7c4cee6e3d07db76f0229b088ab3dca0be609fd591f8e4d91",
+    "upstream.step": "b95a973e78a272349693484eeaa3f9af920092b82429055b7e5ee88d16842482",
+    "catia-reference.stl": "005c6fa22d1e6166c34be708c54e1681e9b73ddbc404c30bfd5d5837b9c1ed7c",
+    "complete.stl": "e4de9bfa2eaa2f4cb408b544979538a95ea30df9eda70e91f9423b879b9e9e08",
+    "upstream.stl": "c12d8546a3cc29f6a14826a8740fea8557e910cb6104bfcc755be8b310001d59",
+    "render.py": "9b4d70a79d8e9f297ffa8607562ed881f6e0ce546a762c937fcc6c46c3c89378",
+    "manifest.json": "1465b60c2cfd0cd757fb3660261231d96c5705959a3ba2758e70957da2fc1735",
+    "ftc07-isometric.png": "80b378ee4481373b54d160efb5d7534407e4382426784442772dd423c997d94a",
+    "ftc07-back.png": "2c6dbf1280caa255f4b0a0bbafc83c72baec78f5f946bb0e4542c15aac6e3ebc"
+  }
+}

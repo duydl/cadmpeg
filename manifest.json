@@ -1,0 +1,23 @@
+[
+  {
+    "label": "Upstream main 9c4e34b5d",
+    "mesh": "upstream.stl",
+    "shell_faces": 302,
+    "invalid_shell_faces": 22,
+    "unmeshed_faces": 16
+  },
+  {
+    "label": "All three fixes applied",
+    "mesh": "complete.stl",
+    "shell_faces": 306,
+    "invalid_shell_faces": 0,
+    "unmeshed_faces": 0
+  },
+  {
+    "label": "CATIA export of NIST CATPart",
+    "mesh": "catia-reference.stl",
+    "shell_faces": 304,
+    "invalid_shell_faces": 0,
+    "unmeshed_faces": 0
+  }
+]
