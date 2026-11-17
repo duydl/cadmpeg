@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 //! B-rep geometry of the FTC-07 solid, compared with its AP242 model.
 
+mod native_splines;
+
 use std::collections::{HashMap, HashSet};
 use std::io::Cursor;
 use std::path::Path;
