@@ -26,8 +26,20 @@ Of the 22 faces, 16 involve circle differences alone, four involve spline differ
 
 The six spline occurrences belong to three native splines. Cadmpeg agrees with the original STEP to below 1.1e-9 mm in sampled checks; the fresh CATIA export differs by about 0.003 mm. Archived native samples lie on the decoded spline bases within 9.1e-10 mm. Their contiguous active intervals reproduce the measured native lengths within 3.6e-9 mm. These numerical agreements describe the stored geometry and sampled computations, rather than physical part accuracy.
 
-All 304 carrier surfaces and oriented normals pass the independent sampled surface check at 0.001 mm. The strict boundary-inclusive count remains 282/304. The current audit identifies STEP representation differences for the remaining 22, with native corroboration for each disputed edge. No production decoder change follows from these measurements. A new native-spline regression passes with the full 2,707-test CATIA suite at e815396ace50b7dd8b7aa3fd7941a62bd4cfc180.
+All 304 carrier surfaces and oriented normals pass the independent sampled surface check at 0.001 mm. The strict boundary-inclusive count remains 282/304. The current audit identifies STEP representation differences for the remaining 22, with native corroboration for each disputed edge. No production decoder change follows from these measurements. The native-spline regression remains in the combined suite.
 
 The original NIST STEP and cadmpeg also retain two planar sheet faces with matching boundaries, surfaces and normals; the fresh CATIA export omits them. This accounts for the 306 versus 304 total shell-face counts.
 
 mismatch-summary.json lists every affected face and the measured bounds. mismatch-edges.json retains each disputed edge, its endpoints, original STEP distances, and carrier residuals. The archived native measurement table and native circle/spline audit JSON provide the independent witnesses. The source fixture remains the public NIST CATPart recorded in revision.json.
+
+## Reviewer fixes and rerun, 17 November 2026
+
+Combined revision: `926360f71c6eb1cf25138bc7756d63d5f5ddb386`. All 2,707 CATIA library tests, Clippy with warnings denied, formatting, source policy, resource-cap census, open-item IDs, and loss-code checks pass.
+
+The plane coedges retain their stored class-20 quintic pcurves and independent intervals. Their class-25 fitting tolerances, 0.005924–0.005932 mm, are retained in metadata with an explicit model-space accuracy inference. The original STEP witnesses remain checked against those plane curves at 0.0001 mm. Separate archived native witnesses are checked against the surface-derived model curves at the same threshold.
+
+The cylinder-witness ellipse path now rejects a selected interval when an incident box admits its complement with less discrepancy. For 28 trims whose selected exact extrema exceed the stored boxes by 0.003397–0.004548 mm, it retains the witnessed branch with smaller discrepancy in every contradicting box and reports `geometry.conic-branch-bounds-inferred`. This remains an inferred relation under SN-15. Synthetic tests cover the endpoint-adjacent wrong complement, both incident boxes, absent bounds, a quantified box excess, and contradictory face preferences. `review-recovery-losses.json` records the emitted assumptions and deviations.
+
+The rerun retains 282/304 strict matches and all 304 carrier/normal checks at 0.001 mm. OpenCascade reports one closed solid, two native sheet faces, and zero invalid shell faces. The public calosoe control retains five closed solids and zero invalid faces. The refreshed images use the same camera and meshing settings as above.
+
+`model-geometry-preservation.json` confirms identical canonical 3D curve, surface, and edge arenas against the earlier native audit revision. The same 22 reference faces remain outside the strict comparison. `review-validation.json` records the checks and the cadmpeg readback measurement-allowance caveat.

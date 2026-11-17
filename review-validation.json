@@ -1,0 +1,23 @@
+{
+  "revision": "926360f71c6eb1cf25138bc7756d63d5f5ddb386",
+  "catia_library_tests": 2707,
+  "clippy_all_targets_warnings_denied": "passed",
+  "formatting": "passed",
+  "source_policy": "passed",
+  "resource_caps": "passed",
+  "open_item_ids": "passed",
+  "loss_codes": "passed",
+  "strict_tolerance_mm": 0.001,
+  "strict_matches": 282,
+  "reference_faces": 304,
+  "topology_matches_same_winding": 304,
+  "carriers_and_normals_verified": 304,
+  "opencascade_invalid_shell_faces": 0,
+  "closed_solids": 1,
+  "native_sheet_faces": 2,
+  "calosoe_closed_solids": 5,
+  "calosoe_invalid_faces": 0,
+  "readback_errors": 0,
+  "readback_warnings": 0,
+  "readback_measurement_caveat": "Cadmpeg reported the measurement allowance was exhausted before 136 faces and one body were checked; the OpenCascade and sampled comparisons above ran independently."
+}

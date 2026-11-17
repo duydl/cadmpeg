@@ -667,7 +667,7 @@
   },
   {
     "reference": 1223,
-    "output": 7029,
+    "output": 7040,
     "edges": 7,
     "vertex_gap_mm": 7.131253872365024e-06,
     "edge_gap_mm": 0.0029842366767818063,
@@ -676,7 +676,7 @@
   },
   {
     "reference": 1283,
-    "output": 7086,
+    "output": 7108,
     "edges": 7,
     "vertex_gap_mm": 4.917343366320275e-06,
     "edge_gap_mm": 0.0029861255922043516,
@@ -685,7 +685,7 @@
   },
   {
     "reference": 1392,
-    "output": 7174,
+    "output": 7196,
     "edges": 6,
     "vertex_gap_mm": 7.640808971552406e-06,
     "edge_gap_mm": 0.0029842366767818063,
@@ -694,7 +694,7 @@
   },
   {
     "reference": 1432,
-    "output": 7262,
+    "output": 7284,
     "edges": 6,
     "vertex_gap_mm": 6.462037765110251e-06,
     "edge_gap_mm": 0.0029861255922043516,
@@ -703,7 +703,7 @@
   },
   {
     "reference": 1472,
-    "output": 7339,
+    "output": 7361,
     "edges": 6,
     "vertex_gap_mm": 7.640808971552406e-06,
     "edge_gap_mm": 4.60098265887737e-06,
@@ -712,7 +712,7 @@
   },
   {
     "reference": 3853,
-    "output": 7388,
+    "output": 7410,
     "edges": 6,
     "vertex_gap_mm": 6.462037765110251e-06,
     "edge_gap_mm": 0.0004988829398566555,
@@ -721,7 +721,7 @@
   },
   {
     "reference": 1512,
-    "output": 7466,
+    "output": 7488,
     "edges": 6,
     "vertex_gap_mm": 6.462037765110251e-06,
     "edge_gap_mm": 4.9365059434584745e-06,
@@ -730,7 +730,7 @@
   },
   {
     "reference": 2155,
-    "output": 7583,
+    "output": 7605,
     "edges": 6,
     "vertex_gap_mm": 6.15001469012154e-06,
     "edge_gap_mm": 4.895163083356284e-06,
@@ -739,7 +739,7 @@
   },
   {
     "reference": 2211,
-    "output": 7707,
+    "output": 7729,
     "edges": 6,
     "vertex_gap_mm": 6.462037765110251e-06,
     "edge_gap_mm": 4.935827804382239e-06,
@@ -748,7 +748,7 @@
   },
   {
     "reference": 2288,
-    "output": 7805,
+    "output": 7838,
     "edges": 7,
     "vertex_gap_mm": 5.090355032429078e-06,
     "edge_gap_mm": 0.002857944100014184,
@@ -757,7 +757,7 @@
   },
   {
     "reference": 2323,
-    "output": 7884,
+    "output": 7917,
     "edges": 6,
     "vertex_gap_mm": 5.090355032429078e-06,
     "edge_gap_mm": 0.002857944100014184,
@@ -766,7 +766,7 @@
   },
   {
     "reference": 2379,
-    "output": 7987,
+    "output": 8020,
     "edges": 6,
     "vertex_gap_mm": 4.798759034042192e-06,
     "edge_gap_mm": 9.70166487925207e-05,
@@ -775,7 +775,7 @@
   },
   {
     "reference": 2796,
-    "output": 8062,
+    "output": 8095,
     "edges": 6,
     "vertex_gap_mm": 6.462037765110251e-06,
     "edge_gap_mm": 4.935827804382239e-06,
@@ -784,7 +784,7 @@
   },
   {
     "reference": 2887,
-    "output": 8144,
+    "output": 8177,
     "edges": 7,
     "vertex_gap_mm": 4.836405450013939e-06,
     "edge_gap_mm": 8.836834629862812e-05,
@@ -793,7 +793,7 @@
   },
   {
     "reference": 2978,
-    "output": 8252,
+    "output": 8285,
     "edges": 6,
     "vertex_gap_mm": 6.792323336670861e-06,
     "edge_gap_mm": 6.384093362909656e-06,
@@ -802,7 +802,7 @@
   },
   {
     "reference": 3018,
-    "output": 8356,
+    "output": 8389,
     "edges": 6,
     "vertex_gap_mm": 6.792323336670861e-06,
     "edge_gap_mm": 6.384093362909656e-06,
@@ -811,7 +811,7 @@
   },
   {
     "reference": 1352,
-    "output": 8365,
+    "output": 8398,
     "edges": 6,
     "vertex_gap_mm": 5.074566136368799e-06,
     "edge_gap_mm": 9.335546795394953e-05,
@@ -820,7 +820,7 @@
   },
   {
     "reference": 3062,
-    "output": 8449,
+    "output": 8482,
     "edges": 6,
     "vertex_gap_mm": 4.799090537228793e-06,
     "edge_gap_mm": 0.0003167337334040525,
@@ -829,7 +829,7 @@
   },
   {
     "reference": 3113,
-    "output": 8527,
+    "output": 8560,
     "edges": 8,
     "vertex_gap_mm": 8.034245441778533e-06,
     "edge_gap_mm": 0.000353398393247254,
@@ -838,7 +838,7 @@
   },
   {
     "reference": 3157,
-    "output": 8606,
+    "output": 8639,
     "edges": 6,
     "vertex_gap_mm": 5.07416285839144e-06,
     "edge_gap_mm": 0.000305001189251245,
@@ -847,7 +847,7 @@
   },
   {
     "reference": 3201,
-    "output": 8681,
+    "output": 8714,
     "edges": 6,
     "vertex_gap_mm": 5.07416285839144e-06,
     "edge_gap_mm": 0.000305001193034888,
@@ -856,7 +856,7 @@
   },
   {
     "reference": 3297,
-    "output": 8811,
+    "output": 8855,
     "edges": 7,
     "vertex_gap_mm": 7.131215543424432e-06,
     "edge_gap_mm": 0.0029842366767818063,
@@ -865,7 +865,7 @@
   },
   {
     "reference": 3337,
-    "output": 8899,
+    "output": 8943,
     "edges": 6,
     "vertex_gap_mm": 7.6413034776492e-06,
     "edge_gap_mm": 0.0029842366767818063,
@@ -874,7 +874,7 @@
   },
   {
     "reference": 3377,
-    "output": 8971,
+    "output": 9015,
     "edges": 6,
     "vertex_gap_mm": 7.6413034776492e-06,
     "edge_gap_mm": 4.601748653309953e-06,
@@ -883,7 +883,7 @@
   },
   {
     "reference": 3473,
-    "output": 9052,
+    "output": 9096,
     "edges": 6,
     "vertex_gap_mm": 6.149598757703577e-06,
     "edge_gap_mm": 4.895163092211854e-06,
@@ -892,7 +892,7 @@
   },
   {
     "reference": 3529,
-    "output": 9131,
+    "output": 9175,
     "edges": 6,
     "vertex_gap_mm": 6.149598757703577e-06,
     "edge_gap_mm": 4.895163083356284e-06,
@@ -901,7 +901,7 @@
   },
   {
     "reference": 3997,
-    "output": 9254,
+    "output": 9298,
     "edges": 6,
     "vertex_gap_mm": 5.179015983527166e-06,
     "edge_gap_mm": 4.506117210544995e-06,
@@ -910,7 +910,7 @@
   },
   {
     "reference": 1324,
-    "output": 9263,
+    "output": 9307,
     "edges": 6,
     "vertex_gap_mm": 4.798759034042192e-06,
     "edge_gap_mm": 0.0003713906436302971,
@@ -919,7 +919,7 @@
   },
   {
     "reference": 4661,
-    "output": 9360,
+    "output": 9415,
     "edges": 7,
     "vertex_gap_mm": 4.917343366320275e-06,
     "edge_gap_mm": 0.0029861255922043516,
@@ -928,7 +928,7 @@
   },
   {
     "reference": 4757,
-    "output": 9486,
+    "output": 9552,
     "edges": 7,
     "vertex_gap_mm": 5.090355032429078e-06,
     "edge_gap_mm": 0.0029861255922043516,
@@ -937,7 +937,7 @@
   },
   {
     "reference": 4853,
-    "output": 9611,
+    "output": 9688,
     "edges": 7,
     "vertex_gap_mm": 7.131215543424432e-06,
     "edge_gap_mm": 0.0029842366767818063,
@@ -946,7 +946,7 @@
   },
   {
     "reference": 4889,
-    "output": 9652,
+    "output": 9729,
     "edges": 6,
     "vertex_gap_mm": 7.6413034776492e-06,
     "edge_gap_mm": 0.0029842366767818063,
@@ -955,7 +955,7 @@
   },
   {
     "reference": 4945,
-    "output": 9777,
+    "output": 9854,
     "edges": 6,
     "vertex_gap_mm": 5.179015983527166e-06,
     "edge_gap_mm": 4.506117210544995e-06,
@@ -964,7 +964,7 @@
   },
   {
     "reference": 5001,
-    "output": 9901,
+    "output": 9978,
     "edges": 6,
     "vertex_gap_mm": 5.179015983527166e-06,
     "edge_gap_mm": 4.506117210544995e-06,
@@ -973,7 +973,7 @@
   },
   {
     "reference": 5974,
-    "output": 9968,
+    "output": 10045,
     "edges": 4,
     "vertex_gap_mm": 4.025014454717694e-06,
     "edge_gap_mm": 1.9988220178145483e-05,
@@ -982,7 +982,7 @@
   },
   {
     "reference": 5986,
-    "output": 10007,
+    "output": 10084,
     "edges": 4,
     "vertex_gap_mm": 4.025014454717694e-06,
     "edge_gap_mm": 4.858247843252725e-06,
@@ -991,7 +991,7 @@
   },
   {
     "reference": 6026,
-    "output": 10088,
+    "output": 10165,
     "edges": 4,
     "vertex_gap_mm": 3.9200538873108205e-06,
     "edge_gap_mm": 3.2868437574156677e-06,
@@ -1000,7 +1000,7 @@
   },
   {
     "reference": 6067,
-    "output": 10113,
+    "output": 10190,
     "edges": 4,
     "vertex_gap_mm": 3.9200538873108205e-06,
     "edge_gap_mm": 3.0116618308972715e-05,
@@ -1009,7 +1009,7 @@
   },
   {
     "reference": 267,
-    "output": 10152,
+    "output": 10229,
     "edges": 4,
     "vertex_gap_mm": 7.130745210701145e-06,
     "edge_gap_mm": 6.478578177251848e-06,
@@ -1018,7 +1018,7 @@
   },
   {
     "reference": 4429,
-    "output": 10196,
+    "output": 10273,
     "edges": 6,
     "vertex_gap_mm": 7.503518687684631e-06,
     "edge_gap_mm": 7.1245700046318175e-06,
@@ -1027,7 +1027,7 @@
   },
   {
     "reference": 6109,
-    "output": 10260,
+    "output": 10337,
     "edges": 4,
     "vertex_gap_mm": 5.319978939446948e-06,
     "edge_gap_mm": 4.7730951353330465e-06,
@@ -1036,7 +1036,7 @@
   },
   {
     "reference": 6133,
-    "output": 10314,
+    "output": 10391,
     "edges": 4,
     "vertex_gap_mm": 5.878353366901617e-06,
     "edge_gap_mm": 5.728759592488344e-06,
@@ -1045,7 +1045,7 @@
   },
   {
     "reference": 6157,
-    "output": 10352,
+    "output": 10429,
     "edges": 4,
     "vertex_gap_mm": 5.878353366901617e-06,
     "edge_gap_mm": 5.728759592488344e-06,
@@ -1054,7 +1054,7 @@
   },
   {
     "reference": 6181,
-    "output": 10409,
+    "output": 10486,
     "edges": 4,
     "vertex_gap_mm": 5.878289928883174e-06,
     "edge_gap_mm": 5.707130248502179e-06,
@@ -1063,7 +1063,7 @@
   },
   {
     "reference": 6205,
-    "output": 10449,
+    "output": 10526,
     "edges": 4,
     "vertex_gap_mm": 5.320014558634218e-06,
     "edge_gap_mm": 4.7805693562982545e-06,
@@ -1072,7 +1072,7 @@
   },
   {
     "reference": 6229,
-    "output": 10504,
+    "output": 10581,
     "edges": 4,
     "vertex_gap_mm": 3.7085318554272707e-06,
     "edge_gap_mm": 3.609265671437676e-06,
@@ -1081,7 +1081,7 @@
   },
   {
     "reference": 6253,
-    "output": 10542,
+    "output": 10619,
     "edges": 4,
     "vertex_gap_mm": 3.7085318554272707e-06,
     "edge_gap_mm": 3.6461556476622257e-06,
@@ -1090,7 +1090,7 @@
   },
   {
     "reference": 6277,
-    "output": 10597,
+    "output": 10674,
     "edges": 4,
     "vertex_gap_mm": 3.7084807583157112e-06,
     "edge_gap_mm": 3.609265671437676e-06,
@@ -1099,7 +1099,7 @@
   },
   {
     "reference": 6301,
-    "output": 10637,
+    "output": 10714,
     "edges": 4,
     "vertex_gap_mm": 5.319978939446948e-06,
     "edge_gap_mm": 4.7730951353330465e-06,
@@ -1108,7 +1108,7 @@
   },
   {
     "reference": 6325,
-    "output": 10691,
+    "output": 10768,
     "edges": 4,
     "vertex_gap_mm": 5.878289928883174e-06,
     "edge_gap_mm": 5.728734755882937e-06,
@@ -1117,7 +1117,7 @@
   },
   {
     "reference": 7125,
-    "output": 10963,
+    "output": 11040,
     "edges": 32,
     "vertex_gap_mm": 7.795908317619554e-06,
     "edge_gap_mm": 4.093636394726496e-06,
@@ -1126,7 +1126,7 @@
   },
   {
     "reference": 6349,
-    "output": 11001,
+    "output": 11078,
     "edges": 4,
     "vertex_gap_mm": 5.878289928883174e-06,
     "edge_gap_mm": 5.728734755882937e-06,
@@ -1135,7 +1135,7 @@
   },
   {
     "reference": 6373,
-    "output": 11056,
+    "output": 11133,
     "edges": 4,
     "vertex_gap_mm": 5.878289928883174e-06,
     "edge_gap_mm": 5.707130248502179e-06,
@@ -1144,7 +1144,7 @@
   },
   {
     "reference": 6397,
-    "output": 11095,
+    "output": 11172,
     "edges": 4,
     "vertex_gap_mm": 5.320014558634218e-06,
     "edge_gap_mm": 4.7805693562982545e-06,
@@ -1153,7 +1153,7 @@
   },
   {
     "reference": 6421,
-    "output": 11150,
+    "output": 11227,
     "edges": 4,
     "vertex_gap_mm": 3.7085318554272707e-06,
     "edge_gap_mm": 3.609265671437676e-06,
@@ -1162,7 +1162,7 @@
   },
   {
     "reference": 6445,
-    "output": 11185,
+    "output": 11262,
     "edges": 4,
     "vertex_gap_mm": 3.7085318554272707e-06,
     "edge_gap_mm": 3.6461556618195682e-06,
@@ -1171,7 +1171,7 @@
   },
   {
     "reference": 6462,
-    "output": 11224,
+    "output": 11301,
     "edges": 4,
     "vertex_gap_mm": 3.7084807583157112e-06,
     "edge_gap_mm": 3.609265671437676e-06,
@@ -1180,7 +1180,7 @@
   },
   {
     "reference": 6493,
-    "output": 11304,
+    "output": 11381,
     "edges": 4,
     "vertex_gap_mm": 4.318849015251179e-06,
     "edge_gap_mm": 4.315837281486394e-06,
@@ -1189,7 +1189,7 @@
   },
   {
     "reference": 6517,
-    "output": 11330,
+    "output": 11407,
     "edges": 4,
     "vertex_gap_mm": 4.318849015251179e-06,
     "edge_gap_mm": 1.4824962978335447e-05,
@@ -1198,7 +1198,7 @@
   },
   {
     "reference": 6548,
-    "output": 11407,
+    "output": 11484,
     "edges": 4,
     "vertex_gap_mm": 4.318849015251179e-06,
     "edge_gap_mm": 4.315837281486394e-06,
@@ -1207,7 +1207,7 @@
   },
   {
     "reference": 6572,
-    "output": 11431,
+    "output": 11508,
     "edges": 4,
     "vertex_gap_mm": 4.318849015251179e-06,
     "edge_gap_mm": 1.881190267954978e-05,
@@ -1216,7 +1216,7 @@
   },
   {
     "reference": 8424,
-    "output": 11491,
+    "output": 11568,
     "edges": 4,
     "vertex_gap_mm": 6.080242204574029e-06,
     "edge_gap_mm": 5.885655945215154e-06,
@@ -1225,7 +1225,7 @@
   },
   {
     "reference": 6603,
-    "output": 11568,
+    "output": 11645,
     "edges": 4,
     "vertex_gap_mm": 4.318849015251179e-06,
     "edge_gap_mm": 4.315837281486394e-06,
@@ -1234,7 +1234,7 @@
   },
   {
     "reference": 6627,
-    "output": 11592,
+    "output": 11669,
     "edges": 4,
     "vertex_gap_mm": 4.318849015251179e-06,
     "edge_gap_mm": 1.4824962978335447e-05,
@@ -1243,7 +1243,7 @@
   },
   {
     "reference": 6658,
-    "output": 11669,
+    "output": 11746,
     "edges": 4,
     "vertex_gap_mm": 4.318849015251179e-06,
     "edge_gap_mm": 4.315837281486394e-06,
@@ -1252,7 +1252,7 @@
   },
   {
     "reference": 6682,
-    "output": 11693,
+    "output": 11770,
     "edges": 4,
     "vertex_gap_mm": 4.318849015251179e-06,
     "edge_gap_mm": 1.881190267954978e-05,
@@ -1261,7 +1261,7 @@
   },
   {
     "reference": 6719,
-    "output": 11779,
+    "output": 11856,
     "edges": 4,
     "vertex_gap_mm": 4.2023353195241434e-06,
     "edge_gap_mm": 2.9551411963932798e-06,
@@ -1270,7 +1270,7 @@
   },
   {
     "reference": 6742,
-    "output": 11819,
+    "output": 11896,
     "edges": 4,
     "vertex_gap_mm": 4.2023353195241434e-06,
     "edge_gap_mm": 3.0116618308972715e-05,
@@ -1279,7 +1279,7 @@
   },
   {
     "reference": 6779,
-    "output": 11893,
+    "output": 11970,
     "edges": 4,
     "vertex_gap_mm": 4.2023353195241434e-06,
     "edge_gap_mm": 2.9551411963932798e-06,
@@ -1288,7 +1288,7 @@
   },
   {
     "reference": 6822,
-    "output": 11969,
+    "output": 12046,
     "edges": 4,
     "vertex_gap_mm": 4.026227887719643e-06,
     "edge_gap_mm": 1.7653742154067224e-05,
@@ -1297,7 +1297,7 @@
   },
   {
     "reference": 6834,
-    "output": 12005,
+    "output": 12082,
     "edges": 4,
     "vertex_gap_mm": 4.026227887719643e-06,
     "edge_gap_mm": 4.7748011986096595e-06,
@@ -1306,7 +1306,7 @@
   },
   {
     "reference": 6877,
-    "output": 12057,
+    "output": 12134,
     "edges": 4,
     "vertex_gap_mm": 3.9200538873108205e-06,
     "edge_gap_mm": 3.0046958392814728e-05,
@@ -1315,7 +1315,7 @@
   },
   {
     "reference": 8407,
-    "output": 12093,
+    "output": 12170,
     "edges": 4,
     "vertex_gap_mm": 6.080242204574029e-06,
     "edge_gap_mm": 5.885655945215154e-06,
@@ -1324,7 +1324,7 @@
   },
   {
     "reference": 6889,
-    "output": 12115,
+    "output": 12192,
     "edges": 4,
     "vertex_gap_mm": 3.9200538873108205e-06,
     "edge_gap_mm": 3.2868437574156677e-06,
@@ -1333,7 +1333,7 @@
   },
   {
     "reference": 6931,
-    "output": 12193,
+    "output": 12270,
     "edges": 6,
     "vertex_gap_mm": 5.71978267886599e-06,
     "edge_gap_mm": 0.002943744697889623,
@@ -1342,7 +1342,7 @@
   },
   {
     "reference": 6973,
-    "output": 12282,
+    "output": 12359,
     "edges": 10,
     "vertex_gap_mm": 4.5880558491558375e-06,
     "edge_gap_mm": 3.0046959027581012e-05,
@@ -1351,7 +1351,7 @@
   },
   {
     "reference": 6987,
-    "output": 12305,
+    "output": 12382,
     "edges": 6,
     "vertex_gap_mm": 4.5880558491558375e-06,
     "edge_gap_mm": 4.506117210544995e-06,
@@ -1360,7 +1360,7 @@
   },
   {
     "reference": 7011,
-    "output": 12341,
+    "output": 12418,
     "edges": 6,
     "vertex_gap_mm": 4.5880558491558375e-06,
     "edge_gap_mm": 4.506117210544995e-06,
@@ -1369,7 +1369,7 @@
   },
   {
     "reference": 7168,
-    "output": 12404,
+    "output": 12481,
     "edges": 4,
     "vertex_gap_mm": 4.026227887719643e-06,
     "edge_gap_mm": 1.7653742167188496e-05,
@@ -1378,7 +1378,7 @@
   },
   {
     "reference": 7180,
-    "output": 12441,
+    "output": 12518,
     "edges": 4,
     "vertex_gap_mm": 4.026227887719643e-06,
     "edge_gap_mm": 4.774801189624952e-06,
@@ -1387,7 +1387,7 @@
   },
   {
     "reference": 7211,
-    "output": 12493,
+    "output": 12570,
     "edges": 4,
     "vertex_gap_mm": 3.9200538873108205e-06,
     "edge_gap_mm": 3.2868437574156677e-06,
@@ -1396,7 +1396,7 @@
   },
   {
     "reference": 7235,
-    "output": 12503,
+    "output": 12580,
     "edges": 4,
     "vertex_gap_mm": 3.9200538873108205e-06,
     "edge_gap_mm": 2.9112871850838908e-05,
@@ -1405,7 +1405,7 @@
   },
   {
     "reference": 7254,
-    "output": 12536,
+    "output": 12613,
     "edges": 6,
     "vertex_gap_mm": 5.719043022421353e-06,
     "edge_gap_mm": 4.315891535305426e-06,
@@ -1414,7 +1414,7 @@
   },
   {
     "reference": 8390,
-    "output": 12590,
+    "output": 12667,
     "edges": 4,
     "vertex_gap_mm": 6.080237006205412e-06,
     "edge_gap_mm": 5.786004034789047e-06,
@@ -1423,7 +1423,7 @@
   },
   {
     "reference": 7340,
-    "output": 12630,
+    "output": 12707,
     "edges": 6,
     "vertex_gap_mm": 6.462037765110251e-06,
     "edge_gap_mm": 0.0029861255922043516,
@@ -1432,7 +1432,7 @@
   },
   {
     "reference": 7403,
-    "output": 12650,
+    "output": 12727,
     "edges": 4,
     "vertex_gap_mm": 5.719043022421353e-06,
     "edge_gap_mm": 4.479798303952994e-06,
@@ -1441,7 +1441,7 @@
   },
   {
     "reference": 7434,
-    "output": 12670,
+    "output": 12747,
     "edges": 4,
     "vertex_gap_mm": 6.149598757703577e-06,
     "edge_gap_mm": 4.754424773457875e-06,
@@ -1450,7 +1450,7 @@
   },
   {
     "reference": 7456,
-    "output": 12705,
+    "output": 12782,
     "edges": 4,
     "vertex_gap_mm": 6.149598757703577e-06,
     "edge_gap_mm": 4.754424772612262e-06,
@@ -1459,7 +1459,7 @@
   },
   {
     "reference": 7468,
-    "output": 12712,
+    "output": 12789,
     "edges": 4,
     "vertex_gap_mm": 6.462037765110251e-06,
     "edge_gap_mm": 5.338945506113295e-06,
@@ -1468,7 +1468,7 @@
   },
   {
     "reference": 7649,
-    "output": 12873,
+    "output": 12950,
     "edges": 36,
     "vertex_gap_mm": 6.78102424930061e-06,
     "edge_gap_mm": 1.881190267954978e-05,
@@ -1477,7 +1477,7 @@
   },
   {
     "reference": 7692,
-    "output": 12924,
+    "output": 13001,
     "edges": 4,
     "vertex_gap_mm": 4.365387271778192e-06,
     "edge_gap_mm": 1.920145588168897e-05,
@@ -1486,7 +1486,7 @@
   },
   {
     "reference": 7704,
-    "output": 12942,
+    "output": 13019,
     "edges": 4,
     "vertex_gap_mm": 4.365387271778192e-06,
     "edge_gap_mm": 3.617917770729086e-06,
@@ -1495,7 +1495,7 @@
   },
   {
     "reference": 7747,
-    "output": 12991,
+    "output": 13068,
     "edges": 4,
     "vertex_gap_mm": 4.365387271778192e-06,
     "edge_gap_mm": 2.012863524713354e-05,
@@ -1504,7 +1504,7 @@
   },
   {
     "reference": 7759,
-    "output": 13009,
+    "output": 13086,
     "edges": 4,
     "vertex_gap_mm": 4.365387271778192e-06,
     "edge_gap_mm": 3.617917770729086e-06,
@@ -1513,7 +1513,7 @@
   },
   {
     "reference": 8373,
-    "output": 13049,
+    "output": 13126,
     "edges": 4,
     "vertex_gap_mm": 5.997654765775599e-06,
     "edge_gap_mm": 5.421604427780644e-06,
@@ -1522,7 +1522,7 @@
   },
   {
     "reference": 7802,
-    "output": 13098,
+    "output": 13175,
     "edges": 4,
     "vertex_gap_mm": 4.365387271778192e-06,
     "edge_gap_mm": 2.0128514915552102e-05,
@@ -1531,7 +1531,7 @@
   },
   {
     "reference": 7814,
-    "output": 13116,
+    "output": 13193,
     "edges": 4,
     "vertex_gap_mm": 4.365387271778192e-06,
     "edge_gap_mm": 3.617917770729086e-06,
@@ -1540,7 +1540,7 @@
   },
   {
     "reference": 7833,
-    "output": 13153,
+    "output": 13230,
     "edges": 6,
     "vertex_gap_mm": 5.351734589589829e-06,
     "edge_gap_mm": 4.895163092211854e-06,
@@ -1549,7 +1549,7 @@
   },
   {
     "reference": 7845,
-    "output": 13173,
+    "output": 13250,
     "edges": 4,
     "vertex_gap_mm": 5.71978267886599e-06,
     "edge_gap_mm": 4.479798303952994e-06,
@@ -1558,7 +1558,7 @@
   },
   {
     "reference": 7854,
-    "output": 13182,
+    "output": 13259,
     "edges": 6,
     "vertex_gap_mm": 5.71978267886599e-06,
     "edge_gap_mm": 4.315891535305426e-06,
@@ -1567,7 +1567,7 @@
   },
   {
     "reference": 7868,
-    "output": 13204,
+    "output": 13281,
     "edges": 6,
     "vertex_gap_mm": 7.131215543424432e-06,
     "edge_gap_mm": 0.002856661769078382,
@@ -1576,7 +1576,7 @@
   },
   {
     "reference": 7887,
-    "output": 13239,
+    "output": 13316,
     "edges": 6,
     "vertex_gap_mm": 7.131215543424432e-06,
     "edge_gap_mm": 0.002856661769078382,
@@ -1585,7 +1585,7 @@
   },
   {
     "reference": 7923,
-    "output": 13310,
+    "output": 13387,
     "edges": 6,
     "vertex_gap_mm": 5.07416285839144e-06,
     "edge_gap_mm": 0.000305001189251245,
@@ -1594,7 +1594,7 @@
   },
   {
     "reference": 7952,
-    "output": 13359,
+    "output": 13436,
     "edges": 10,
     "vertex_gap_mm": 4.5880558491558375e-06,
     "edge_gap_mm": 3.0046958392814728e-05,
@@ -1603,7 +1603,7 @@
   },
   {
     "reference": 7995,
-    "output": 13385,
+    "output": 13473,
     "edges": 7,
     "vertex_gap_mm": 7.131253872365024e-06,
     "edge_gap_mm": 0.002943744697889623,
@@ -1612,7 +1612,7 @@
   },
   {
     "reference": 8356,
-    "output": 13437,
+    "output": 13525,
     "edges": 4,
     "vertex_gap_mm": 3.5592175690415112e-06,
     "edge_gap_mm": 3.6514283837531906e-06,
@@ -1621,7 +1621,7 @@
   },
   {
     "reference": 8014,
-    "output": 13459,
+    "output": 13547,
     "edges": 6,
     "vertex_gap_mm": 5.07416285839144e-06,
     "edge_gap_mm": 0.0003167337334040525,
@@ -1630,7 +1630,7 @@
   },
   {
     "reference": 8033,
-    "output": 13481,
+    "output": 13569,
     "edges": 6,
     "vertex_gap_mm": 5.090355032429078e-06,
     "edge_gap_mm": 0.002857944100014184,
@@ -1639,7 +1639,7 @@
   },
   {
     "reference": 8056,
-    "output": 13511,
+    "output": 13599,
     "edges": 8,
     "vertex_gap_mm": 4.917343366320275e-06,
     "edge_gap_mm": 0.002857944100014184,
@@ -1648,7 +1648,7 @@
   },
   {
     "reference": 8075,
-    "output": 13548,
+    "output": 13636,
     "edges": 6,
     "vertex_gap_mm": 6.462037765110251e-06,
     "edge_gap_mm": 5.338945506113295e-06,
@@ -1657,7 +1657,7 @@
   },
   {
     "reference": 8093,
-    "output": 13575,
+    "output": 13663,
     "edges": 10,
     "vertex_gap_mm": 7.6413034776492e-06,
     "edge_gap_mm": 7.001544625589689e-06,
@@ -1666,7 +1666,7 @@
   },
   {
     "reference": 8107,
-    "output": 13598,
+    "output": 13686,
     "edges": 6,
     "vertex_gap_mm": 8.034245441778533e-06,
     "edge_gap_mm": 5.026087310957404e-05,
@@ -1675,7 +1675,7 @@
   },
   {
     "reference": 8305,
-    "output": 13649,
+    "output": 13737,
     "edges": 22,
     "vertex_gap_mm": 5.090355032429078e-06,
     "edge_gap_mm": 9.87593564950804e-06,
@@ -1684,7 +1684,7 @@
   },
   {
     "reference": 8623,
-    "output": 13680,
+    "output": 13768,
     "edges": 10,
     "vertex_gap_mm": 4.587741057973735e-06,
     "edge_gap_mm": 2.9112871850838908e-05,
@@ -1693,7 +1693,7 @@
   },
   {
     "reference": 8637,
-    "output": 13689,
+    "output": 13777,
     "edges": 6,
     "vertex_gap_mm": 4.798759034042192e-06,
     "edge_gap_mm": 3.651184973938811e-06,
@@ -1702,7 +1702,7 @@
   },
   {
     "reference": 8651,
-    "output": 13711,
+    "output": 13799,
     "edges": 6,
     "vertex_gap_mm": 4.587741057973735e-06,
     "edge_gap_mm": 4.506117210544995e-06,
@@ -1711,7 +1711,7 @@
   },
   {
     "reference": 8339,
-    "output": 13747,
+    "output": 13835,
     "edges": 4,
     "vertex_gap_mm": 3.452908078302129e-06,
     "edge_gap_mm": 3.385825849252204e-06,
@@ -1720,7 +1720,7 @@
   },
   {
     "reference": 8658,
-    "output": 13754,
+    "output": 13842,
     "edges": 4,
     "vertex_gap_mm": 6.462037765110251e-06,
     "edge_gap_mm": 5.338945506113295e-06,
@@ -1729,7 +1729,7 @@
   },
   {
     "reference": 8702,
-    "output": 13846,
+    "output": 13934,
     "edges": 16,
     "vertex_gap_mm": 4.332054099363294e-06,
     "edge_gap_mm": 3.654213872290096e-06,
@@ -1738,7 +1738,7 @@
   },
   {
     "reference": 8726,
-    "output": 13913,
+    "output": 14001,
     "edges": 6,
     "vertex_gap_mm": 7.168104887768927e-06,
     "edge_gap_mm": 7.419165264742181e-06,
@@ -1747,7 +1747,7 @@
   },
   {
     "reference": 8750,
-    "output": 13982,
+    "output": 14070,
     "edges": 6,
     "vertex_gap_mm": 7.168104887768927e-06,
     "edge_gap_mm": 7.531818532671551e-06,
@@ -1756,7 +1756,7 @@
   },
   {
     "reference": 8774,
-    "output": 14049,
+    "output": 14137,
     "edges": 6,
     "vertex_gap_mm": 7.168104887768927e-06,
     "edge_gap_mm": 7.531818541654685e-06,
@@ -1765,7 +1765,7 @@
   },
   {
     "reference": 8798,
-    "output": 14115,
+    "output": 14203,
     "edges": 6,
     "vertex_gap_mm": 7.168104887768927e-06,
     "edge_gap_mm": 7.419165170133864e-06,
@@ -1774,7 +1774,7 @@
   },
   {
     "reference": 8886,
-    "output": 14138,
+    "output": 14226,
     "edges": 6,
     "vertex_gap_mm": 7.168104887768927e-06,
     "edge_gap_mm": 6.92903798592509e-06,
@@ -1783,7 +1783,7 @@
   },
   {
     "reference": 8974,
-    "output": 14162,
+    "output": 14250,
     "edges": 6,
     "vertex_gap_mm": 4.507550355104318e-06,
     "edge_gap_mm": 4.146772000850599e-06,
@@ -1792,7 +1792,7 @@
   },
   {
     "reference": 9296,
-    "output": 14186,
+    "output": 14274,
     "edges": 6,
     "vertex_gap_mm": 7.168104887768927e-06,
     "edge_gap_mm": 6.92903798592509e-06,
@@ -1801,7 +1801,7 @@
   },
   {
     "reference": 9735,
-    "output": 14209,
+    "output": 14297,
     "edges": 6,
     "vertex_gap_mm": 4.507550355104318e-06,
     "edge_gap_mm": 4.146772000850599e-06,
@@ -1810,7 +1810,7 @@
   },
   {
     "reference": 8589,
-    "output": 14262,
+    "output": 14350,
     "edges": 4,
     "vertex_gap_mm": 3.5601888821720056e-06,
     "edge_gap_mm": 3.486797148625195e-06,
@@ -1819,7 +1819,7 @@
   },
   {
     "reference": 10116,
-    "output": 14330,
+    "output": 14418,
     "edges": 6,
     "vertex_gap_mm": 4.864930352408798e-06,
     "edge_gap_mm": 1.920145588168897e-05,
@@ -1828,7 +1828,7 @@
   },
   {
     "reference": 10155,
-    "output": 14398,
+    "output": 14486,
     "edges": 6,
     "vertex_gap_mm": 4.8655678018801045e-06,
     "edge_gap_mm": 2.012863524713354e-05,
@@ -1837,7 +1837,7 @@
   },
   {
     "reference": 10194,
-    "output": 14466,
+    "output": 14554,
     "edges": 6,
     "vertex_gap_mm": 4.865746412689705e-06,
     "edge_gap_mm": 2.0128514915552102e-05,
@@ -1846,7 +1846,7 @@
   },
   {
     "reference": 10213,
-    "output": 14489,
+    "output": 14577,
     "edges": 6,
     "vertex_gap_mm": 4.28488361700696e-06,
     "edge_gap_mm": 4.001042013464002e-06,
@@ -1855,7 +1855,7 @@
   },
   {
     "reference": 10227,
-    "output": 14512,
+    "output": 14600,
     "edges": 6,
     "vertex_gap_mm": 6.462037765110251e-06,
     "edge_gap_mm": 5.338945506113295e-06,
@@ -1864,7 +1864,7 @@
   },
   {
     "reference": 10241,
-    "output": 14535,
+    "output": 14623,
     "edges": 6,
     "vertex_gap_mm": 5.351028501104642e-06,
     "edge_gap_mm": 4.895163083356284e-06,
@@ -1873,7 +1873,7 @@
   },
   {
     "reference": 10260,
-    "output": 14557,
+    "output": 14645,
     "edges": 6,
     "vertex_gap_mm": 7.6413034776492e-06,
     "edge_gap_mm": 7.0015446179215085e-06,
@@ -1882,7 +1882,7 @@
   },
   {
     "reference": 10338,
-    "output": 14596,
+    "output": 14684,
     "edges": 16,
     "vertex_gap_mm": 7.716831617817213e-06,
     "edge_gap_mm": 0.00010014362439669026,
@@ -1891,7 +1891,7 @@
   },
   {
     "reference": 10376,
-    "output": 14654,
+    "output": 14742,
     "edges": 14,
     "vertex_gap_mm": 5.090355032429078e-06,
     "edge_gap_mm": 8.772299523622614e-05,
@@ -1900,7 +1900,7 @@
   },
   {
     "reference": 10388,
-    "output": 14673,
+    "output": 14761,
     "edges": 4,
     "vertex_gap_mm": 6.462037765110251e-06,
     "edge_gap_mm": 5.338945506113295e-06,
@@ -1909,7 +1909,7 @@
   },
   {
     "reference": 8577,
-    "output": 14712,
+    "output": 14800,
     "edges": 4,
     "vertex_gap_mm": 5.9976494958256145e-06,
     "edge_gap_mm": 5.288496619867288e-06,
@@ -1918,7 +1918,7 @@
   },
   {
     "reference": 10405,
-    "output": 14731,
+    "output": 14819,
     "edges": 4,
     "vertex_gap_mm": 6.15001469012154e-06,
     "edge_gap_mm": 4.754424773457875e-06,
@@ -1927,7 +1927,7 @@
   },
   {
     "reference": 10412,
-    "output": 14738,
+    "output": 14826,
     "edges": 4,
     "vertex_gap_mm": 5.71978267886599e-06,
     "edge_gap_mm": 4.479096264219627e-06,
@@ -1936,7 +1936,7 @@
   },
   {
     "reference": 10659,
-    "output": 14772,
+    "output": 14860,
     "edges": 4,
     "vertex_gap_mm": 7.130745210701145e-06,
     "edge_gap_mm": 6.478358732007149e-06,
@@ -1945,7 +1945,7 @@
   },
   {
     "reference": 10671,
-    "output": 14792,
+    "output": 14880,
     "edges": 4,
     "vertex_gap_mm": 6.552373962205398e-06,
     "edge_gap_mm": 5.9942235549631356e-06,
@@ -1954,7 +1954,7 @@
   },
   {
     "reference": 10688,
-    "output": 14813,
+    "output": 14901,
     "edges": 4,
     "vertex_gap_mm": 4.864930352408798e-06,
     "edge_gap_mm": 4.0287945592512475e-06,
@@ -1963,7 +1963,7 @@
   },
   {
     "reference": 10695,
-    "output": 14820,
+    "output": 14908,
     "edges": 4,
     "vertex_gap_mm": 7.130745210701145e-06,
     "edge_gap_mm": 6.478358732007149e-06,
@@ -1972,7 +1972,7 @@
   },
   {
     "reference": 10712,
-    "output": 14853,
+    "output": 14941,
     "edges": 4,
     "vertex_gap_mm": 4.8655678018801045e-06,
     "edge_gap_mm": 4.0287945687439635e-06,
@@ -1981,7 +1981,7 @@
   },
   {
     "reference": 10729,
-    "output": 14873,
+    "output": 14961,
     "edges": 4,
     "vertex_gap_mm": 7.130745210701145e-06,
     "edge_gap_mm": 6.478578177251848e-06,
@@ -1990,7 +1990,7 @@
   },
   {
     "reference": 10741,
-    "output": 14895,
+    "output": 14983,
     "edges": 4,
     "vertex_gap_mm": 7.130745210701145e-06,
     "edge_gap_mm": 6.478578177251848e-06,
@@ -1999,7 +1999,7 @@
   },
   {
     "reference": 10753,
-    "output": 14902,
+    "output": 14990,
     "edges": 4,
     "vertex_gap_mm": 6.552373962205398e-06,
     "edge_gap_mm": 5.994223582195843e-06,
@@ -2008,7 +2008,7 @@
   },
   {
     "reference": 202,
-    "output": 14921,
+    "output": 15009,
     "edges": 4,
     "vertex_gap_mm": 7.130745210701145e-06,
     "edge_gap_mm": 6.478578177251848e-06,
@@ -2017,7 +2017,7 @@
   },
   {
     "reference": 8560,
-    "output": 14975,
+    "output": 15063,
     "edges": 4,
     "vertex_gap_mm": 6.080242204574029e-06,
     "edge_gap_mm": 5.885655945215154e-06,
@@ -2026,7 +2026,7 @@
   },
   {
     "reference": 10770,
-    "output": 15006,
+    "output": 15094,
     "edges": 4,
     "vertex_gap_mm": 7.130745210701145e-06,
     "edge_gap_mm": 6.4782200023154245e-06,
@@ -2035,7 +2035,7 @@
   },
   {
     "reference": 10782,
-    "output": 15025,
+    "output": 15113,
     "edges": 4,
     "vertex_gap_mm": 7.130745210701145e-06,
     "edge_gap_mm": 6.4782200023154245e-06,
@@ -2044,7 +2044,7 @@
   },
   {
     "reference": 10794,
-    "output": 15044,
+    "output": 15132,
     "edges": 4,
     "vertex_gap_mm": 4.865746412689705e-06,
     "edge_gap_mm": 4.02922640546994e-06,
@@ -2053,7 +2053,7 @@
   },
   {
     "reference": 10801,
-    "output": 15051,
+    "output": 15139,
     "edges": 4,
     "vertex_gap_mm": 6.552373962205398e-06,
     "edge_gap_mm": 5.9941377766313146e-06,
@@ -2062,7 +2062,7 @@
   },
   {
     "reference": 8543,
-    "output": 15087,
+    "output": 15175,
     "edges": 4,
     "vertex_gap_mm": 6.080242204574029e-06,
     "edge_gap_mm": 5.885655945215154e-06,
@@ -2071,7 +2071,7 @@
   },
   {
     "reference": 8526,
-    "output": 15140,
+    "output": 15228,
     "edges": 4,
     "vertex_gap_mm": 6.080237006205412e-06,
     "edge_gap_mm": 5.786004034789047e-06,
@@ -2080,7 +2080,7 @@
   },
   {
     "reference": 8509,
-    "output": 15179,
+    "output": 15267,
     "edges": 4,
     "vertex_gap_mm": 5.997654765775599e-06,
     "edge_gap_mm": 5.421604427780644e-06,
@@ -2089,7 +2089,7 @@
   },
   {
     "reference": 8492,
-    "output": 15231,
+    "output": 15319,
     "edges": 4,
     "vertex_gap_mm": 3.5592175690415112e-06,
     "edge_gap_mm": 3.6514283837531906e-06,
@@ -2098,7 +2098,7 @@
   },
   {
     "reference": 8475,
-    "output": 15267,
+    "output": 15355,
     "edges": 4,
     "vertex_gap_mm": 3.4529301969641393e-06,
     "edge_gap_mm": 3.385825849252204e-06,
@@ -2107,7 +2107,7 @@
   },
   {
     "reference": 8458,
-    "output": 15319,
+    "output": 15407,
     "edges": 4,
     "vertex_gap_mm": 3.5601888821720056e-06,
     "edge_gap_mm": 3.486797148625195e-06,
@@ -2116,7 +2116,7 @@
   },
   {
     "reference": 8317,
-    "output": 15341,
+    "output": 15429,
     "edges": 4,
     "vertex_gap_mm": 6.792323336670861e-06,
     "edge_gap_mm": 6.384093362909656e-06,
@@ -2125,7 +2125,7 @@
   },
   {
     "reference": 8601,
-    "output": 15361,
+    "output": 15449,
     "edges": 4,
     "vertex_gap_mm": 6.792323336670861e-06,
     "edge_gap_mm": 6.384093362909656e-06,
@@ -2134,7 +2134,7 @@
   },
   {
     "reference": 10350,
-    "output": 15383,
+    "output": 15471,
     "edges": 4,
     "vertex_gap_mm": 6.7933407815299464e-06,
     "edge_gap_mm": 6.3833000659761505e-06,
@@ -2143,7 +2143,7 @@
   },
   {
     "reference": 72,
-    "output": 15457,
+    "output": 15545,
     "edges": 4,
     "vertex_gap_mm": 4.2023353195241434e-06,
     "edge_gap_mm": 2.9551411963932798e-06,
@@ -2152,7 +2152,7 @@
   },
   {
     "reference": 7374,
-    "output": 15505,
+    "output": 15593,
     "edges": 4,
     "vertex_gap_mm": 6.149598757703577e-06,
     "edge_gap_mm": 4.754424772612262e-06,
@@ -2161,7 +2161,7 @@
   },
   {
     "reference": 7357,
-    "output": 15512,
+    "output": 15600,
     "edges": 4,
     "vertex_gap_mm": 6.462037765110251e-06,
     "edge_gap_mm": 5.338945506113295e-06,
@@ -2170,7 +2170,7 @@
   },
   {
     "reference": 901,
-    "output": 15605,
+    "output": 15693,
     "edges": 10,
     "vertex_gap_mm": 4.5880558491558375e-06,
     "edge_gap_mm": 4.406232978844069e-06,
@@ -2179,7 +2179,7 @@
   },
   {
     "reference": 2056,
-    "output": 15641,
+    "output": 15729,
     "edges": 6,
     "vertex_gap_mm": 7.168104887768927e-06,
     "edge_gap_mm": 3.9008525855907487e-10,
@@ -2188,7 +2188,7 @@
   },
   {
     "reference": 1976,
-    "output": 15676,
+    "output": 15764,
     "edges": 6,
     "vertex_gap_mm": 7.168104887768927e-06,
     "edge_gap_mm": 3.900958842741195e-10,
@@ -2197,7 +2197,7 @@
   },
   {
     "reference": 1816,
-    "output": 15710,
+    "output": 15798,
     "edges": 6,
     "vertex_gap_mm": 7.168104887768927e-06,
     "edge_gap_mm": 3.900854036951601e-10,
@@ -2206,7 +2206,7 @@
   },
   {
     "reference": 1896,
-    "output": 15745,
+    "output": 15833,
     "edges": 6,
     "vertex_gap_mm": 7.168104887768927e-06,
     "edge_gap_mm": 4.714051185049615e-09,
@@ -2215,7 +2215,7 @@
   },
   {
     "reference": 8872,
-    "output": 15753,
+    "output": 15841,
     "edges": 5,
     "vertex_gap_mm": 7.168104887768927e-06,
     "edge_gap_mm": 5.6741783484078545e-06,
@@ -2224,7 +2224,7 @@
   },
   {
     "reference": 8835,
-    "output": 15761,
+    "output": 15849,
     "edges": 5,
     "vertex_gap_mm": 7.168104887768927e-06,
     "edge_gap_mm": 5.6741783484078545e-06,
@@ -2233,7 +2233,7 @@
   },
   {
     "reference": 8960,
-    "output": 15769,
+    "output": 15857,
     "edges": 5,
     "vertex_gap_mm": 5.584224828918781e-06,
     "edge_gap_mm": 9.159782385680324e-07,
@@ -2242,7 +2242,7 @@
   },
   {
     "reference": 171,
-    "output": 15806,
+    "output": 15894,
     "edges": 6,
     "vertex_gap_mm": 4.8653359852070905e-06,
     "edge_gap_mm": 1.9201582009260354e-05,
@@ -2251,7 +2251,7 @@
   },
   {
     "reference": 8923,
-    "output": 15814,
+    "output": 15902,
     "edges": 5,
     "vertex_gap_mm": 5.584224828918781e-06,
     "edge_gap_mm": 9.159782386020141e-07,
@@ -2260,7 +2260,7 @@
   },
   {
     "reference": 9282,
-    "output": 15822,
+    "output": 15910,
     "edges": 5,
     "vertex_gap_mm": 7.168104887768927e-06,
     "edge_gap_mm": 5.6741783484078545e-06,
@@ -2269,7 +2269,7 @@
   },
   {
     "reference": 9245,
-    "output": 15830,
+    "output": 15918,
     "edges": 5,
     "vertex_gap_mm": 7.168104887768927e-06,
     "edge_gap_mm": 5.6741783484078545e-06,
@@ -2278,7 +2278,7 @@
   },
   {
     "reference": 9721,
-    "output": 15838,
+    "output": 15926,
     "edges": 5,
     "vertex_gap_mm": 5.584224828918781e-06,
     "edge_gap_mm": 9.159782385680324e-07,
@@ -2287,7 +2287,7 @@
   },
   {
     "reference": 9684,
-    "output": 15846,
+    "output": 15934,
     "edges": 5,
     "vertex_gap_mm": 5.584224828918781e-06,
     "edge_gap_mm": 9.159782385796577e-07,
@@ -2296,7 +2296,7 @@
   },
   {
     "reference": 7386,
-    "output": 15853,
+    "output": 15941,
     "edges": 4,
     "vertex_gap_mm": 5.71978267886599e-06,
     "edge_gap_mm": 4.479096264219627e-06,
@@ -2305,7 +2305,7 @@
   },
   {
     "reference": 3717,
-    "output": 15862,
+    "output": 15950,
     "edges": 6,
     "vertex_gap_mm": 6.149598757703577e-06,
     "edge_gap_mm": 4.754424772612262e-06,
@@ -2314,7 +2314,7 @@
   },
   {
     "reference": 8441,
-    "output": 15882,
+    "output": 15970,
     "edges": 4,
     "vertex_gap_mm": 5.997654765775599e-06,
     "edge_gap_mm": 5.288496619867288e-06,
@@ -2323,7 +2323,7 @@
   },
   {
     "reference": 2756,
-    "output": 15927,
+    "output": 16015,
     "edges": 40,
     "vertex_gap_mm": 6.7933407815299464e-06,
     "edge_gap_mm": 9.70166487925207e-05,
@@ -2332,7 +2332,7 @@
   },
   {
     "reference": 7059,
-    "output": 15936,
+    "output": 16024,
     "edges": 6,
     "vertex_gap_mm": 3.714549665066492e-06,
     "edge_gap_mm": 3.5937371841007603e-06,
@@ -2341,7 +2341,7 @@
   },
   {
     "reference": 10557,
-    "output": 15943,
+    "output": 16031,
     "edges": 4,
     "vertex_gap_mm": 7.780672295874262e-06,
     "edge_gap_mm": 7.77664283720455e-06,
@@ -2350,7 +2350,7 @@
   },
   {
     "reference": 4293,
-    "output": 15952,
+    "output": 16040,
     "edges": 6,
     "vertex_gap_mm": 3.71460512876088e-06,
     "edge_gap_mm": 3.5937665767249006e-06,
@@ -2359,7 +2359,7 @@
   },
   {
     "reference": 4213,
-    "output": 15961,
+    "output": 16049,
     "edges": 6,
     "vertex_gap_mm": 7.502791838112546e-06,
     "edge_gap_mm": 7.507500668351925e-06,
@@ -2368,7 +2368,7 @@
   },
   {
     "reference": 4133,
-    "output": 15970,
+    "output": 16058,
     "edges": 6,
     "vertex_gap_mm": 7.503518687684631e-06,
     "edge_gap_mm": 7.124528112927476e-06,
@@ -2377,7 +2377,7 @@
   },
   {
     "reference": 4053,
-    "output": 15979,
+    "output": 16067,
     "edges": 6,
     "vertex_gap_mm": 3.714549665066492e-06,
     "edge_gap_mm": 3.70310748387761e-06,
@@ -2386,7 +2386,7 @@
   },
   {
     "reference": 4565,
-    "output": 15988,
+    "output": 16076,
     "edges": 6,
     "vertex_gap_mm": 3.71460512876088e-06,
     "edge_gap_mm": 3.5937371841007603e-06,
@@ -2395,7 +2395,7 @@
   },
   {
     "reference": 4485,
-    "output": 15997,
+    "output": 16085,
     "edges": 6,
     "vertex_gap_mm": 7.502791838112546e-06,
     "edge_gap_mm": 7.507500668351925e-06,
@@ -2404,7 +2404,7 @@
   },
   {
     "reference": 5649,
-    "output": 16006,
+    "output": 16094,
     "edges": 6,
     "vertex_gap_mm": 3.7085318554272707e-06,
     "edge_gap_mm": 3.609265671437676e-06,
@@ -2413,7 +2413,7 @@
   },
   {
     "reference": 5569,
-    "output": 16015,
+    "output": 16103,
     "edges": 6,
     "vertex_gap_mm": 3.7084807583157112e-06,
     "edge_gap_mm": 3.609265671437676e-06,
@@ -2422,7 +2422,7 @@
   },
   {
     "reference": 5489,
-    "output": 16024,
+    "output": 16112,
     "edges": 6,
     "vertex_gap_mm": 8.267972337856534e-06,
     "edge_gap_mm": 7.780036669800863e-06,
@@ -2431,7 +2431,7 @@
   },
   {
     "reference": 5409,
-    "output": 16033,
+    "output": 16121,
     "edges": 6,
     "vertex_gap_mm": 8.267972337856534e-06,
     "edge_gap_mm": 8.029152246511724e-06,
@@ -2440,7 +2440,7 @@
   },
   {
     "reference": 809,
-    "output": 16042,
+    "output": 16130,
     "edges": 6,
     "vertex_gap_mm": 7.780419463843051e-06,
     "edge_gap_mm": 0.0007925279162751607,
@@ -2449,7 +2449,7 @@
   },
   {
     "reference": 5329,
-    "output": 16051,
+    "output": 16139,
     "edges": 6,
     "vertex_gap_mm": 3.7085318554272707e-06,
     "edge_gap_mm": 3.609265671437676e-06,
@@ -2458,7 +2458,7 @@
   },
   {
     "reference": 5249,
-    "output": 16060,
+    "output": 16148,
     "edges": 6,
     "vertex_gap_mm": 3.7084807583157112e-06,
     "edge_gap_mm": 3.609265671437676e-06,
@@ -2467,7 +2467,7 @@
   },
   {
     "reference": 5169,
-    "output": 16069,
+    "output": 16157,
     "edges": 6,
     "vertex_gap_mm": 8.267972337856534e-06,
     "edge_gap_mm": 7.780036669800863e-06,
@@ -2476,7 +2476,7 @@
   },
   {
     "reference": 5089,
-    "output": 16078,
+    "output": 16166,
     "edges": 6,
     "vertex_gap_mm": 8.267972337856534e-06,
     "edge_gap_mm": 7.780036674589188e-06,
@@ -2485,7 +2485,7 @@
   },
   {
     "reference": 5748,
-    "output": 16111,
+    "output": 16199,
     "edges": 3,
     "vertex_gap_mm": 4.316502418748348e-06,
     "edge_gap_mm": 5.573859261668745e-06,
@@ -2494,7 +2494,7 @@
   },
   {
     "reference": 5931,
-    "output": 16117,
+    "output": 16205,
     "edges": 3,
     "vertex_gap_mm": 4.316502418748348e-06,
     "edge_gap_mm": 5.573859261668745e-06,
@@ -2503,7 +2503,7 @@
   },
   {
     "reference": 5780,
-    "output": 16148,
+    "output": 16236,
     "edges": 3,
     "vertex_gap_mm": 4.316502418748348e-06,
     "edge_gap_mm": 5.5738456453988265e-06,
@@ -2512,7 +2512,7 @@
   },
   {
     "reference": 5920,
-    "output": 16154,
+    "output": 16242,
     "edges": 3,
     "vertex_gap_mm": 4.316502418748348e-06,
     "edge_gap_mm": 5.5738456453988265e-06,
@@ -2521,7 +2521,7 @@
   },
   {
     "reference": 5812,
-    "output": 16185,
+    "output": 16273,
     "edges": 3,
     "vertex_gap_mm": 4.316502418748348e-06,
     "edge_gap_mm": 5.573859261668745e-06,
@@ -2530,7 +2530,7 @@
   },
   {
     "reference": 5909,
-    "output": 16191,
+    "output": 16279,
     "edges": 3,
     "vertex_gap_mm": 4.316502418748348e-06,
     "edge_gap_mm": 5.573859261668745e-06,
@@ -2539,7 +2539,7 @@
   },
   {
     "reference": 759,
-    "output": 16200,
+    "output": 16288,
     "edges": 6,
     "vertex_gap_mm": 7.780419463843051e-06,
     "edge_gap_mm": 0.0009256596554575937,
@@ -2548,7 +2548,7 @@
   },
   {
     "reference": 5844,
-    "output": 16231,
+    "output": 16319,
     "edges": 3,
     "vertex_gap_mm": 4.317252096787163e-06,
     "edge_gap_mm": 5.5738456453988265e-06,
@@ -2557,7 +2557,7 @@
   },
   {
     "reference": 5898,
-    "output": 16237,
+    "output": 16325,
     "edges": 3,
     "vertex_gap_mm": 4.317252096787163e-06,
     "edge_gap_mm": 5.5738456453988265e-06,
@@ -2566,7 +2566,7 @@
   },
   {
     "reference": 127,
-    "output": 16268,
+    "output": 16356,
     "edges": 4,
     "vertex_gap_mm": 4.365387271778192e-06,
     "edge_gap_mm": 1.9201582009260354e-05,
@@ -2575,7 +2575,7 @@
   },
   {
     "reference": 103,
-    "output": 16275,
+    "output": 16363,
     "edges": 4,
     "vertex_gap_mm": 4.365387271778192e-06,
     "edge_gap_mm": 3.617917770729086e-06,
@@ -2584,7 +2584,7 @@
   },
   {
     "reference": 10823,
-    "output": 16306,
+    "output": 16394,
     "edges": 4,
     "vertex_gap_mm": 3.9200538873108205e-06,
     "edge_gap_mm": 3.2868437574156677e-06,
@@ -2593,7 +2593,7 @@
   },
   {
     "reference": 10830,
-    "output": 16313,
+    "output": 16401,
     "edges": 4,
     "vertex_gap_mm": 3.9200538873108205e-06,
     "edge_gap_mm": 3.2868437574156677e-06,
@@ -2602,7 +2602,7 @@
   },
   {
     "reference": 5033,
-    "output": 16346,
+    "output": 16434,
     "edges": 3,
     "vertex_gap_mm": 4.321920653299687e-06,
     "edge_gap_mm": 7.077771577351069e-06,
@@ -2611,7 +2611,7 @@
   },
   {
     "reference": 6078,
-    "output": 16352,
+    "output": 16440,
     "edges": 3,
     "vertex_gap_mm": 4.321920653299687e-06,
     "edge_gap_mm": 7.077771577351069e-06,
@@ -2620,7 +2620,7 @@
   },
   {
     "reference": 5716,
-    "output": 16385,
+    "output": 16473,
     "edges": 3,
     "vertex_gap_mm": 4.321920653299687e-06,
     "edge_gap_mm": 7.0777501374952315e-06,
@@ -2629,7 +2629,7 @@
   },
   {
     "reference": 5705,
-    "output": 16391,
+    "output": 16479,
     "edges": 3,
     "vertex_gap_mm": 4.321920653299687e-06,
     "edge_gap_mm": 7.0777501374952315e-06,
@@ -2638,7 +2638,7 @@
   },
   {
     "reference": 653,
-    "output": 16400,
+    "output": 16488,
     "edges": 6,
     "vertex_gap_mm": 7.780419463843051e-06,
     "edge_gap_mm": 0.0007925209193650863,
@@ -2647,7 +2647,7 @@
   },
   {
     "reference": 5876,
-    "output": 16433,
+    "output": 16521,
     "edges": 3,
     "vertex_gap_mm": 4.321920653299687e-06,
     "edge_gap_mm": 7.07776085432389e-06,
@@ -2656,7 +2656,7 @@
   },
   {
     "reference": 5887,
-    "output": 16439,
+    "output": 16527,
     "edges": 3,
     "vertex_gap_mm": 4.321920653299687e-06,
     "edge_gap_mm": 7.07776085432389e-06,
@@ -2665,7 +2665,7 @@
   },
   {
     "reference": 10434,
-    "output": 16490,
+    "output": 16578,
     "edges": 4,
     "vertex_gap_mm": 4.025014454717694e-06,
     "edge_gap_mm": 4.7748011986096595e-06,
@@ -2674,7 +2674,7 @@
   },
   {
     "reference": 10441,
-    "output": 16511,
+    "output": 16599,
     "edges": 4,
     "vertex_gap_mm": 4.025014454717694e-06,
     "edge_gap_mm": 4.858247843252725e-06,
@@ -2683,7 +2683,7 @@
   },
   {
     "reference": 2099,
-    "output": 16544,
+    "output": 16632,
     "edges": 3,
     "vertex_gap_mm": 4.321920653299687e-06,
     "edge_gap_mm": 7.077739414610286e-06,
@@ -2692,7 +2692,7 @@
   },
   {
     "reference": 2088,
-    "output": 16550,
+    "output": 16638,
     "edges": 3,
     "vertex_gap_mm": 4.321920653299687e-06,
     "edge_gap_mm": 7.077739414610286e-06,
@@ -2701,7 +2701,7 @@
   },
   {
     "reference": 9208,
-    "output": 16588,
+    "output": 16676,
     "edges": 4,
     "vertex_gap_mm": 4.133631931130866e-06,
     "edge_gap_mm": 7.84523466763416e-05,
@@ -2710,7 +2710,7 @@
   },
   {
     "reference": 9161,
-    "output": 16595,
+    "output": 16683,
     "edges": 4,
     "vertex_gap_mm": 4.133631931130866e-06,
     "edge_gap_mm": 8.772298947059492e-05,
@@ -2719,7 +2719,7 @@
   },
   {
     "reference": 9091,
-    "output": 16631,
+    "output": 16719,
     "edges": 4,
     "vertex_gap_mm": 4.133631933753746e-06,
     "edge_gap_mm": 7.84524606520558e-05,
@@ -2728,7 +2728,7 @@
   },
   {
     "reference": 9044,
-    "output": 16638,
+    "output": 16726,
     "edges": 4,
     "vertex_gap_mm": 4.133631933753746e-06,
     "edge_gap_mm": 8.772299523622614e-05,

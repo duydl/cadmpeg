@@ -1,0 +1,21 @@
+{
+  "previous_revision": "e815396ace50b7dd8b7aa3fd7941a62bd4cfc180",
+  "current_revision": "926360f71c6eb1cf25138bc7756d63d5f5ddb386",
+  "canonical_arena_hashes": {
+    "curves": {
+      "previous_sha256": "c4381d67fadaef7b25bc31e995189f001d5f5b9f9cbe6e8eb85697f026d998e0",
+      "current_sha256": "c4381d67fadaef7b25bc31e995189f001d5f5b9f9cbe6e8eb85697f026d998e0",
+      "unchanged": true
+    },
+    "surfaces": {
+      "previous_sha256": "b8ff4d89e6e08a5df8cf280e870cd94ddd7dd36afe3e14c75082155795627a25",
+      "current_sha256": "b8ff4d89e6e08a5df8cf280e870cd94ddd7dd36afe3e14c75082155795627a25",
+      "unchanged": true
+    },
+    "edges": {
+      "previous_sha256": "3186b3b85f89d9dd1fcd07d287f396e88f8cb21cc0d7ab8084f16c335bf4aac1",
+      "current_sha256": "3186b3b85f89d9dd1fcd07d287f396e88f8cb21cc0d7ab8084f16c335bf4aac1",
+      "unchanged": true
+    }
+  }
+}

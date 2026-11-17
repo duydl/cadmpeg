@@ -1,0 +1,470 @@
+[
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225645, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.003396797 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225654, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.003396797 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225663, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.003397751 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225672, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.003397751 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225681, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.003397751 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225690, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.003397751 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225699, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004547119 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225708, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004547119 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225717, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004545212 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225726, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004547119 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225735, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004547119 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225744, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004547119 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225753, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004546642 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225762, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004547119 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225941, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004547119 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225954, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004547119 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225967, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004547119 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 225980, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004546642 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 226297, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004547119 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 226310, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004545212 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 226323, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004547119 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 226336, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.004547119 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 226375, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.003396797 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 226388, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.003396797 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 226401, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.003397751 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 226414, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.003397751 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 226427, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.003397751 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.conic-branch-bounds-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "For conic support at offset 226440, used agreeing cylinder AABB-center azimuth witnesses and inferred the ellipse branch with smaller extrema discrepancy in each contradicting incident face box; largest stored-box excess 0.003397751 mm."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.parameter-map-accuracy-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "Interpreted class-25 fit tolerance 0.00592715962969619 as a model-space bound in mm for the stored plane pcurve at offset 672814; retained its class-20 geometry and the class-18 model curve."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.parameter-map-accuracy-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "Interpreted class-25 fit tolerance 0.00593242605986585 as a model-space bound in mm for the stored plane pcurve at offset 688412; retained its class-20 geometry and the class-18 model curve."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.parameter-map-accuracy-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "Interpreted class-25 fit tolerance 0.005924461019156101 as a model-space bound in mm for the stored plane pcurve at offset 677974; retained its class-20 geometry and the class-18 model curve."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.parameter-map-accuracy-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "Interpreted class-25 fit tolerance 0.0059297498928888685 as a model-space bound in mm for the stored plane pcurve at offset 669168; retained its class-20 geometry and the class-18 model curve."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.parameter-map-accuracy-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "Interpreted class-25 fit tolerance 0.0059244462881684005 as a model-space bound in mm for the stored plane pcurve at offset 677579; retained its class-20 geometry and the class-18 model curve."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.parameter-map-accuracy-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "Interpreted class-25 fit tolerance 0.005929753264921754 as a model-space bound in mm for the stored plane pcurve at offset 669547; retained its class-20 geometry and the class-18 model curve."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.parameter-map-accuracy-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "Interpreted class-25 fit tolerance 0.005924461014544096 as a model-space bound in mm for the stored plane pcurve at offset 673209; retained its class-20 geometry and the class-18 model curve."
+  },
+  {
+    "code": {
+      "kind": "namespaced",
+      "value": {
+        "namespace": "catia",
+        "code": "geometry.parameter-map-accuracy-inferred",
+        "kind": "geometry_agreement_sampled",
+        "strict_floor": "warning"
+      }
+    },
+    "severity": "warning",
+    "message": "Interpreted class-25 fit tolerance 0.005929752031886743 as a model-space bound in mm for the stored plane pcurve at offset 688791; retained its class-20 geometry and the class-18 model curve."
+  }
+]

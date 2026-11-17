@@ -25,18 +25,14 @@
     "solids": 1,
     "invalid_faces": 0
   },
-  "complete": {
-    "solid_volumes_mm3": [
-      1726249.912667806
-    ],
-    "solid_areas_mm2": [
-      391371.41837939137
-    ],
-    "shell_faces": 306,
+  "upstream": {
+    "solid_volumes_mm3": [],
+    "solid_areas_mm2": [],
+    "shell_faces": 302,
     "shells": 3,
-    "closed_shells": 1,
-    "solids": 1,
-    "invalid_faces": 0
+    "closed_shells": 0,
+    "solids": 0,
+    "invalid_faces": 22
   },
   "calosoe-complete": {
     "solid_volumes_mm3": [
@@ -59,56 +55,17 @@
     "solids": 5,
     "invalid_faces": 0
   },
-  "calosoe-upstream": {
+  "complete": {
     "solid_volumes_mm3": [
-      285.09953331329007,
-      451.60394395353626,
-      100105.42882960304,
-      76081.01116559106,
-      272799.99999999953
+      1726249.912667806
     ],
     "solid_areas_mm2": [
-      293.7389131106525,
-      400.5530633326987,
-      143368.47630172432,
-      111649.9617543099,
-      117976.00000000003
-    ],
-    "shell_faces": 314,
-    "shells": 5,
-    "closed_shells": 5,
-    "solids": 5,
-    "invalid_faces": 0
-  },
-  "conics": {
-    "solid_volumes_mm3": [
-      1727381.7154462887
-    ],
-    "solid_areas_mm2": [
-      398560.54343354783
+      391371.41837939137
     ],
     "shell_faces": 306,
     "shells": 3,
     "closed_shells": 1,
     "solids": 1,
     "invalid_faces": 0
-  },
-  "upstream": {
-    "solid_volumes_mm3": [],
-    "solid_areas_mm2": [],
-    "shell_faces": 302,
-    "shells": 3,
-    "closed_shells": 0,
-    "solids": 0,
-    "invalid_faces": 22
-  },
-  "candidate": {
-    "solid_volumes_mm3": [],
-    "solid_areas_mm2": [],
-    "shell_faces": 302,
-    "shells": 3,
-    "closed_shells": 0,
-    "solids": 0,
-    "invalid_faces": 22
   }
 }
