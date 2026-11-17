@@ -43,3 +43,9 @@ The cylinder-witness ellipse path now rejects a selected interval when an incide
 The rerun retains 282/304 strict matches and all 304 carrier/normal checks at 0.001 mm. OpenCascade reports one closed solid, two native sheet faces, and zero invalid shell faces. The public calosoe control retains five closed solids and zero invalid faces. The refreshed images use the same camera and meshing settings as above.
 
 `model-geometry-preservation.json` confirms identical canonical 3D curve, surface, and edge arenas against the earlier native audit revision. The same 22 reference faces remain outside the strict comparison. `review-validation.json` records the checks and the cadmpeg readback measurement-allowance caveat.
+
+## Independent STEP-witness provenance
+
+The eight plane-jet STEP witnesses are unchanged from upstream `9c4e34b5d25e2822b8120c54e680523779d451ea`. `step-witness-provenance.json` maps them to spline entities in `corpus/nist-pmi/step/nist_ftc_07_asme1_ap242-e2.stp` (SHA-256 `aa8115c12e12a99cc439477cbfd222916f9ec629fbb3c9002b18e0c264c9a892`). OpenCascade reads the STEP splines directly, converts the witness coordinates from millimetres to the file's inches, and projects each witness. The largest distance is below 5.4e-10 mm. The CATIA decoder's output is excluded from this check's inputs.
+
+Reproduce with the OCP Python package installed: `python verify-step-witnesses.py /path/to/cadmpeg`. The script reads the original constants from the pinned upstream commit and writes the per-point results. The native CATIA witness table remains a separate source.

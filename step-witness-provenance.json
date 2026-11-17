@@ -1,0 +1,97 @@
+{
+  "fixture": "corpus/nist-pmi/step/nist_ftc_07_asme1_ap242-e2.stp",
+  "sha256": "aa8115c12e12a99cc439477cbfd222916f9ec629fbb3c9002b18e0c264c9a892",
+  "units": "INCH, 25.4 mm per unit",
+  "source_constants_revision": "9c4e34b5d25e2822b8120c54e680523779d451ea",
+  "method": "OpenCascade StepToGeom reads the public STEP spline entities directly; GeomAPI projects each original upstream witness in source inches.",
+  "rows": [
+    {
+      "edge": 418,
+      "point_mm": [
+        -94.611231844,
+        -103.516638909,
+        -96.624385766
+      ],
+      "step_curve_entity": 6008,
+      "parameter": 4.100601412164393,
+      "gap_mm": 1.445843913280655e-10
+    },
+    {
+      "edge": 425,
+      "point_mm": [
+        141.074385766,
+        -103.516638905,
+        -69.211231846
+      ],
+      "step_curve_entity": 9996,
+      "parameter": 4.1006013985717376,
+      "gap_mm": 1.4394916464981359e-10
+    },
+    {
+      "edge": 436,
+      "point_mm": [
+        -94.611234209,
+        -103.516636583,
+        96.624385806
+      ],
+      "step_curve_entity": 1581,
+      "parameter": 4.100601512857517,
+      "gap_mm": 5.350840612505483e-10
+    },
+    {
+      "edge": 443,
+      "point_mm": [
+        -141.074385769,
+        -103.516638717,
+        69.211232037
+      ],
+      "step_curve_entity": 1533,
+      "parameter": 4.100601862809159,
+      "gap_mm": 3.884667477669217e-10
+    },
+    {
+      "edge": 700,
+      "point_mm": [
+        94.611231938,
+        -103.516638815,
+        96.624385768
+      ],
+      "step_curve_entity": 2798,
+      "parameter": 4.100601644091132,
+      "gap_mm": 3.068390706982988e-10
+    },
+    {
+      "edge": 728,
+      "point_mm": [
+        -141.074385806,
+        -103.516636589,
+        -69.211234202
+      ],
+      "step_curve_entity": 4038,
+      "parameter": 4.1006015248842225,
+      "gap_mm": 4.737308157196386e-10
+    },
+    {
+      "edge": 753,
+      "point_mm": [
+        94.611234209,
+        -103.516636583,
+        -96.624385806
+      ],
+      "step_curve_entity": 5867,
+      "parameter": 4.100601512666526,
+      "gap_mm": 5.347214199291087e-10
+    },
+    {
+      "edge": 761,
+      "point_mm": [
+        141.074385808,
+        -103.516636488,
+        69.211234306
+      ],
+      "step_curve_entity": 6073,
+      "parameter": 4.10060177369251,
+      "gap_mm": 3.4289808931815383e-10
+    }
+  ]
+}

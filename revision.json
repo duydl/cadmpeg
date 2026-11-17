@@ -8,6 +8,8 @@
   "strict_after": 282,
   "reference_faces": 304,
   "sha256": {
+    "step-witness-provenance.json": "436908660c39d500af3c8a85ecb948539bbc00370a03f500365efde18ecf193b",
+    "verify-step-witnesses.py": "7fce2f26b2ddfd6431e9f5384d9cdc265317e682db8f04bb1edef3043ba55efc",
     "review-validation.json": "8e24a4f1c48d62bb4cb8c548611a7f7ad2070e9bdaf764981143b446ab8230c4",
     "model-geometry-preservation.json": "7f9865a739785a3f4bfe609c6812ac5ef183c56be109fc914b7cf26cc1df1907",
     "review-recovery-losses.json": "7dac68b5214c28fa958e5636aa693b148784b27571b43a042b993be37dfb0597",
@@ -26,7 +28,7 @@
     "after-verified-carriers.json": "f6419d315e3e8949d7481be2e2cc4d28ef436fcdef1b7799398fb521dd277eb5",
     "original-nist.step": "aa8115c12e12a99cc439477cbfd222916f9ec629fbb3c9002b18e0c264c9a892",
     "NIST-NOTICE.md": "24d9d8782dfa3b8d7e7786b2fdf73757c585b2b7bbf50e7c8301ded7de885a21",
-    "README.md": "a875f85f809c5992531cab3910aea0f425ea7dad8b73af3427a5998058e9bafc",
+    "README.md": "72f7a01c100819829f64a4431250ee05d7c0063e778a57c9f8949d9a51f62f57",
     "after-verified-surfaces.json": "97e5d6e72447d6e458144f2fbbeda02a055f29a929edc1edabfb360bdf5573de",
     "after-verified-faces.json": "649cf651b48bb0b47a6e1e3e9a44b9fd0ff7309f4de22a3902832ade40532c8c",
     "after-face-match.json": "12bf455d65741a3e365c9b95c98e78bf9ebadf4020de8cbfbe65dd854206defa",
