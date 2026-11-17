@@ -1,6 +1,6 @@
 # Public NIST FTC-07 combined recovery
 
-Source fixture: corpus/nist-pmi/catia/nist_ftc_07_asme1_rd_ct5290_ra.CATPart from the cadmpeg NIST corpus. NIST authorship, publisher disclaimer, license and source archive are documented at https://github.com/cadmpeg/cadmpeg/blob/main/corpus/nist-pmi/README.md. The reference STEP here was exported by CATIA from this public CATPart. All fixture results in this evidence set use public files.
+Source fixture: corpus/nist-pmi/catia/nist_ftc_07_asme1_rd_ct5290_ra.CATPart from the cadmpeg NIST corpus. The publisher disclaimer is preserved in NIST-NOTICE.md. NIST authorship, license and source archive are documented at https://github.com/cadmpeg/cadmpeg/blob/main/corpus/nist-pmi/README.md. The reference STEP here was exported by CATIA from this public CATPart. All fixture results in this evidence set use public files.
 
 revision.json records the exact source revisions and file hashes. Upstream and combined exports use cadmpeg convert INPUT --to step:ap242-e3 -o OUTPUT. Build each revision with cargo build -p cadmpeg --no-default-features --features catia,step. The combined source is at duydl/cadmpeg branch integration/ftc07-public-recovery.
 
